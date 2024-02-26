@@ -1,0 +1,43 @@
+/* .black-ops one-regular {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+} */
+
+/* .megrim-regular {
+  font-family: "Megrim", system-ui;
+  font-weight: 400;
+  font-style: normal;
+} */
+
+/* // <uniquifier>: Use a uniquifier for the class name
+
+.big-shoulders stencil text-<uniquifier> {
+  font-family: "Big Shoulders Stencil Text", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+} */
+
+.logo {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color: #ff4500;
+  margin-right: auto;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: fit-content;
+}
+
+.active {
+  text-decoration: none;
+  /* color: white; */
+  font-weight: 400;
+  margin: 10px;
+}
