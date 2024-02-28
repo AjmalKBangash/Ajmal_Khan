@@ -1,6 +1,127 @@
+* {
+  /* border: 1px solid blue; */
+  margin: 0%;
+  padding: 0%;
+  font-family: "Roboto", sans-serif;
+}
+
 .home-container {
   width: 90%;
   max-width: 1328px;
-  background-color: aqua;
   margin: 0% auto;
 }
+
+.background-img {
+  background-image: url("/home/ajay/Desktop/Real_Projects/portfolio_frontend/public/images/back-img.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  margin: -61px 0 0 0;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  z-index: 2;
+}
+.background-img-clr {
+  background-color: rgba(0, 0, 0, 0.719);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -61px 0 0 0;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  z-index: 2;
+}
+.background-img-div {
+  text-align: center;
+  color: white;
+  font-size: 18px;
+}
+.profile-img {
+  height: 135px;
+  border-radius: 70px;
+}
+.center-items {
+}
+.background-img h1 {
+  font-family: "Black Ops One", system-ui;
+  font-style: normal;
+  font-size: 30px;
+  margin: 10px 0;
+}
+.social-icons {
+  font-size: 18px;
+}
+.social-icons-each {
+  margin: 15px;
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.social-icons-each:hover {
+  color: #ff4500;
+  border: 1px solid #ff4500;
+}
+.two-btns-on-back-img {
+  font-size: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  color: #ff4500;
+  height: 30px;
+  width: 150px;
+  padding: 5px;
+  border: 1px solid #ff4500;
+  margin: 0 20px;
+  cursor: pointer;
+}
+.two-btns-on-back-img:hover {
+  color: white;
+  background-color: #ff4500;
+}
+/* ///////////////// ABOUT SECTION STARTED ////////////////////////// */
+.about {
+  text-align: center;
+  margin: 20px 0;
+}
+.about h1 {
+  font-family: "Black Ops One", system-ui;
+  font-style: normal;
+  color: #ff4500;
+}
+.skillful-tools {
+  display: grid;
+  grid-template-columns: auto auto;
+  /* grid-gap: 5%; */
+}
+.skillful-tools-name-per {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 20px;
+}
+.skillful-tools-grey {
+  height: 10px;
+  border-radius: 10px;
+  background-color: rgba(128, 128, 128, 0.61);
+  margin: 10px 20px;
+  overflow: hidden; /* Ensure the overflow is hidden to hide the growing width outside the container */
+}
+.skillful-tools-orange {
+  width: 0;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #ff4400b6;
+  animation: expandWidth 5s ease-in-out forwards;
+}
+
+/* @keyframes expandWidth {
+  to {
+    width: 80%; 
+  }
+}  */

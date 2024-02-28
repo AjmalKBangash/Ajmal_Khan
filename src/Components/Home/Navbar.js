@@ -20,9 +20,9 @@ function Navbar() {
         <NavLink to={""} className="navbar-items item">
           Blog
         </NavLink>
-        <NavLink to={""} className="navbar-items item">
+        {/* <NavLink to={""} className="navbar-items item">
           Contact
-        </NavLink>
+        </NavLink> */}
       </div>
     </>
   );
