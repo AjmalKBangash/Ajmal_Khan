@@ -110,18 +110,73 @@
   border-radius: 10px;
   background-color: rgba(128, 128, 128, 0.61);
   margin: 10px 20px;
-  overflow: hidden; /* Ensure the overflow is hidden to hide the growing width outside the container */
+  overflow: hidden;
 }
 .skillful-tools-orange {
-  width: 0;
   height: 10px;
   border-radius: 10px;
   background-color: #ff4400b6;
-  animation: expandWidth 5s ease-in-out forwards;
 }
-
-/* @keyframes expandWidth {
-  to {
-    width: 80%; 
-  }
-}  */
+/* ///////////////// SERVICES SECTION STARTED ////////////////////////// */
+.services {
+  text-align: center;
+  margin: 20px 0;
+}
+.services h1 {
+  font-family: "Black Ops One", system-ui;
+  font-style: normal;
+  color: #ff4500;
+  overflow: hidden;
+}
+.cards-top {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 15px auto;
+}
+.services-card {
+  height: 300px;
+  width: 300px;
+  margin: 15px auto;
+  border-radius: 6px;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 25% 15% 60%;
+  /* box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
+  -moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178); */
+  background-color: rgb(241, 241, 241);
+  box-sizing: border-box;
+}
+.services-icon {
+  margin: auto;
+  color: #ff4500;
+  font-size: 30px;
+  border: 2px solid #ff4500;
+  border-radius: 10px;
+  padding: 5px;
+}
+.services-card p {
+  font-size: 15px;
+}
+/* ///////////////// SNAPSHOTS SECTION STARTED ////////////////////////// */
+.snapshots {
+  text-align: center;
+  margin: 20px 0;
+}
+.snapshots h1 {
+  font-family: "Black Ops One", system-ui;
+  font-style: normal;
+  color: #ff4500;
+}
+.gallary {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 15px auto;
+}
+.gallary img {
+  height: 250px;
+  width: 250px;
+  margin: 15px auto;
+  border: 2px solid #ff4500;
+  border-radius: 6px;
+}

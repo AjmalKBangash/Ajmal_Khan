@@ -1,5 +1,10 @@
 import "./Home.css";
 import Navbar from "./Navbar";
+import Services from "./Services";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 // REACT ICONS
 import { FaInstagram } from "react-icons/fa";
@@ -7,14 +12,33 @@ import { FaGithub } from "react-icons/fa";
 import { FaDocker } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
-import { useNavigate } from "react-router-dom";
 import SkillsTool from "./SkillsTool";
+import Snapshots from "./Snapshots";
 function Home() {
+  const [showNav, setshowNav] = useState(false);
   const navigate = useNavigate();
+  // const [ref, inView, entry] = useInView({
+  //   triggerOnce: true,
+  // });
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (!inView) {
+      // Perform your action when the element is out of view
+      console.log("in view");
+      setshowNav(false);
+      // Add your logic here
+    } else {
+      // Perform your action when the element is out of view
+      console.log("in off");
+      setshowNav(true);
+      // Add your logic here
+    }
+  }, [inView]);
   return (
     <>
-      <Navbar />
-      <div class="background-img">
+      <Navbar data={showNav} />
+      <div class="background-img" ref={ref}>
         <div className="background-img-clr">
           <div className="background-img-div">
             <img src="images/Ajay.png" className="profile-img "></img>
@@ -44,8 +68,12 @@ function Home() {
         </div>
       </div>
       <div className="home-container">
+        <br />
+        <br />
+        <br />
+        <br />
         <div className="about">
-          <h1 className=" ">ABOUT</h1>
+          <h1 className="">ABOUT</h1>
           <h3>Introduction to my Development Experience and Skills</h3>
           <br />
           <p>
@@ -73,7 +101,7 @@ function Home() {
           </p>
         </div>
         <div className="skillful-tools">
-          <SkillsTool data={{ skill: "Django", per: "70%" }} />
+          <SkillsTool data={{ skill: "Django", per: "70" }} />
           <div>
             <div className="skillful-tools-name-per">
               <span>React</span>
@@ -120,6 +148,14 @@ function Home() {
             </div>
           </div>
         </div>
+        <br />
+        <br />
+        <br />
+        <Services />
+        <br />
+        <br />
+        <br />
+        <Snapshots />
         <div onClick={() => navigate("sign-up/")}>
           Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn
           vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc
