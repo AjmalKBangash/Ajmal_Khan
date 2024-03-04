@@ -1,6 +1,7 @@
 import "./Home.css";
 import Navbar from "./Navbar";
 import Services from "./Services";
+import Testemonials from "./Testemonials";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -156,6 +157,13 @@ function Home() {
         <br />
         <br />
         <Snapshots />
+        <br />
+        <br />
+        <br />
+        <Testemonials />
+        <br />
+        <br />
+        <br />
         <div onClick={() => navigate("sign-up/")}>
           Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn
           vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc
