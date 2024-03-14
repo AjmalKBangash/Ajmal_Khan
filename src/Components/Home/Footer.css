@@ -1,0 +1,52 @@
+.footer {
+  display: grid;
+  grid-template-columns: 30% 20% 20% 30%;
+  padding: 2% 5%;
+  /* background-color: rgb(189, 189, 189); */
+  background-color: rgb(204, 204, 204);
+  margin: 5% 0 0 0;
+  color: rgb(39, 39, 39);
+}
+.footer-logo {
+  margin: 0 4%;
+  /* color: rgb(22, 22, 22); */
+  color: rgb(53, 53, 53);
+  font-size: 15px;
+}
+.footer-logo h1 {
+  font-family: "Black Ops One", system-ui;
+  font-style: normal;
+  font-size: 30px;
+  margin: 0 0 2% 0;
+  color: #ff4500;
+}
+.footer ul {
+  margin: 2% 0;
+  font-size: small;
+}
+.footer ul li:hover {
+  color: #ff4500;
+  text-decoration: underline;
+  cursor: pointer;
+  height: fit-content;
+}
+.footer-getintouch ul {
+  list-style-type: none;
+}
+.footer-getintouch ul li:hover {
+  color: black;
+  cursor: default;
+}
+.footer-social-icons-each {
+  color: black;
+  font-size: large;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 5px;
+  margin-right: 10px;
+}
+.footer-social-icons-each:hover {
+  color: #ff4500;
+  border: 1px solid #ff4500;
+  cursor: pointer;
+}

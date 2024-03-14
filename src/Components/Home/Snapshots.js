@@ -27,7 +27,6 @@ function Snapshots() {
       .get("portfolio/project-images/")
       .then((res) => {
         setProjectImages(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

@@ -15,8 +15,13 @@ import { FaLinkedin } from "react-icons/fa";
 
 import SkillsTool from "./SkillsTool";
 import Snapshots from "./Snapshots";
+import Blogs from "./Blogs";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import axios from "axios";
 function Home() {
   const [showNav, setshowNav] = useState(false);
+  const [skillTools, setSkillTools] = useState(false);
   const navigate = useNavigate();
   // const [ref, inView, entry] = useInView({
   //   triggerOnce: true,
@@ -26,16 +31,24 @@ function Home() {
   useEffect(() => {
     if (!inView) {
       // Perform your action when the element is out of view
-      console.log("in view");
       setshowNav(false);
       // Add your logic here
     } else {
       // Perform your action when the element is out of view
-      console.log("in off");
       setshowNav(true);
       // Add your logic here
     }
   }, [inView]);
+  useEffect(() => {
+    axios
+      .get("portfolio/skill-tools/")
+      .then((res) => {
+        setSkillTools(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <Navbar data={showNav} />
@@ -68,7 +81,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="home-container">
+      <div className="home-container" style={{ border: "1px solid red" }}>
         <br />
         <br />
         <br />
@@ -102,8 +115,15 @@ function Home() {
           </p>
         </div>
         <div className="skillful-tools">
-          <SkillsTool data={{ skill: "Django", per: "70" }} />
-          <div>
+          {skillTools &&
+            skillTools.results?.map((skillper, index) => {
+              return (
+                <SkillsTool
+                  data={{ skill: skillper.skill, per: skillper.per }}
+                />
+              );
+            })}
+          {/* <div>
             <div className="skillful-tools-name-per">
               <span>React</span>
               <span>80%</span>
@@ -111,43 +131,7 @@ function Home() {
             <div className="skillful-tools-grey">
               <div className="skillful-tools-orange"></div>
             </div>
-          </div>
-          <div>
-            <div className="skillful-tools-name-per">
-              <span>Django</span>
-              <span>90%</span>
-            </div>
-            <div className="skillful-tools-grey">
-              <div className="skillful-tools-orange"></div>
-            </div>
-          </div>
-          <div>
-            <div className="skillful-tools-name-per">
-              <span>React</span>
-              <span>80%</span>
-            </div>
-            <div className="skillful-tools-grey">
-              <div className="skillful-tools-orange"></div>
-            </div>
-          </div>
-          <div>
-            <div className="skillful-tools-name-per">
-              <span>Django</span>
-              <span>90%</span>
-            </div>
-            <div className="skillful-tools-grey">
-              <div className="skillful-tools-orange"></div>
-            </div>
-          </div>
-          <div>
-            <div className="skillful-tools-name-per">
-              <span>React</span>
-              <span>80%</span>
-            </div>
-            <div className="skillful-tools-grey">
-              <div className="skillful-tools-orange"></div>
-            </div>
-          </div>
+          </div> */}
         </div>
         <br />
         <br />
@@ -164,87 +148,16 @@ function Home() {
         <br />
         <br />
         <br />
-        <div onClick={() => navigate("sign-up/")}>
-          Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn
-          vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc
-          vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv
-          bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn
-          vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc
-          cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv
-          bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv
-          bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn
-          vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv
-          cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc
-          bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc
-          nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb
-          Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn
-          vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc
-          vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv
-          bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn
-          vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc
-          cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv
-          bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv
-          bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn
-          vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv
-          cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc
-          bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc
-          nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb
-          Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn
-          vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc
-          vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv
-          bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn
-          vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc
-          cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv
-          bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv
-          bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn
-          vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv
-          cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc
-          bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc
-          nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb
-          Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn
-          vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc
-          vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv
-          bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn
-          vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc
-          cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv
-          bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv
-          bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn
-          vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv
-          cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc
-          bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc
-          nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb
-          Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn
-          vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc
-          vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv
-          bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn
-          vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnbSalam vbvcbvc
-          cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv
-          bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv
-          bvc bvcnvnbSalam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn
-          vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv
-          cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb Salam vbvcbvc cvbnvbvcbvc
-          bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc
-          nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc
-          bvcnvnbSalam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn
-          vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv
-          cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnbSalam vbvcbvc cvbnvbvcbvc
-          bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc
-          nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc
-          bvcnvnbSalam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn
-          vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv
-          cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnbSalam vbvcbvc cvbnvbvcbvc
-          bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc
-          nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc
-          bvcnvnbSalam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn
-          vbvcbn vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv
-          cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnbSalam vbvcbvc cvbnvbvcbvc
-          bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn vcbnvc bvcbnv bcvbvc nvbc
-          nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc vcbcbnvcbvcbv bvc bvcnvnb
-          Salam vbvcbvc cvbnvbvcbvc bncvbnv bvcbncv bvcnb cbnv cvbn vbvcbn
-          vcbnvc bvcbnv bcvbvc nvbc nbvcbnvbcvbcbn vbvcbvcnbvbv cvbcbnvcbvcbvc
-          vcbcbnvcbvcbv bvc bvcnvnb
-        </div>
+        <Blogs />
+        <br />
+        <br />
+        <br />
+        <Contact />
+        <br />
+        <br />
+        <br />
       </div>
+      <Footer />
     </>
   );
 }
