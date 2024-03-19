@@ -35,21 +35,29 @@
   /* background-color: rgb(241, 241, 241); */
   z-index: 1;
 }
+.colored {
+  background-color: #ff4500;
+  border-radius: 30px;
+}
 .active {
   text-decoration: none;
   font-weight: 400;
-  margin: 30px 20px;
+  margin: 25px 10px;
+  padding: 5px 10px;
   color: white;
 }
 .active02 {
   text-decoration: none;
   font-weight: 400;
-  margin: 30px 20px;
+  margin: 25px 10px;
+  padding: 5px 10px;
   color: black;
 }
 .active:hover {
-  color: #ff4500;
+  background-color: #ff4500;
+  border-radius: 30px;
 }
 .active02:hover {
-  color: #ff4500;
+  background-color: #ff4500;
+  border-radius: 30px;
 }

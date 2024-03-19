@@ -194,7 +194,12 @@ function Contact() {
           onChange={(e) => setDescription(e.target.value)}
         />
         {formErrors.description && (
-          <div className="error">{formErrors.description}</div>
+          <div
+            style={{ margin: "10px auto", width: "fit-content" }}
+            className="error"
+          >
+            {formErrors.description}
+          </div>
         )}
         {/* </div> */}
         {/* </div> */}

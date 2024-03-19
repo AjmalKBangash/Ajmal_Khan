@@ -1,5 +1,6 @@
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 function Navbar(props) {
   return (
     <>
@@ -9,13 +10,26 @@ function Navbar(props) {
         // style={{ position: props.data ? "relative" : "sticky" }}
       >
         <div className="logo">AJAY</div>
-        <NavLink to={""} className={` ${props.data ? "active" : "active02"}`}>
+        <NavLink
+          to={""}
+          // activeClassName={"colored"}
+          // activeClassName={activeNavLink === "home" && "colored"}
+          className={` ${props.data ? "active" : "active02"}`}
+        >
           Home
         </NavLink>
-        <NavLink to={""} className={` ${props.data ? "active" : "active02"}`}>
+        <NavLink
+          to={""}
+          // activeClassName={activeNavLink === "about" && "colored"}
+          className={` ${props.data ? "active" : "active02"}`}
+        >
           About
         </NavLink>
-        <NavLink to={""} className={` ${props.data ? "active" : "active02"}`}>
+        <NavLink
+          to={""}
+          activeClassName={"colored"}
+          className={` ${props.data ? "active" : "active02"}`}
+        >
           Portfolio
         </NavLink>
         <NavLink to={""} className={` ${props.data ? "active" : "active02"}`}>
@@ -24,9 +38,9 @@ function Navbar(props) {
         <NavLink to={""} className={` ${props.data ? "active" : "active02"}`}>
           Blog
         </NavLink>
-        {/* <NavLink to={""}  className={` ${props.data ? "active" : "active02"}`} >
+        <NavLink to={""} className={` ${props.data ? "active" : "active02"}`}>
           Contact
-        </NavLink> */}
+        </NavLink>
       </div>
     </>
   );

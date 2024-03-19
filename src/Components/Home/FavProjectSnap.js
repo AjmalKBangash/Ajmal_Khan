@@ -9,7 +9,7 @@ import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 
-function Snapshots() {
+function FavProjectSnap() {
   const [projectImages, setProjectImages] = useState(false);
   const initialContent = "Your long text goes here...";
   const [expanded, setExpanded] = useState(false);
@@ -18,6 +18,8 @@ function Snapshots() {
   let [carousel, setCarousel] = useState(false);
   let [imgSrc, setImgSrc] = useState("");
   let [imgID, setImgID] = useState();
+  ////////////// EXTRACTING IMAGES
+  const favorites = JSON.parse(Cookies.get("favoritePictures") || "[]");
   function ViewImage(e) {
     setCarousel(true);
     setImgSrc(e.image);
@@ -28,24 +30,26 @@ function Snapshots() {
   }
 
   function preFunCarousel() {
+    //   EXTRACTING FAV SNAPS FROM COOKIES
+    const favorites = JSON.parse(Cookies.get("favoritePictures") || "[]");
     const isFirstSlide = imgID === 0;
     if (isFirstSlide) {
       // setImgID(8);
-      setImgID(projectImages && projectImages.results.length - 1);
+      setImgID(favorites.length - 1);
     } else {
       setImgID(imgID - 1);
     }
-    setImgSrc(projectImages && projectImages.results[imgID].image);
+    setImgSrc(favorites[imgID]);
   }
   function nxtFunCarousel() {
-    const isLastSlide =
-      imgID === (projectImages && projectImages.results?.length - 1);
+    const favorites = JSON.parse(Cookies.get("favoritePictures") || "[]");
+    const isLastSlide = imgID === favorites.length - 1;
     if (isLastSlide) {
       setImgID(0);
     } else {
       setImgID(imgID + 1);
     }
-    setImgSrc(projectImages && projectImages.results[imgID].image);
+    setImgSrc(favorites[imgID]);
   }
 
   const toggleExpand = () => {
@@ -60,28 +64,25 @@ function Snapshots() {
     setHoveredIndex(null);
   };
 
-  // ADDING PROJECT SNAPSHOTS URLS TO COOKIES
-  const handleClick = (photo) => {
-    // Retrieve existing favorites from the cookie or initialize an empty array
-    const favorites = Cookies.get("favoritePictures") || "[]";
-
-    // Parse the favorites as JSON
-    const favoritesArray = JSON.parse(favorites);
-
-    // Check if the clicked picture is already a favorite
-    if (!favoritesArray.includes(photo.image)) {
-      // Add the clicked picture to the favoritesArray array
-      favoritesArray.push(photo.image);
-
-      // Update the cookie with the new favorites array
-      Cookies.set("favoritePictures", JSON.stringify(favoritesArray), {
-        expires: 7,
-      }); // Expires in 7 days
-      alert("Picture added to favorites!");
-    } else {
-      alert("Picture already in favorites!");
+  // DELETING COOKIES
+  function removeItemFromArray(arr, item) {
+    const index = arr.indexOf(item);
+    if (index !== -1) {
+      arr.splice(index, 1);
     }
-  };
+  }
+
+  function handleClick(photoOnly) {
+    const favorites = JSON.parse(Cookies.get("favoritePictures") || "[]");
+
+    // Remove the photoOnly from favorites array
+    removeItemFromArray(favorites, photoOnly);
+
+    // Update the cookie with the new favorites array
+    Cookies.set("favoritePictures", JSON.stringify(favorites), {
+      expires: 7,
+    }); // Expires in 7 days
+  }
   useEffect(() => {
     axios
       .get("portfolio/project-images/")
@@ -92,39 +93,24 @@ function Snapshots() {
         console.log(err);
       });
   }, []);
-
-  //////////////////////////////////////////
-  // Retrieve existing favorites from the cookie or initialize an empty array
-  // const favorites = Cookies.get("favoritePictures") || "[]";
-
-  // // Parse the favorites as JSON
-  // const favoritesArray = JSON.parse(favorites);
-
-  // // Check if the clicked picture is already a favorite
-  // if (!favoritesArray.includes(photo.image)) {
-  //   // Add the clicked picture to the favoritesArray array
-  //   favoritesArray.push(photo.image);
-
-  //   // Update the cookie with the new favorites array
-  //   Cookies.set("favoritePictures", JSON.stringify(favoritesArray), {
-  //     expires: 7,
-  //   }); // Expires in 7 days
-  //   alert("Picture added to favorites!");
-  // } else {
-  //   alert("Picture already in favorites!");
-  // }
-  ///////////////////////////////////////////////////////////////////////
   return (
     <div className="snapshots">
       <h1>SNAPSHOTS</h1>
       <h3>Few Snapshots from my Projects</h3>
       <div className="gallary">
-        {projectImages &&
-          projectImages.results.map((img, index) => {
-            const favoritesArray = JSON.parse(
-              Cookies.get("favoritePictures") || "[]"
-            );
-            const isFavorite = favoritesArray.includes(img.image);
+        {/* /////////////////// */}
+        {/* {favorites.length > 0 ? (
+        <div className="favorite-pictures">
+          {favorites.map((image, index) => (
+            <img key={index} src={image} alt={`Favorite ${index + 1}`} />
+          ))}
+        </div>
+      ) : (
+        <p>No favorite pictures yet.</p>
+      )} */}
+        {/* ///////////////////////// */}
+        {favorites.length > 0 &&
+          favorites.map((img, index) => {
             return (
               <div
                 key={index}
@@ -134,13 +120,13 @@ function Snapshots() {
                 onMouseOver={() => handleMouseOver(index)}
                 onMouseOut={handleMouseOut}
               >
-                <img src={img.image} alt="project images" />
+                <img src={img} alt="project images" />
                 <span
                   className={`view-img-icon ${
                     hoveredIndex === index ? "view-img-icon02" : ""
                   }`}
                   onClick={() => {
-                    ViewImage(img);
+                    ViewImage({ image: img, img_no: index });
                   }}
                 >
                   <MdOpenWith />
@@ -151,7 +137,7 @@ function Snapshots() {
                   }`}
                   onClick={() => handleClick(img)}
                 >
-                  {isFavorite ? <MdFavorite /> : <MdFavoriteBorder />}
+                  <MdFavorite />
                 </span>
               </div>
             );
@@ -188,14 +174,4 @@ function Snapshots() {
   );
 }
 
-export default Snapshots;
-
-// <p
-//   className={`img-description ${expanded ? "expanded" : ""}`}
-//   onClick={toggleExpand}
-// >
-//   {img.description}
-//   {!expanded && content.length > 80 && (
-//     <span className="more">More...</span>
-//   )}
-// </p>;
+export default FavProjectSnap;

@@ -1,9 +1,10 @@
 import "./Home.css";
+import "./Navbar.css";
 import Navbar from "./Navbar";
 import Services from "./Services";
 import Testemonials from "./Testemonials";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -12,6 +13,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaDocker } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import { IoCartOutline } from "react-icons/io5";
 
 import SkillsTool from "./SkillsTool";
 import Snapshots from "./Snapshots";
@@ -19,24 +21,58 @@ import Blogs from "./Blogs";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import axios from "axios";
+import FavProjectSnap from "./FavProjectSnap";
 function Home() {
   const [showNav, setshowNav] = useState(false);
   const [skillTools, setSkillTools] = useState(false);
+  const [activeNavLink, setActiveNavLink] = useState("home");
   const navigate = useNavigate();
   // const [ref, inView, entry] = useInView({
   //   triggerOnce: true,
   // });
   const [ref, inView] = useInView();
+  //////////////////////////////////  THIS IS WHERE WHEN SCROLLING Y AXIS SECTIONOFFSETS WILL UPATE ACCORDING TO GIVEN IDS (SECTIONS)
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionOffsets = {
+        home: document.getElementById("home-section").offsetTop, // Adjust this value if needed
+        about: document.getElementById("about-section").offsetTop,
+        // portfolio: document.getElementById("portfolio-section").offsetTop,
+        services: document.getElementById("services-section").offsetTop,
+        snapshots: document.getElementById("snapshots-section").offsetTop,
+        blogs: document.getElementById("blogs-section").offsetTop,
+        contact: document.getElementById("contact-section").offsetTop,
+        // Add more sections as needed
+      };
 
+      const scrollPosition = window.scrollY;
+      let activeSection = "home";
+
+      // Determine the active section based on the scroll position
+      Object.entries(sectionOffsets).forEach(([section, offset]) => {
+        if (scrollPosition >= offset) {
+          activeSection = section;
+        }
+      });
+
+      // Update the activeNavLink state
+      setActiveNavLink(activeSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  /////////////////////////////////////////////////
   useEffect(() => {
     if (!inView) {
       // Perform your action when the element is out of view
       setshowNav(false);
-      // Add your logic here
     } else {
       // Perform your action when the element is out of view
       setshowNav(true);
-      // Add your logic here
     }
   }, [inView]);
   useEffect(() => {
@@ -51,7 +87,116 @@ function Home() {
   }, []);
   return (
     <>
-      <Navbar data={showNav} />
+      <div id="home-section"></div>
+      <div
+        className={showNav ? "navbar" : "navbar02"}
+        // className="navbar"
+        // style={{ position: props.data ? "relative" : "sticky" }}
+      >
+        <div className="logo">AJAY</div>
+        <NavLink
+          to={""}
+          // activeClassName={"colored"}
+          // activeClassName={activeNavLink === "home" && "colored"}
+          className={`${activeNavLink === "home" && "colored"} ${
+            showNav ? "active" : "active02"
+          }`}
+          onClick={() =>
+            document
+              .getElementById("home-section")
+              .scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          Home
+        </NavLink>
+        <NavLink
+          // activeClassName={activeNavLink === "about" && "colored"}
+          className={`${activeNavLink === "about" && "colored"} ${
+            showNav ? "active" : "active02"
+          }`}
+          onClick={() =>
+            document
+              .getElementById("about-section")
+              .scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          About
+        </NavLink>
+        {/* <NavLink
+          activeClassName={"colored"}
+          className={`${activeNavLink === "portfolio" && "colored"} ${
+            showNav ? "active" : "active02"
+          }`}
+          // onClick={() =>
+          //   document
+          //     .getElementById("portfolio-section")
+          //     .scrollIntoView({ behavior: "smooth" })
+          // }
+        >
+          Portfolio
+        </NavLink> */}
+        <NavLink
+          className={`${activeNavLink === "services" && "colored"} ${
+            showNav ? "active" : "active02"
+          }`}
+          onClick={() =>
+            document
+              .getElementById("services-section")
+              .scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          Services
+        </NavLink>
+        <NavLink
+          className={`${activeNavLink === "snapshots" && "colored"} ${
+            showNav ? "active" : "active02"
+          }`}
+          onClick={() =>
+            document
+              .getElementById("snapshots-section")
+              .scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          Snapshots
+        </NavLink>
+        <NavLink
+          className={`${activeNavLink === "blogs" && "colored"} ${
+            showNav ? "active" : "active02"
+          }`}
+          onClick={() =>
+            document
+              .getElementById("blogs-section")
+              .scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          Blogs
+        </NavLink>
+        <NavLink
+          className={`${activeNavLink === "contact" && "colored"} ${
+            showNav ? "active" : "active02"
+          }`}
+          onClick={() =>
+            document
+              .getElementById("contact-section")
+              .scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          Contact
+        </NavLink>
+        <NavLink
+        // className={`${activeNavLink === "contact" && "colored"} ${
+        // showNav ? "active" : "active02"
+        // }`}
+        // onClick={() =>
+        //   document
+        //     .getElementById("contact-section")
+        //     .scrollIntoView({ behavior: "smooth" })
+        // }
+        >
+          <IoCartOutline />
+        </NavLink>
+      </div>
+      {/* <Navbar data={showNav} /> */}
       <div class="background-img" ref={ref}>
         <div className="background-img-clr">
           <div className="background-img-div">
@@ -61,7 +206,15 @@ function Home() {
               I am a Software and DevOps Engineer
             </div>
             <div className="social-icons">
-              <FaLinkedin className="social-icons-each" />
+              <FaLinkedin
+                className="social-icons-each"
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/in/ajmal-khan-620356181/",
+                    "_blank"
+                  )
+                }
+              />
               <FaInstagram
                 onClick={() =>
                   window.open(
@@ -71,22 +224,37 @@ function Home() {
                 }
                 className="social-icons-each"
               />
-              <FaGithub className="social-icons-each" />
+
+              <FaGithub
+                className="social-icons-each"
+                onClick={() =>
+                  window.open(" https://github.com/AjmalKBangash", "_blank")
+                }
+              />
               <FaDocker className="social-icons-each" />
             </div>
             <div>
               <span className="two-btns-on-back-img">Download CV</span>
-              <span className="two-btns-on-back-img">Contact Me</span>
+              <span
+                className="two-btns-on-back-img"
+                onClick={() =>
+                  document
+                    .getElementById("contact-section")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Contact Me
+              </span>
             </div>
           </div>
         </div>
       </div>
-      <div className="home-container" style={{ border: "1px solid red" }}>
+      <div className="home-container">
         <br />
         <br />
         <br />
         <br />
-        <div className="about">
+        <div className="about" id="about-section">
           <h1 className="">ABOUT</h1>
           <h3>Introduction to my Development Experience and Skills</h3>
           <br />
@@ -136,28 +304,41 @@ function Home() {
         <br />
         <br />
         <br />
-        <Services />
+        <div id="services-section">
+          <Services />
+        </div>
         <br />
         <br />
         <br />
-        <Snapshots />
+        <div id="snapshots-section">
+          <Snapshots />
+        </div>
         <br />
         <br />
         <br />
-        <Testemonials />
+        <div id="testemonials-section">
+          <Testemonials />
+        </div>
         <br />
         <br />
         <br />
-        <Blogs />
+        <div id="blogs-section">
+          <Blogs />
+        </div>
         <br />
         <br />
         <br />
-        <Contact />
+        <div id="contact-section">
+          <Contact />
+        </div>
         <br />
         <br />
+        <FavProjectSnap />
         <br />
       </div>
-      <Footer />
+      <div id="footer-section">
+        <Footer />
+      </div>
     </>
   );
 }
