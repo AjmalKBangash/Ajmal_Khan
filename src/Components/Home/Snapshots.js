@@ -116,7 +116,7 @@ function Snapshots() {
   ///////////////////////////////////////////////////////////////////////
   return (
     <div className="snapshots">
-      <h1>SNAPSHOTS</h1>
+      <h1>PROJECTS</h1>
       <h3>Few Snapshots from my Projects</h3>
       <div className="gallary">
         {projectImages &&

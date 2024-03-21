@@ -65,7 +65,6 @@ function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  /////////////////////////////////////////////////
   useEffect(() => {
     if (!inView) {
       // Perform your action when the element is out of view
@@ -88,16 +87,9 @@ function Home() {
   return (
     <>
       <div id="home-section"></div>
-      <div
-        className={showNav ? "navbar" : "navbar02"}
-        // className="navbar"
-        // style={{ position: props.data ? "relative" : "sticky" }}
-      >
+      {/* <div className={showNav ? "navbar" : "navbar02"}>
         <div className="logo">AJAY</div>
         <NavLink
-          to={""}
-          // activeClassName={"colored"}
-          // activeClassName={activeNavLink === "home" && "colored"}
           className={`${activeNavLink === "home" && "colored"} ${
             showNav ? "active" : "active02"
           }`}
@@ -110,7 +102,6 @@ function Home() {
           Home
         </NavLink>
         <NavLink
-          // activeClassName={activeNavLink === "about" && "colored"}
           className={`${activeNavLink === "about" && "colored"} ${
             showNav ? "active" : "active02"
           }`}
@@ -122,19 +113,6 @@ function Home() {
         >
           About
         </NavLink>
-        {/* <NavLink
-          activeClassName={"colored"}
-          className={`${activeNavLink === "portfolio" && "colored"} ${
-            showNav ? "active" : "active02"
-          }`}
-          // onClick={() =>
-          //   document
-          //     .getElementById("portfolio-section")
-          //     .scrollIntoView({ behavior: "smooth" })
-          // }
-        >
-          Portfolio
-        </NavLink> */}
         <NavLink
           className={`${activeNavLink === "services" && "colored"} ${
             showNav ? "active" : "active02"
@@ -184,19 +162,19 @@ function Home() {
           Contact
         </NavLink>
         <NavLink
-        // className={`${activeNavLink === "contact" && "colored"} ${
-        // showNav ? "active" : "active02"
-        // }`}
-        // onClick={() =>
-        //   document
-        //     .getElementById("contact-section")
-        //     .scrollIntoView({ behavior: "smooth" })
-        // }
+          className={` my-fav-icon-noti 
+        ${showNav ? "active" : "active02"}`}
+          // onClick={() =>
+          //   document
+          //     .getElementById("contact-section")
+          //     .scrollIntoView({ behavior: "smooth" })
+          // }
         >
-          <IoCartOutline />
+          <span className="my-fav-icon-notifications">7</span>
+          <IoCartOutline className="my-fav-icon" />
         </NavLink>
-      </div>
-      {/* <Navbar data={showNav} /> */}
+      </div> */}
+      <Navbar data={{ showNav: showNav, activeNavLink: activeNavLink }} />
       <div class="background-img" ref={ref}>
         <div className="background-img-clr">
           <div className="background-img-div">

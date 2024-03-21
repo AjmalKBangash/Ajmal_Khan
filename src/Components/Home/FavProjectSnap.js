@@ -2,12 +2,15 @@ import "./Snapshots.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { showFavourites } from "../../Store/store";
 // RAECT ICONS
 import { MdOpenWith } from "react-icons/md";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
+import { IoIosCloseCircle } from "react-icons/io";
 
 function FavProjectSnap() {
   const [projectImages, setProjectImages] = useState(false);
@@ -18,6 +21,9 @@ function FavProjectSnap() {
   let [carousel, setCarousel] = useState(false);
   let [imgSrc, setImgSrc] = useState("");
   let [imgID, setImgID] = useState();
+  const dispatch = useDispatch();
+  const showFavourites_var = useSelector((state) => state.showFavourites);
+  const controls = useAnimation();
   ////////////// EXTRACTING IMAGES
   const favorites = JSON.parse(Cookies.get("favoritePictures") || "[]");
   function ViewImage(e) {
@@ -83,6 +89,18 @@ function FavProjectSnap() {
       expires: 7,
     }); // Expires in 7 days
   }
+  // ANIMATING FAVOURITES FROM RIGHT TO LEFT AND FROM LEFT TO RIHT
+  useEffect(() => {
+    if (showFavourites_var) {
+      // When display becomes true, animate from right to left
+      controls.start({ x: 0, display: "flex" }); // Animate to x: 0 (visible position)
+    } else {
+      // When display becomes false, animate from left to right and then hide
+      controls
+        .start({ x: "100%" })
+        .then(() => controls.set({ display: "none" }));
+    }
+  }, [showFavourites_var, controls]);
   useEffect(() => {
     axios
       .get("portfolio/project-images/")
@@ -94,83 +112,90 @@ function FavProjectSnap() {
       });
   }, []);
   return (
-    <div className="snapshots">
-      <h1>SNAPSHOTS</h1>
-      <h3>Few Snapshots from my Projects</h3>
-      <div className="gallary">
-        {/* /////////////////// */}
-        {/* {favorites.length > 0 ? (
-        <div className="favorite-pictures">
-          {favorites.map((image, index) => (
-            <img key={index} src={image} alt={`Favorite ${index + 1}`} />
-          ))}
+    <motion.div
+      className="my-fav-top"
+      initial={{ x: "100%", display: "none" }} // Initial position off-screen to the right and hidden
+      animate={controls} // Use the controls for animation
+      transition={{ duration: 0.3 }} // Adjust duration as needed
+    >
+      <IoIosCloseCircle
+        className="close-fav"
+        onClick={() => {
+          dispatch(showFavourites(false));
+        }}
+      />
+      <div className="snapshots-fav">
+        <h1>MT FAVOURITES</h1>
+        <h4 style={{ margin: "0px 8px" }}>
+          Feel free to contact for any saved projects
+        </h4>
+        <div className="gallary-fav">
+          {favorites.length > 0 ? (
+            favorites.map((img, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`gallary-inside-fav ${
+                    hoveredIndex === index ? "gallary-inside02-fav" : ""
+                  }`}
+                  onMouseOver={() => handleMouseOver(index)}
+                  onMouseOut={handleMouseOut}
+                >
+                  <img src={img} alt="project images" />
+                  <span
+                    className={`view-img-icon ${
+                      hoveredIndex === index ? "view-img-icon02" : ""
+                    }`}
+                    onClick={() => {
+                      ViewImage({ image: img, img_no: index });
+                    }}
+                  >
+                    <MdOpenWith />
+                  </span>
+                  <span
+                    className={`fav-img-icon ${
+                      hoveredIndex === index ? "fav-img-icon02" : ""
+                    }`}
+                    onClick={() => handleClick(img)}
+                  >
+                    <MdFavorite />
+                  </span>
+                </div>
+              );
+            })
+          ) : (
+            <div style={{ marginTop: "10px" }}>No saved Projects!</div>
+          )}
         </div>
-      ) : (
-        <p>No favorite pictures yet.</p>
-      )} */}
-        {/* ///////////////////////// */}
-        {favorites.length > 0 &&
-          favorites.map((img, index) => {
-            return (
-              <div
-                key={index}
-                className={`gallary-inside ${
-                  hoveredIndex === index ? "gallary-inside02" : ""
-                }`}
-                onMouseOver={() => handleMouseOver(index)}
-                onMouseOut={handleMouseOut}
-              >
-                <img src={img} alt="project images" />
-                <span
-                  className={`view-img-icon ${
-                    hoveredIndex === index ? "view-img-icon02" : ""
-                  }`}
-                  onClick={() => {
-                    ViewImage({ image: img, img_no: index });
-                  }}
-                >
-                  <MdOpenWith />
-                </span>
-                <span
-                  className={`fav-img-icon ${
-                    hoveredIndex === index ? "fav-img-icon02" : ""
-                  }`}
-                  onClick={() => handleClick(img)}
-                >
-                  <MdFavorite />
-                </span>
-              </div>
-            );
-          })}
-      </div>
-      {/* //////////////// */}
-      <div className={carousel ? "carousel open" : ""}>
-        <span
-          onClick={preFunCarousel}
-          className={carousel ? "slidingCarousel" : "slidingCarouselClose"}
-          style={{ marginRight: "80%" }}
-        >
-          <FaChevronLeft />
-        </span>
-        <span
-          onClick={closeCarouselFun}
-          className={carousel ? "closeCarousel" : "slidingCarouselClose"}
-        >
-          {/* &#x2A2F;  */}
-          <MdClose />
-        </span>
+        <div className={carousel ? "carousel open" : ""}>
+          <span
+            onClick={preFunCarousel}
+            className={carousel ? "slidingCarousel" : "slidingCarouselClose"}
+            style={{ marginRight: "80%" }}
+          >
+            <FaChevronLeft />
+          </span>
+          <span
+            onClick={closeCarouselFun}
+            className={carousel ? "closeCarousel" : "slidingCarouselClose"}
+          >
+            <MdClose />
+          </span>
 
-        <img className={carousel ? "" : "slidingCarouselClose"} src={imgSrc} />
-        <span
-          onClick={nxtFunCarousel}
-          className={carousel ? "slidingCarousel" : "slidingCarouselClose"}
-          style={{ marginLeft: "80%" }}
-        >
-          <FaChevronRight />
-        </span>
+          <img
+            className={carousel ? "" : "slidingCarouselClose"}
+            src={imgSrc}
+          />
+          <span
+            onClick={nxtFunCarousel}
+            className={carousel ? "slidingCarousel" : "slidingCarouselClose"}
+            style={{ marginLeft: "80%" }}
+          >
+            <FaChevronRight />
+          </span>
+        </div>
       </div>
-      {/* ..//////////////// */}
-    </div>
+    </motion.div>
   );
 }
 
