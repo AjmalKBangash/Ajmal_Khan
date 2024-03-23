@@ -61,3 +61,34 @@ textarea {
   margin: 0% 10px;
   text-align: center;
 }
+/* MEDIA QUERIES STARTED FOR RESPONSIVENESS  */
+@media screen and (max-width: 800px) {
+  .first_last_name input {
+    height: 3vh;
+    width: 39vw;
+    font-size: 14px;
+  }
+  textarea {
+    font-size: 14px;
+  }
+  .first_last_name button {
+    height: 3vh;
+    width: 50vw;
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 520px) {
+  .first_last_name input {
+    height: 2.5vh;
+    width: 39vw;
+    margin-right: 2%;
+    font-size: 13px;
+  }
+  textarea {
+    font-size: 13px;
+  }
+  .first_last_name button {
+    height: 2.5vh;
+    font-size: 13px;
+  }
+}

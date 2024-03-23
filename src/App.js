@@ -6,6 +6,7 @@ import SignIn from "./Components/Home/SignIn";
 import ForgotPassword from "./Components/Home/ForgotPassword";
 import PasswordResetForm from "./Components/Home/PasswordResetForm";
 import EnterPin from "./Components/Home/EnterPin";
+import BlogPosts from "./Components/PortfolioWork/BlogPosts";
 
 import {
   createBrowserRouter,
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
       />
       <Route path="confirming-email" element={<EnterPin />} />
       <Route path="sign-in" element={<SignIn />} />
+      <Route path="blogs/:any-blog" element={<BlogPosts />} />
     </>
   )
 );

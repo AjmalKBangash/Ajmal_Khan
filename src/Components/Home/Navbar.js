@@ -2,12 +2,27 @@ import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showFavourites } from "../../Store/store";
+import { showFavourites, favoritesRefreshState } from "../../Store/store";
+import Cookies from "js-cookie";
 // REACT ICONS
 import { IoCartOutline } from "react-icons/io5";
+import { TiThMenu } from "react-icons/ti";
+import { CiMenuBurger } from "react-icons/ci";
 
 function Navbar(props) {
+  const [showDropdownNavbar, setShowDropdownNavbar] = useState(false);
   const dispatch = useDispatch();
+  const [favoritesLocalState, setFavouritesLocalState] = useState(
+    JSON.parse(Cookies.get("favoritePictures") || "[]")
+  );
+  const favoritesRefreshState_var = useSelector(
+    (state) => state.favoritesRefreshState
+  );
+  useEffect(() => {
+    setFavouritesLocalState(
+      JSON.parse(Cookies.get("favoritePictures") || "[]").length
+    );
+  }, [favoritesRefreshState_var]);
   return (
     <>
       <div className={props.data.showNav ? "navbar" : "navbar02"}>
@@ -87,16 +102,119 @@ function Navbar(props) {
           Contact
         </NavLink>
         <NavLink
+          className={` ${props.data.showNav ? "active" : "active02"} navmenu`}
+          onClick={() => {
+            setShowDropdownNavbar(!showDropdownNavbar);
+          }}
+        >
+          <CiMenuBurger />
+          {showDropdownNavbar && (
+            <div
+              className={`${
+                props.data.showNav ? "navbar03" : "navbar03 navbar033"
+              }`}
+            >
+              <div
+                className={`${props.data.activeNavLink === "home" && "colored"} 
+                            `}
+                onClick={() =>
+                  document
+                    .getElementById("home-section")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Home
+              </div>
+              <div
+                className={`${
+                  props.data.activeNavLink === "about" && "colored"
+                } 
+              `}
+                onClick={() =>
+                  document
+                    .getElementById("about-section")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                About
+              </div>
+              <div
+                className={`${
+                  props.data.activeNavLink === "services" && "colored"
+                } 
+              `}
+                onClick={() =>
+                  document
+                    .getElementById("services-section")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Services
+              </div>
+              <div
+                className={`${
+                  props.data.activeNavLink === "snapshots" && "colored"
+                } 
+              `}
+                onClick={() =>
+                  document
+                    .getElementById("snapshots-section")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Projects
+              </div>
+              <div
+                className={`${
+                  props.data.activeNavLink === "blogs" && "colored"
+                } 
+              `}
+                onClick={() =>
+                  document
+                    .getElementById("blogs-section")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Blogs
+              </div>
+              <div
+                className={`${
+                  props.data.activeNavLink === "contact" && "colored"
+                }
+               `}
+                onClick={() =>
+                  document
+                    .getElementById("contact-section")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Contact
+              </div>
+            </div>
+          )}
+        </NavLink>
+        <NavLink
           className={` my-fav-icon-noti 
         ${props.data.showNav ? "active" : "active02"}`}
           onClick={() => {
             dispatch(showFavourites(true));
           }}
+          style={{ display: "flex" }}
         >
-          <span className="my-fav-icon-notifications">7</span>
+          <span className="my-fav-icon-notifications">
+            {favoritesLocalState && favoritesLocalState}
+          </span>
           <IoCartOutline className="my-fav-icon" />
         </NavLink>
       </div>
+      {/* <div className="navbar03">
+        <div>Home</div>
+        <div>About</div>
+        <div>Services</div>
+        <div>Projects</div>
+        <div>Blogs</div>
+        <div>Contactttttt</div>
+      </div> */}
     </>
   );
 }

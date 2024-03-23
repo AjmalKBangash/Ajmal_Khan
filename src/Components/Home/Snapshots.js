@@ -3,6 +3,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { favoritesRefreshState, showFavourites } from "../../Store/store";
 // RAECT ICONS
 import { MdOpenWith } from "react-icons/md";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
@@ -18,6 +20,10 @@ function Snapshots() {
   let [carousel, setCarousel] = useState(false);
   let [imgSrc, setImgSrc] = useState("");
   let [imgID, setImgID] = useState();
+  const dispatch = useDispatch();
+  const favoritesRefreshState_var = useSelector(
+    (state) => state.favoritesRefreshState
+  );
   function ViewImage(e) {
     setCarousel(true);
     setImgSrc(e.image);
@@ -77,6 +83,7 @@ function Snapshots() {
       Cookies.set("favoritePictures", JSON.stringify(favoritesArray), {
         expires: 7,
       }); // Expires in 7 days
+      dispatch(favoritesRefreshState(favoritesRefreshState_var + 1));
       alert("Picture added to favorites!");
     } else {
       alert("Picture already in favorites!");

@@ -1,0 +1,56 @@
+/* ///////////////// SERVICES SECTION STARTED ////////////////////////// */
+.services {
+  text-align: center;
+  margin: 20px 0;
+}
+.services h1 {
+  font-family: "Black Ops One", system-ui;
+  font-style: normal;
+  color: #ff4500;
+  overflow: hidden;
+}
+.cards-top {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 15px auto;
+}
+.services-card {
+  height: 300px;
+  width: 300px;
+  margin: 15px auto;
+  border-radius: 6px;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 25% 15% 60%;
+  /* box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
+  -moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178); */
+  background-color: rgb(241, 241, 241);
+  box-sizing: border-box;
+}
+.services-icon {
+  margin: auto;
+  color: #ff4500;
+  font-size: 30px;
+  border: 2px solid #ff4500;
+  border-radius: 10px;
+  padding: 5px;
+}
+.services-card p {
+  font-size: 15px;
+}
+@media screen and (max-width: 1040px) {
+  .cards-top {
+    grid-template-columns: 50% 50%;
+    margin: 15px auto;
+  }
+}
+@media screen and (max-width: 700px) {
+  .cards-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px auto;
+  }
+}

@@ -26,7 +26,7 @@
 .gallary-inside02 {
   background-color: rgba(0, 0, 0, 0.541);
 }
-/* /////////////////// FOR FAVOUTITES SAVED PROJECTS  */
+/* ////////////////////////////////////////// FOR FAVOUTITES SAVED PROJECTS  */
 .my-fav-top {
   text-align: center;
   width: 20%;
@@ -157,7 +157,6 @@
     width: 80%;
   }
 }
-
 /* //////////////////////// SAVED SNAPSHOTS OF PROJECTS COMPLETED  */
 .gallary img {
   height: 100%;
@@ -375,5 +374,46 @@
   .closeCarousel {
     font-size: 30px;
     padding: 20px;
+  }
+}
+/* RESPONSIVENESS FOR PROJECTS SNAPS NOT FOR SAVED SNAPS  */
+@media screen and (max-width: 870px) {
+  .gallary {
+    grid-template-columns: auto auto auto;
+    margin: 0px;
+  }
+  .gallary-inside {
+    height: 200px;
+    margin: 10px;
+  }
+}
+@media screen and (max-width: 770px) {
+  .gallary {
+    grid-template-columns: auto auto auto;
+    margin: 0px;
+  }
+  .gallary-inside {
+    height: 150px;
+    margin: 8px;
+  }
+}
+@media screen and (max-width: 670px) {
+  .gallary {
+    grid-template-columns: auto auto auto;
+    margin: 0px;
+  }
+  .gallary-inside {
+    height: 110px;
+    margin: 7px;
+  }
+}
+@media screen and (max-width: 455px) {
+  .gallary {
+    grid-template-columns: auto auto;
+    margin: 0px;
+  }
+  .gallary-inside {
+    height: 120px;
+    margin: 8px;
   }
 }

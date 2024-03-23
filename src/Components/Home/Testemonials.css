@@ -1,0 +1,325 @@
+/* ////////////////////////   TESTEMONIALS   ///////////////////////// */
+.testemonial-cards {
+  width: 1100px;
+  margin: auto;
+  overflow: hidden;
+}
+.testemonial-cards02 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: fit-content;
+  height: 233px;
+  overflow: scroll;
+  padding: 0%;
+  transition: all 0.3s;
+}
+.testemonial-card {
+  margin: auto 10px;
+  padding: 4px;
+  height: 180px;
+  width: 530px;
+  background-color: rgb(241, 241, 241);
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.testemonial-card-profile {
+  height: 120px;
+  width: 120px;
+  margin: auto;
+  border-radius: 4px;
+}
+.testemonial-card-namedescrip {
+  display: grid;
+  grid-template-rows: 30% 70%;
+  margin-left: 10px;
+}
+.testemonial-card-name {
+  margin: auto auto auto 0;
+  font-family: "Black Ops One", system-ui;
+  font-style: normal;
+  color: #ff4500;
+  font-size: 19px;
+}
+.testemonial-card-descrip {
+  font-size: 15px;
+  text-align: left;
+}
+.testemonial-btn {
+  font-size: 18px;
+  text-align: center;
+  border-radius: 30px;
+  color: #ff4500;
+  height: 30px;
+  width: 100px;
+  padding: 5px;
+  border: 1px solid #ff4500;
+  margin: 0 10px;
+  cursor: pointer;
+  background-color: white;
+}
+.testemonial-btn:hover {
+  color: white;
+  background-color: #ff4500;
+}
+.testemonial-btn:active {
+  color: grey;
+}
+.testemonial-btn:disabled {
+  color: grey;
+  /* background-color: #ff440094; */
+  /* border: 1px solid #ff440000; */
+  /* background-color: grey; */
+}
+/* MEDIA QUERIES FOR TESTEMONIALS  */
+@media screen and (max-width: 1200px) {
+  .testemonial-cards02 {
+    height: 220px;
+  }
+  .testemonial-card {
+    padding: 4px;
+    height: 165px;
+  }
+  .testemonial-card-name {
+    font-size: 18px;
+  }
+  .testemonial-card-profile {
+    height: 115px;
+    width: 115px;
+  }
+  .testemonial-card-descrip {
+    font-size: 14px;
+  }
+  .testemonial-btn {
+    font-size: 17px;
+    height: 28px;
+    width: 100px;
+    padding: 5px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .testemonial-cards02 {
+    height: 210px;
+  }
+  .testemonial-card {
+    padding: 4px;
+    height: 155px;
+  }
+  .testemonial-card-namedescrip {
+    grid-template-rows: 25% 75%;
+  }
+  .testemonial-card-name {
+    font-size: 17px;
+  }
+  .testemonial-card-profile {
+    height: 110px;
+    width: 110px;
+  }
+  .testemonial-card-descrip {
+    font-size: 13px;
+  }
+  .testemonial-btn {
+    font-size: 16px;
+    height: 27px;
+    width: 95px;
+    padding: 5px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .testemonial-cards02 {
+    height: 205px;
+  }
+  .testemonial-card {
+    padding: 3px;
+    height: 125px;
+    grid-template-columns: 22% 78%;
+  }
+  .testemonial-card-namedescrip {
+    grid-template-rows: 20% 80%;
+    margin-left: 9px;
+  }
+  .testemonial-card-name {
+    font-size: 16px;
+  }
+  .testemonial-card-profile {
+    height: 80px;
+    width: 80px;
+  }
+  .testemonial-card-descrip {
+    font-size: 12px;
+  }
+  .testemonial-btn {
+    font-size: 15px;
+    height: 26px;
+    width: 90px;
+    padding: 4px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .testemonial-cards02 {
+    height: 190px;
+  }
+  .testemonial-card {
+    padding: 3px;
+    height: 110px;
+    grid-template-columns: 20% 80%;
+    /* grid-template-columns: 22% 78%; */
+  }
+  .testemonial-card-namedescrip {
+    grid-template-rows: 25% 75%;
+    margin-left: 8px;
+  }
+  .testemonial-card-name {
+    font-size: 14px;
+  }
+  .testemonial-card-profile {
+    height: 70px;
+    width: 70px;
+  }
+  .testemonial-card-descrip {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .testemonial-cards02 {
+    height: 175px;
+  }
+  .testemonial-card {
+    padding: 2px;
+    height: 110px;
+  }
+  .testemonial-card-namedescrip {
+    grid-template-rows: 20% 80%;
+    margin-left: 7px;
+  }
+  .testemonial-card-name {
+    font-size: 13px;
+  }
+  .testemonial-card-profile {
+    height: 57px;
+    width: 57px;
+  }
+  .testemonial-card-descrip {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .testemonial-cards02 {
+    height: 170px;
+  }
+  .testemonial-card {
+    padding: 2px;
+    height: 130px;
+    grid-template-columns: 25% 75%;
+  }
+  .testemonial-card-namedescrip {
+    grid-template-rows: 16% 84%;
+    margin-left: 6px;
+  }
+  .testemonial-card-name {
+    font-size: 12px;
+  }
+  .testemonial-card-profile {
+    height: 59px;
+    width: 59px;
+  }
+  .testemonial-card-descrip {
+    font-size: 10px;
+  }
+  .testemonial-btn {
+    font-size: 14px;
+    height: 25px;
+    width: 85px;
+    padding: 4px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .testemonial-cards02 {
+    height: 170px;
+  }
+  .testemonial-card {
+    padding: 5px;
+    height: 120px;
+  }
+  .testemonial-card-namedescrip {
+    grid-template-rows: 20% 80%;
+    margin-left: 8px;
+  }
+  .testemonial-card-name {
+    font-size: 15px;
+  }
+  .testemonial-card-profile {
+    height: 75px;
+    width: 75px;
+  }
+  .testemonial-card-descrip {
+    font-size: 12px;
+  }
+  .testemonial-btn {
+    font-size: 17px;
+    height: 28px;
+    width: 90px;
+    padding: 4px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .testemonial-cards02 {
+    height: 170px;
+  }
+  .testemonial-card {
+    padding: 5px;
+    height: 120px;
+  }
+  .testemonial-card-namedescrip {
+    grid-template-rows: 20% 80%;
+    margin-left: 8px;
+  }
+  .testemonial-card-name {
+    font-size: 15px;
+  }
+  .testemonial-card-profile {
+    height: 70px;
+    width: 70px;
+  }
+  .testemonial-card-descrip {
+    font-size: 11px;
+  }
+  .testemonial-btn {
+    font-size: 17px;
+    height: 28px;
+    width: 90px;
+    padding: 4px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .testemonial-cards02 {
+    height: 170px;
+  }
+  .testemonial-card {
+    padding: 5px;
+    height: 120px;
+  }
+  .testemonial-card-namedescrip {
+    grid-template-rows: 20% 80%;
+    margin-left: 8px;
+  }
+  .testemonial-card-name {
+    font-size: 15px;
+  }
+  .testemonial-card-profile {
+    height: 68px;
+    width: 68px;
+  }
+  .testemonial-card-descrip {
+    font-size: 10px;
+  }
+  .testemonial-btn {
+    font-size: 15px;
+    height: 24px;
+    width: 80px;
+    padding: 4px;
+  }
+}

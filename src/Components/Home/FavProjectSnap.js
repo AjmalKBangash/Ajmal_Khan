@@ -4,10 +4,10 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { showFavourites } from "../../Store/store";
+import { favoritesRefreshState, showFavourites } from "../../Store/store";
 // RAECT ICONS
 import { MdOpenWith } from "react-icons/md";
-import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { MdFavorite } from "react-icons/md";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
@@ -23,9 +23,19 @@ function FavProjectSnap() {
   let [imgID, setImgID] = useState();
   const dispatch = useDispatch();
   const showFavourites_var = useSelector((state) => state.showFavourites);
+  const favoritesRefreshState_var = useSelector(
+    (state) => state.favoritesRefreshState
+  );
+  const [favoritesLocalState, setFavouritesLocalState] = useState(
+    JSON.parse(Cookies.get("favoritePictures") || "[]")
+  );
   const controls = useAnimation();
   ////////////// EXTRACTING IMAGES
-  const favorites = JSON.parse(Cookies.get("favoritePictures") || "[]");
+  useEffect(() => {
+    setFavouritesLocalState(
+      JSON.parse(Cookies.get("favoritePictures") || "[]")
+    );
+  }, [favoritesRefreshState_var]);
   function ViewImage(e) {
     setCarousel(true);
     setImgSrc(e.image);
@@ -88,6 +98,7 @@ function FavProjectSnap() {
     Cookies.set("favoritePictures", JSON.stringify(favorites), {
       expires: 7,
     }); // Expires in 7 days
+    dispatch(favoritesRefreshState(favoritesRefreshState_var + 1));
   }
   // ANIMATING FAVOURITES FROM RIGHT TO LEFT AND FROM LEFT TO RIHT
   useEffect(() => {
@@ -130,8 +141,8 @@ function FavProjectSnap() {
           Feel free to contact for any saved projects
         </h4>
         <div className="gallary-fav">
-          {favorites.length > 0 ? (
-            favorites.map((img, index) => {
+          {favoritesLocalState && favoritesLocalState.length > 0 ? (
+            favoritesLocalState.map((img, index) => {
               return (
                 <div
                   key={index}

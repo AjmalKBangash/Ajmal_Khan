@@ -1,5 +1,5 @@
 import { Android } from "@mui/icons-material";
-import "./Home.css";
+import "./Testemonials.css";
 import axios from "axios";
 import { useState, useRef, useEffect } from "react";
 import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
@@ -8,6 +8,7 @@ function Testemonials() {
   const [testemonialCardsWidth, settestemonialCardsWidth] = useState(1100);
   const [testemonialOriginalCardWidth, setTestemonialOriginalCardWidth] =
     useState(530);
+  const [onlyOneTestemonialCard, setOnlyOneTestemonialCard] = useState(2);
   ///////////////////////////
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
   const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
@@ -46,15 +47,18 @@ function Testemonials() {
     } else if (viewportWidth <= 700 && viewportWidth > 650) {
       settestemonialCardsWidth(600);
       setTestemonialOriginalCardWidth(280);
-    } else if (viewportWidth <= 650 && viewportWidth > 585) {
-      settestemonialCardsWidth(550);
-      setTestemonialOriginalCardWidth(255);
-    } else if (viewportWidth <= 585 && viewportWidth > 440) {
+    } else if (viewportWidth <= 650 && viewportWidth > 560) {
+      setOnlyOneTestemonialCard(1);
+      settestemonialCardsWidth(500);
+      setTestemonialOriginalCardWidth(480);
+      // settestemonialCardsWidth(550);
+      // setTestemonialOriginalCardWidth(255);
+    } else if (viewportWidth <= 560 && viewportWidth > 450) {
       settestemonialCardsWidth(400);
-      setTestemonialOriginalCardWidth(180);
-    } else if (viewportWidth <= 440 && viewportWidth > 0) {
-      settestemonialCardsWidth(344);
-      setTestemonialOriginalCardWidth(152);
+      setTestemonialOriginalCardWidth(380);
+    } else if (viewportWidth <= 450 && viewportWidth > 0) {
+      settestemonialCardsWidth(320);
+      setTestemonialOriginalCardWidth(300);
     }
   }, [viewportWidth]);
   ///////////////////////////
@@ -82,8 +86,16 @@ function Testemonials() {
       });
   }, []);
   useEffect(() => {
-    if (position > -(projectImages.results?.length - 2) && !sliding) {
-      if (position === -(projectImages.results?.length - 3)) {
+    if (
+      position > -(projectImages.results?.length - onlyOneTestemonialCard) &&
+      !sliding
+    ) {
+      /////////////////////////////
+      if (
+        position ===
+        -(projectImages.results?.length - (onlyOneTestemonialCard + 1))
+      ) {
+        //////////////////////////////////////
         setSliding(true);
       }
       const interval = setInterval(animateLeft, 3000); // Auto-slide every 3 seconds
@@ -147,7 +159,10 @@ function Testemonials() {
         <button
           className="testemonial-btn"
           onClick={animateLeft}
-          disabled={position === -(projectImages.results?.length - 2)}
+          disabled={
+            position ===
+            -(projectImages.results?.length - onlyOneTestemonialCard)
+          } ///////////////////////////////////////
         >
           <FaAnglesLeft />
         </button>

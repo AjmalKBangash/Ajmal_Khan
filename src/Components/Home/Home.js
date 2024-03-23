@@ -3,9 +3,11 @@ import "./Navbar.css";
 import Navbar from "./Navbar";
 import Services from "./Services";
 import Testemonials from "./Testemonials";
+import FavProjectSnap from "./FavProjectSnap";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { showNav, activeNavLink } from "../../Store/store";
 import { useNavigate, NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 // REACT ICONS
@@ -13,7 +15,6 @@ import { FaInstagram } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaDocker } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import { IoCartOutline } from "react-icons/io5";
 
 import SkillsTool from "./SkillsTool";
 import Snapshots from "./Snapshots";
@@ -21,11 +22,11 @@ import Blogs from "./Blogs";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import axios from "axios";
-import FavProjectSnap from "./FavProjectSnap";
 function Home() {
   const [showNav, setshowNav] = useState(false);
   const [skillTools, setSkillTools] = useState(false);
   const [activeNavLink, setActiveNavLink] = useState("home");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [ref, inView, entry] = useInView({
   //   triggerOnce: true,
@@ -56,7 +57,8 @@ function Home() {
       });
 
       // Update the activeNavLink state
-      setActiveNavLink(activeSection);
+      // setActiveNavLink(activeSection);
+      dispatch(activeNavLink(activeSection));
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -68,10 +70,12 @@ function Home() {
   useEffect(() => {
     if (!inView) {
       // Perform your action when the element is out of view
-      setshowNav(false);
+      // setshowNav(false);
+      dispatch(showNav(false));
     } else {
       // Perform your action when the element is out of view
       setshowNav(true);
+      dispatch(showNav(true));
     }
   }, [inView]);
   useEffect(() => {
@@ -174,7 +178,8 @@ function Home() {
           <IoCartOutline className="my-fav-icon" />
         </NavLink>
       </div> */}
-      <Navbar data={{ showNav: showNav, activeNavLink: activeNavLink }} />
+      {/* <Navbar data={{ showNav: showNav, activeNavLink: activeNavLink }} /> */}
+      <Navbar />
       <div class="background-img" ref={ref}>
         <div className="background-img-clr">
           <div className="background-img-div">

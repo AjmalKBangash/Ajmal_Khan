@@ -17,6 +17,7 @@
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  min-height: 550px;
   width: 100%;
   margin: -61px 0 0 0;
   border-bottom-left-radius: 80px;
@@ -26,6 +27,7 @@
 .background-img-clr {
   background-color: rgba(0, 0, 0, 0.719);
   height: 100%;
+  min-height: 550px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -43,8 +45,6 @@
 .profile-img {
   height: 135px;
   border-radius: 70px;
-}
-.center-items {
 }
 .background-img h1 {
   font-family: "Black Ops One", system-ui;
@@ -96,8 +96,7 @@
 }
 .skillful-tools {
   display: grid;
-  grid-template-columns: auto auto;
-  /* grid-gap: 5%; */
+  grid-template-columns: 50% 50%;
 }
 .skillful-tools-name-per {
   display: flex;
@@ -118,397 +117,17 @@
   border-radius: 10px;
   background-color: #ff4400b6;
 }
-/* ///////////////// SERVICES SECTION STARTED ////////////////////////// */
-.services {
-  text-align: center;
-  margin: 20px 0;
-}
-.services h1 {
-  font-family: "Black Ops One", system-ui;
-  font-style: normal;
-  color: #ff4500;
-  overflow: hidden;
-}
-.cards-top {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  margin: 15px auto;
-}
-.services-card {
-  height: 300px;
-  width: 300px;
-  margin: 15px auto;
-  border-radius: 6px;
-  padding: 10px;
-  display: grid;
-  grid-template-rows: 25% 15% 60%;
-  /* box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
-  -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
-  -moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178); */
-  background-color: rgb(241, 241, 241);
-  box-sizing: border-box;
-}
-.services-icon {
-  margin: auto;
-  color: #ff4500;
-  font-size: 30px;
-  border: 2px solid #ff4500;
-  border-radius: 10px;
-  padding: 5px;
-}
-.services-card p {
-  font-size: 15px;
-}
-/* ////////////////////////   TESTEMONIALS   ///////////////////////// */
-.testemonial-cards {
-  width: 1100px;
-  margin: auto;
-  overflow: hidden;
-}
-.testemonial-cards02 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width: fit-content;
-  height: 233px;
-  overflow: scroll;
-  padding: 0%;
-  transition: all 0.3s;
-}
-.testemonial-card {
-  margin: auto 10px;
-  padding: 4px;
-  height: 180px;
-  width: 530px;
-  background-color: rgb(241, 241, 241);
-  border-radius: 4px;
-  display: grid;
-  grid-template-columns: 30% 70%;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-.testemonial-card-profile {
-  height: 120px;
-  width: 120px;
-  margin: auto;
-  border-radius: 4px;
-}
-.testemonial-card-namedescrip {
-  display: grid;
-  grid-template-rows: 30% 70%;
-  margin-left: 10px;
-}
-.testemonial-card-name {
-  margin: auto auto auto 0;
-  font-family: "Black Ops One", system-ui;
-  font-style: normal;
-  color: #ff4500;
-  font-size: 19px;
-}
-.testemonial-card-descrip {
-  font-size: 15px;
-  text-align: left;
-}
-.testemonial-btn {
-  font-size: 18px;
-  text-align: center;
-  border-radius: 30px;
-  color: #ff4500;
-  height: 30px;
-  width: 100px;
-  padding: 5px;
-  border: 1px solid #ff4500;
-  margin: 0 10px;
-  cursor: pointer;
-  background-color: white;
-}
-.testemonial-btn:hover {
-  color: white;
-  background-color: #ff4500;
-}
-.testemonial-btn:active {
-  color: grey;
-}
-.testemonial-btn:disabled {
-  color: grey;
-  /* background-color: #ff440094; */
-  /* border: 1px solid #ff440000; */
-  /* background-color: grey; */
-}
-/* MEDIA QUERIES FOR TESTEMONIALS  */
-@media screen and (max-width: 1200px) {
-  .testemonial-cards02 {
-    height: 220px;
-  }
-  .testemonial-card {
-    padding: 4px;
-    height: 165px;
-  }
-  .testemonial-card-name {
-    font-size: 18px;
-  }
-  .testemonial-card-profile {
-    height: 115px;
-    width: 115px;
-  }
-  .testemonial-card-descrip {
-    font-size: 14px;
-  }
-  .testemonial-btn {
-    font-size: 17px;
-    height: 28px;
-    width: 100px;
-    padding: 5px;
-  }
-}
-@media screen and (max-width: 1100px) {
-  .testemonial-cards02 {
-    height: 210px;
-  }
-  .testemonial-card {
-    padding: 4px;
-    height: 155px;
-  }
-  .testemonial-card-namedescrip {
-    grid-template-rows: 25% 75%;
-  }
-  .testemonial-card-name {
-    font-size: 17px;
-  }
-  .testemonial-card-profile {
-    height: 110px;
-    width: 110px;
-  }
-  .testemonial-card-descrip {
-    font-size: 13px;
-  }
-  .testemonial-btn {
-    font-size: 16px;
-    height: 27px;
-    width: 95px;
-    padding: 5px;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .testemonial-cards02 {
-    height: 205px;
-  }
-  .testemonial-card {
-    padding: 3px;
-    height: 125px;
-    grid-template-columns: 22% 78%;
-  }
-  .testemonial-card-namedescrip {
-    grid-template-rows: 20% 80%;
-    margin-left: 9px;
-  }
-  .testemonial-card-name {
-    font-size: 16px;
-  }
-  .testemonial-card-profile {
-    height: 80px;
-    width: 80px;
-  }
-  .testemonial-card-descrip {
-    font-size: 12px;
-  }
-  .testemonial-btn {
-    font-size: 15px;
-    height: 26px;
-    width: 90px;
-    padding: 4px;
-  }
-}
-@media screen and (max-width: 900px) {
-  .testemonial-cards02 {
-    height: 190px;
-  }
-  .testemonial-card {
-    padding: 3px;
-    height: 110px;
-    grid-template-columns: 20% 80%;
-    /* grid-template-columns: 22% 78%; */
-  }
-  .testemonial-card-namedescrip {
-    grid-template-rows: 25% 75%;
-    margin-left: 8px;
-  }
-  .testemonial-card-name {
-    font-size: 14px;
-  }
-  .testemonial-card-profile {
-    height: 70px;
-    width: 70px;
-  }
-  .testemonial-card-descrip {
-    font-size: 11px;
-  }
-}
-@media screen and (max-width: 800px) {
-  .testemonial-cards02 {
-    height: 175px;
-  }
-  .testemonial-card {
-    padding: 2px;
-    height: 110px;
-  }
-  .testemonial-card-namedescrip {
-    grid-template-rows: 20% 80%;
-    margin-left: 7px;
-  }
-  .testemonial-card-name {
-    font-size: 13px;
-  }
-  .testemonial-card-profile {
-    height: 60px;
-    width: 60px;
-  }
-  .testemonial-card-descrip {
-    font-size: 10px;
-  }
-}
-@media screen and (max-width: 700px) {
-  .testemonial-cards02 {
-    height: 170px;
-  }
-  .testemonial-card {
-    padding: 2px;
-    height: 130px;
-    grid-template-columns: 25% 75%;
-  }
-  .testemonial-card-namedescrip {
-    grid-template-rows: 16% 84%;
-    margin-left: 6px;
-  }
-  .testemonial-card-name {
-    font-size: 12px;
-  }
-  .testemonial-card-profile {
-    height: 59px;
-    width: 59px;
-  }
-  .testemonial-card-descrip {
-    font-size: 10px;
-  }
-  .testemonial-btn {
-    font-size: 14px;
-    height: 25px;
-    width: 85px;
-    padding: 4px;
-  }
-}
+/* MEDIA QUERIES FOR ABOUT  */
 @media screen and (max-width: 600px) {
-  .testemonial-cards02 {
-    height: 180px;
+  .skillful-tools-name-per {
+    margin: 14px 14px 0px 14px;
+    font-size: 14px;
   }
-  .testemonial-card {
-    padding: 4px;
-    height: 160px;
+  .skillful-tools-grey {
+    height: 8px;
+    margin: 13px 16px;
   }
-  .testemonial-card-namedescrip {
-    grid-template-rows: 16% 84%;
-    margin-left: 5px;
+  .skillful-tools-orange {
+    height: 8px;
   }
-  .testemonial-card-name {
-    font-size: 12px;
-  }
-  .testemonial-card-profile {
-    height: 45px;
-    width: 45px;
-  }
-  .testemonial-card-descrip {
-    font-size: 10px;
-  }
-  .testemonial-btn {
-    font-size: 17px;
-    height: 28px;
-    width: 90px;
-    padding: 4px;
-  }
-}
-@media screen and (max-width: 550px) {
-  .testemonial-cards02 {
-    height: 200px;
-    margin-top: 15px;
-  }
-  .testemonial-card {
-    padding: 2px;
-    height: 225px;
-    grid-template-columns: 30% 70%;
-  }
-  .testemonial-card-namedescrip {
-    grid-template-rows: 7% 93%;
-    margin-left: 5px;
-  }
-  .testemonial-card-name {
-    font-size: 11px;
-  }
-  .testemonial-card-profile {
-    height: 43px;
-    width: 43px;
-  }
-  .testemonial-card-descrip {
-    font-size: 10px;
-  }
-  .testemonial-btn {
-    font-size: 12px;
-    height: 20px;
-    width: 70px;
-    padding: 4px;
-    margin-top: 15px;
-  }
-}
-/* /////////////////////////////// BLOGS ///////////////////////////////////// */
-.blogs {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  margin: 20px auto;
-}
-.blog-card {
-  display: grid;
-  grid-template-rows: 66.6% 5.4% 6% 14% 8%;
-  height: 420px;
-  width: 320px;
-  border-radius: 4px;
-  margin: 10px auto;
-  background-color: rgb(241, 241, 241);
-}
-.blog-card-img {
-  height: 280px;
-  width: 320px;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-}
-.blog-card-date {
-  margin: auto auto auto 0;
-  padding: 4px 6px;
-}
-.blog-card-title {
-  margin: auto auto auto 0;
-  padding: 4px 6px;
-
-  font-family: "Black Ops One", system-ui;
-  font-style: normal;
-  color: rgb(15, 15, 15);
-  font-size: 18px;
-}
-.blog-card-descrip {
-  margin: auto auto auto 0;
-  padding: 4px 6px;
-  overflow: hidden;
-  text-align: left;
-  /* border: 1px solid blue; */
-  height: 54px;
-  text-overflow: ellipsis;
-  white-space: wrap;
-  overflow: hidden;
-}
-.blog-card-visit {
-  margin: auto auto auto 0;
-  padding: 4px 6px;
-  color: #ff4500;
-}
-.blog-card-visit:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }
