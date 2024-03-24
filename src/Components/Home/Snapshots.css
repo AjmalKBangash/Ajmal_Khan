@@ -20,8 +20,6 @@
   padding: 0%;
   overflow: hidden;
   background-color: none;
-  border: 2px solid #ff4500;
-  border-radius: 4px;
 }
 .gallary-inside02 {
   background-color: rgba(0, 0, 0, 0.541);
@@ -85,7 +83,6 @@
   margin: 12px 20px;
   position: relative;
   padding: 0%;
-  border: 1px solid #ff4500;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   overflow: hidden;

@@ -1,0 +1,20 @@
+.blog {
+  text-align: center;
+  margin: 30px 0;
+  text-align: left;
+}
+.blog h1 {
+  font-family: "Black Ops One", system-ui;
+  font-style: normal;
+  color: #ff4500;
+  font-size: 33px;
+}
+.blog h3 {
+  font-size: 20px;
+}
+.blog h4 {
+  font-size: 18px;
+}
+.blog p {
+  font-size: larger;
+}

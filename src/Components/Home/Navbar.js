@@ -1,15 +1,14 @@
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { showFavourites, favoritesRefreshState } from "../../Store/store";
+import { showFavourites } from "../../Store/store";
 import Cookies from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
 // REACT ICONS
 import { IoCartOutline } from "react-icons/io5";
-import { TiThMenu } from "react-icons/ti";
 import { CiMenuBurger } from "react-icons/ci";
 
-function Navbar(props) {
+function Navbar() {
   const [showDropdownNavbar, setShowDropdownNavbar] = useState(false);
   const dispatch = useDispatch();
   const [favoritesLocalState, setFavouritesLocalState] = useState(
@@ -18,6 +17,11 @@ function Navbar(props) {
   const favoritesRefreshState_var = useSelector(
     (state) => state.favoritesRefreshState
   );
+  const showNav_var = useSelector((state) => state.showNav);
+  const activeNavLink_nav = useSelector((state) => state.activeNavLink);
+  const location = useLocation();
+  const navigate = useNavigate();
+  // USEEFFECT FOR GETTING COOKIES, DEPENDENCY IS FOR THE REFRESHED DELETED AND UPDATED COOKIES
   useEffect(() => {
     setFavouritesLocalState(
       JSON.parse(Cookies.get("favoritePictures") || "[]").length
@@ -25,11 +29,24 @@ function Navbar(props) {
   }, [favoritesRefreshState_var]);
   return (
     <>
-      <div className={props.data.showNav ? "navbar" : "navbar02"}>
-        <div className="logo">AJAY</div>
+      <div className={showNav_var ? "navbar" : "navbar02"}>
+        <div
+          className="logo"
+          onClick={() => {
+            navigate("/");
+            if (document.getElementById("home-section")) {
+              document
+                .getElementById("home-section")
+                .scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+        >
+          AJAY
+        </div>
         <NavLink
-          className={`${props.data.activeNavLink === "home" && "colored"} ${
-            props.data.showNav ? "active" : "active02"
+          to={"/"}
+          className={`${activeNavLink_nav === "home" && "colored"} ${
+            showNav_var ? "active" : "active02"
           }`}
           onClick={() =>
             document
@@ -40,8 +57,9 @@ function Navbar(props) {
           Home
         </NavLink>
         <NavLink
-          className={`${props.data.activeNavLink === "about" && "colored"} ${
-            props.data.showNav ? "active" : "active02"
+          to={"/"}
+          className={`${activeNavLink_nav === "about" && "colored"} ${
+            showNav_var ? "active" : "active02"
           }`}
           onClick={() =>
             document
@@ -52,10 +70,11 @@ function Navbar(props) {
           About
         </NavLink>
         <NavLink
+          to={"/"}
           activeClassName={"colored"}
-          // className={` ${props.data.showNav ? "active" : "active02"}`}
-          className={`${props.data.activeNavLink === "services" && "colored"} ${
-            props.data.showNav ? "active" : "active02"
+          // className={` ${showNav_var ? "active" : "active02"}`}
+          className={`${activeNavLink_nav === "services" && "colored"} ${
+            showNav_var ? "active" : "active02"
           }`}
           onClick={() =>
             document
@@ -66,9 +85,10 @@ function Navbar(props) {
           Services
         </NavLink>
         <NavLink
-          className={`${
-            props.data.activeNavLink === "snapshots" && "colored"
-          } ${props.data.showNav ? "active" : "active02"}`}
+          to={"/"}
+          className={`${activeNavLink_nav === "snapshots" && "colored"} ${
+            showNav_var ? "active" : "active02"
+          }`}
           onClick={() =>
             document
               .getElementById("snapshots-section")
@@ -78,8 +98,9 @@ function Navbar(props) {
           Projects
         </NavLink>
         <NavLink
-          className={`${props.data.activeNavLink === "blogs" && "colored"} ${
-            props.data.showNav ? "active" : "active02"
+          to={"/"}
+          className={`${activeNavLink_nav === "blogs" && "colored"} ${
+            showNav_var ? "active" : "active02"
           }`}
           onClick={() =>
             document
@@ -90,8 +111,9 @@ function Navbar(props) {
           Blogs
         </NavLink>
         <NavLink
-          className={`${props.data.activeNavLink === "contact" && "colored"} ${
-            props.data.showNav ? "active" : "active02"
+          to={"/"}
+          className={`${activeNavLink_nav === "contact" && "colored"} ${
+            showNav_var ? "active" : "active02"
           }`}
           onClick={() =>
             document
@@ -101,8 +123,8 @@ function Navbar(props) {
         >
           Contact
         </NavLink>
-        <NavLink
-          className={` ${props.data.showNav ? "active" : "active02"} navmenu`}
+        <div
+          className={` ${showNav_var ? "active" : "active02"} navmenu`}
           onClick={() => {
             setShowDropdownNavbar(!showDropdownNavbar);
           }}
@@ -110,111 +132,111 @@ function Navbar(props) {
           <CiMenuBurger />
           {showDropdownNavbar && (
             <div
-              className={`${
-                props.data.showNav ? "navbar03" : "navbar03 navbar033"
-              }`}
+              className={`${showNav_var ? "navbar03" : "navbar03 navbar033"}`}
             >
               <div
-                className={`${props.data.activeNavLink === "home" && "colored"} 
+                className={`${activeNavLink_nav === "home" && "colored"} 
                             `}
-                onClick={() =>
-                  document
-                    .getElementById("home-section")
-                    .scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  navigate("/");
+                  if (document.getElementById("home-section")) {
+                    document
+                      .getElementById("home-section")
+                      .scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 Home
               </div>
               <div
-                className={`${
-                  props.data.activeNavLink === "about" && "colored"
-                } 
+                className={`${activeNavLink_nav === "about" && "colored"} 
               `}
-                onClick={() =>
-                  document
-                    .getElementById("about-section")
-                    .scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  navigate("/");
+                  if (document.getElementById("about-section")) {
+                    document
+                      .getElementById("about-section")
+                      .scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 About
               </div>
               <div
-                className={`${
-                  props.data.activeNavLink === "services" && "colored"
-                } 
+                className={`${activeNavLink_nav === "services" && "colored"} 
               `}
-                onClick={() =>
-                  document
-                    .getElementById("services-section")
-                    .scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  navigate("/");
+                  if (document.getElementById("services-section")) {
+                    document
+                      .getElementById("services-section")
+                      .scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 Services
               </div>
               <div
-                className={`${
-                  props.data.activeNavLink === "snapshots" && "colored"
-                } 
+                className={`${activeNavLink_nav === "snapshots" && "colored"} 
               `}
-                onClick={() =>
-                  document
-                    .getElementById("snapshots-section")
-                    .scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  navigate("/");
+                  if (document.getElementById("snapshots-section")) {
+                    document
+                      .getElementById("snapshots-section")
+                      .scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 Projects
               </div>
               <div
-                className={`${
-                  props.data.activeNavLink === "blogs" && "colored"
-                } 
+                className={`${activeNavLink_nav === "blogs" && "colored"} 
               `}
-                onClick={() =>
-                  document
-                    .getElementById("blogs-section")
-                    .scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  navigate("/");
+                  if (document.getElementById("blogs-section")) {
+                    document
+                      .getElementById("blogs-section")
+                      .scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 Blogs
               </div>
               <div
-                className={`${
-                  props.data.activeNavLink === "contact" && "colored"
-                }
+                className={`${activeNavLink_nav === "contact" && "colored"}
                `}
-                onClick={() =>
-                  document
-                    .getElementById("contact-section")
-                    .scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => {
+                  navigate("/");
+                  if (document.getElementById("contact-section")) {
+                    document
+                      .getElementById("contact-section")
+                      .scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 Contact
               </div>
             </div>
           )}
-        </NavLink>
-        <NavLink
-          className={` my-fav-icon-noti 
-        ${props.data.showNav ? "active" : "active02"}`}
-          onClick={() => {
-            dispatch(showFavourites(true));
-          }}
-          style={{ display: "flex" }}
-        >
-          <span className="my-fav-icon-notifications">
-            {favoritesLocalState && favoritesLocalState}
-          </span>
-          <IoCartOutline className="my-fav-icon" />
-        </NavLink>
+        </div>
+        {location.pathname === "/" && (
+          <NavLink
+            className={` my-fav-icon-noti 
+        ${showNav_var ? "active" : "active02"}`}
+            onClick={() => {
+              dispatch(showFavourites(true));
+            }}
+            style={{ display: "flex" }}
+          >
+            <span className="my-fav-icon-notifications">
+              {favoritesLocalState && favoritesLocalState}
+            </span>
+            <IoCartOutline className="my-fav-icon" />
+          </NavLink>
+        )}
       </div>
-      {/* <div className="navbar03">
-        <div>Home</div>
-        <div>About</div>
-        <div>Services</div>
-        <div>Projects</div>
-        <div>Blogs</div>
-        <div>Contactttttt</div>
-      </div> */}
     </>
   );
 }

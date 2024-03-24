@@ -27,6 +27,8 @@ const router = createBrowserRouter(
       />
       <Route path="confirming-email" element={<EnterPin />} />
       <Route path="sign-in" element={<SignIn />} />
+
+      <Route path="home" element={<Home />} />
       <Route path="blogs/:any-blog" element={<BlogPosts />} />
     </>
   )

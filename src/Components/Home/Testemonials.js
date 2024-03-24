@@ -2,6 +2,9 @@ import { Android } from "@mui/icons-material";
 import "./Testemonials.css";
 import axios from "axios";
 import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+// REACT ICONS
 import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
 
 function Testemonials() {
@@ -12,6 +15,14 @@ function Testemonials() {
   ///////////////////////////
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
   const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+  const [refAbout, inViewAbout] = useInView({
+    // triggerOnce: true, // Animation triggers only once
+    threshold: 0.2, // Trigger animation when 20% of the element is in view
+  });
+  const [refBtn, inViewBtn] = useInView({
+    // triggerOnce: true, // Animation triggers only once
+    threshold: 0.2, // Trigger animation when 20% of the element is in view
+  });
 
   useEffect(() => {
     // Function to update viewport dimensions when the window is resized
@@ -110,8 +121,29 @@ function Testemonials() {
   }, [position, projectImages.results]);
   return (
     <div className="snapshots">
-      <h1>TESTEMONILAS</h1>
-      <h3>What clients say about me!</h3>
+      <motion.h1
+        className=""
+        ref={refAbout} // Use refAbout for h1
+        initial={{ y: -30, opacity: 0.2 }}
+        animate={{
+          y: inViewAbout ? 0 : -30,
+          opacity: inViewAbout ? 1 : 0.2,
+        }}
+        transition={{ duration: 1.5 }}
+      >
+        TESTEMONIALS
+      </motion.h1>
+      <motion.h3
+        ref={refAbout} // Use refAbout for h3
+        initial={{ y: -30, opacity: 0.2 }}
+        animate={{
+          y: inViewAbout ? 0 : -30,
+          opacity: inViewAbout ? 1 : 0.2,
+        }}
+        transition={{ duration: 1.5 }}
+      >
+        What clients say about me
+      </motion.h3>
       <div
         className="testemonial-cards"
         style={{
@@ -156,23 +188,34 @@ function Testemonials() {
               );
             })}
         </div>
-        <button
+        <motion.button
           className="testemonial-btn"
           onClick={animateLeft}
           disabled={
             position ===
             -(projectImages.results?.length - onlyOneTestemonialCard)
-          } ///////////////////////////////////////
+          }
+          ref={refBtn}
+          initial={{ x: -30, opacity: 0.2 }}
+          animate={{ x: inViewBtn ? 0 : -30, opacity: inViewBtn ? 1 : 0.2 }}
+          transition={{ duration: 1.5 }}
         >
           <FaAnglesLeft />
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           className="testemonial-btn"
           onClick={animateRight}
           disabled={position === 0}
+          ref={refBtn}
+          initial={{ x: 30, opacity: 0.2 }}
+          animate={{
+            x: inViewBtn ? 0 : 30,
+            opacity: inViewBtn ? 1 : 0.2,
+          }}
+          transition={{ duration: 1.5 }}
         >
           <FaAnglesRight />
-        </button>
+        </motion.button>
       </div>
     </div>
   );

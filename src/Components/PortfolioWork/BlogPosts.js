@@ -17,7 +17,11 @@ function BlogPosts() {
 
     return newSentence.toLowerCase();
   }
-  let Component = keepFirstTwoWords(data);
+  let Component;
+  if (location.state) {
+    Component = keepFirstTwoWords(data);
+  }
+  //   let Component = keepFirstTwoWords(data);
   if (Component === "theconcept") {
     let Com = theconcept;
     return <Com />;

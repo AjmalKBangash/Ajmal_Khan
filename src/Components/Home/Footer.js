@@ -21,7 +21,7 @@ function Footer() {
             opportunities together!
           </div>
         </div>
-        <div className="footer-services">
+        {/* <div className="footer-services">
           <h4>Services</h4>
           <div>
             <ul>
@@ -63,26 +63,8 @@ function Footer() {
               >
                 AWS
               </li>
-              {/* <li
-                onClick={() =>
-                  window.open(
-                    "",
-                    "_blank"
-                  )
-                }
-              >
-                Azure
-              </li> */}
-              {/* <li
-                onClick={() =>
-                  window.open(
-                    "",
-                    "_blank"
-                  )
-                }
-              >
-                GCP
-              </li> */}
+              <li onClick={() => window.open("", "_blank")}>Azure</li>
+              <li onClick={() => window.open("", "_blank")}>GCP</li>
             </ul>
           </div>
         </div>
@@ -97,7 +79,7 @@ function Footer() {
               <li></li>
             </ul>
           </div>
-        </div>
+        </div> */}
         <div className="footer-getintouch">
           <h4>Get in touch!</h4>
           <div>
@@ -121,7 +103,6 @@ function Footer() {
                   }
                   className="footer-social-icons-each"
                 />
-
                 <FaGithub
                   onClick={() =>
                     window.open("https://github.com/AjmalKBangash", "_blank")
@@ -129,15 +110,9 @@ function Footer() {
                   className="footer-social-icons-each"
                 />
                 <FaDocker
-                  onClick={() => window.open("", "_blank")}
-                  className="footer-social-icons-each"
-                />
-              </li>
-              {/* <li>
-                <FaInstagram
                   onClick={() =>
                     window.open(
-                      "https://www.instagram.com/ajmalbangash/",
+                      "https://hub.docker.com/u/ajmalkhanbangash",
                       "_blank"
                     )
                   }
@@ -145,7 +120,7 @@ function Footer() {
                 />
               </li>
               <li></li>
-              <li></li> */}
+              <li></li>
               <li></li>
             </ul>
           </div>

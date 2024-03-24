@@ -12,7 +12,7 @@ const initialState = {
   showFavourites: false,
   favoritesRefreshState: 0,
   showNav: false,
-  activeNavLink: false,
+  activeNavLink: "home",
 };
 
 const sliceReducer = createReducer(initialState, (builder) => {

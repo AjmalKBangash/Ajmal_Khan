@@ -1,6 +1,8 @@
 import axios from "axios";
 import "./Contact.css";
 import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 function Contact() {
   const [stateForContact, setStateForContact] = useState(false);
   const [req_sub_succ, set_req_sub_succ] = useState(false);
@@ -11,7 +13,9 @@ function Contact() {
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
   const [formErrors, setFormErrors] = useState({});
-
+  const [refAbout, inViewAbout] = useInView({
+    threshold: 0.2, // Trigger animation when 20% of the element is in view
+  });
   // Validation functions
   const validateName = (name) => name.length >= 4;
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -96,8 +100,29 @@ function Contact() {
   }, [req_sub_succ]);
   return (
     <div className="snapshots">
-      <h1>CONTACT</h1>
-      <h3>Please don't hesitate to reach out to me. </h3>
+      <motion.h1
+        className=""
+        ref={refAbout} // Use refAbout for h1
+        initial={{ y: -30, opacity: 0.2 }}
+        animate={{
+          y: inViewAbout ? 0 : -30,
+          opacity: inViewAbout ? 1 : 0.2,
+        }}
+        transition={{ duration: 1.5 }}
+      >
+        CONTACT ME
+      </motion.h1>
+      <motion.h3
+        ref={refAbout} // Use refAbout for h3
+        initial={{ y: -30, opacity: 0.2 }}
+        animate={{
+          y: inViewAbout ? 0 : -30,
+          opacity: inViewAbout ? 1 : 0.2,
+        }}
+        transition={{ duration: 1.5 }}
+      >
+        Please don't hesitate to reach out to me.
+      </motion.h3>
       <br />
       <br />
       <div className="my-location">

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { favoritesRefreshState, showFavourites } from "../../Store/store";
+import { useInView } from "react-intersection-observer";
 // RAECT ICONS
 import { MdOpenWith } from "react-icons/md";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
@@ -24,6 +25,10 @@ function Snapshots() {
   const favoritesRefreshState_var = useSelector(
     (state) => state.favoritesRefreshState
   );
+  const [refAbout, inViewAbout] = useInView({
+    // triggerOnce: true, // Animation triggers only once
+    threshold: 0.2, // Trigger animation when 20% of the element is in view
+  });
   function ViewImage(e) {
     setCarousel(true);
     setImgSrc(e.image);
@@ -123,8 +128,29 @@ function Snapshots() {
   ///////////////////////////////////////////////////////////////////////
   return (
     <div className="snapshots">
-      <h1>PROJECTS</h1>
-      <h3>Few Snapshots from my Projects</h3>
+      <motion.h1
+        className=""
+        ref={refAbout} // Use refAbout for h1
+        initial={{ y: -30, opacity: 0.2 }}
+        animate={{
+          y: inViewAbout ? 0 : -30,
+          opacity: inViewAbout ? 1 : 0.2,
+        }}
+        transition={{ duration: 1.5 }}
+      >
+        PROJECTS
+      </motion.h1>
+      <motion.h3
+        ref={refAbout} // Use refAbout for h3
+        initial={{ y: -30, opacity: 0.2 }}
+        animate={{
+          y: inViewAbout ? 0 : -30,
+          opacity: inViewAbout ? 1 : 0.2,
+        }}
+        transition={{ duration: 1.5 }}
+      >
+        Few Snapshots from my Project{" "}
+      </motion.h3>
       <div className="gallary">
         {projectImages &&
           projectImages.results.map((img, index) => {
