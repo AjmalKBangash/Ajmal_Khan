@@ -88,15 +88,15 @@ function Services() {
           );
         })} */}
       <div className="cards-top">
-        <motion.div
+        <div
           className="services-card"
-          ref={refCard}
-          initial={{ x: -30, opacity: 0.2 }}
-          animate={{
-            x: inViewCard ? 0 : -30,
-            opacity: inViewCard ? 1 : 0.2,
-          }}
-          transition={{ duration: 1.5 }}
+          // ref={refCard}
+          // initial={{ x: -30, opacity: 0.2 }}
+          // animate={{
+          //   x: inViewCard ? 0 : -30,
+          //   opacity: inViewCard ? 1 : 0.2,
+          // }}
+          // transition={{ duration: 1.5 }}
         >
           <SiDjango
             className="services-icon"
@@ -110,16 +110,16 @@ function Services() {
             Django's architecture, I excel in delivering high-quality,
             maintainable code that aligns with industry best practices
           </p>
-        </motion.div>
-        <motion.div
+        </div>
+        <div
           className="services-card"
-          ref={refCard2}
-          initial={{ x: -30, opacity: 0.2 }}
-          animate={{
-            x: inViewCard2 ? 0 : -30,
-            opacity: inViewCard2 ? 1 : 0.2,
-          }}
-          transition={{ duration: 1.5 }}
+          // ref={refCard2}
+          // initial={{ x: -30, opacity: 0.2 }}
+          // animate={{
+          //   x: inViewCard2 ? 0 : -30,
+          //   opacity: inViewCard2 ? 1 : 0.2,
+          // }}
+          // transition={{ duration: 1.5 }}
         >
           <SiReact
             className="services-icon"
@@ -133,15 +133,15 @@ function Services() {
             dynamic and efficient web applications, ensuring an optimal user
             experience with a keen eye for UI/UX design principles.
           </p>
-        </motion.div>
-        <motion.div
+        </div>
+        <div
           className="services-card"
-          ref={refCard3}
-          initial={{ x: -30, opacity: 0.2 }}
-          animate={{
-            x: inViewCard3 ? 0 : -30,
-            opacity: inViewCard3 ? 1 : 0.2,
-          }}
+          // ref={refCard3}
+          // initial={{ x: -30, opacity: 0.2 }}
+          // animate={{
+          //   x: inViewCard3 ? 0 : -30,
+          //   opacity: inViewCard3 ? 1 : 0.2,
+          // }}
           transition={{ duration: 1.5 }}
         >
           <SiNginx className="services-icon" />
@@ -153,16 +153,16 @@ function Services() {
             SSL/TLS implementation, I enhance web infrastructure for seamless
             user experiences.
           </p>
-        </motion.div>
-        <motion.div
+        </div>
+        <div
           className="services-card"
-          ref={refCard4}
-          initial={{ x: -30, opacity: 0.2 }}
-          animate={{
-            x: inViewCard4 ? 0 : -30,
-            opacity: inViewCard4 ? 1 : 0.2,
-          }}
-          transition={{ duration: 1.5 }}
+          // ref={refCard4}
+          // initial={{ x: -30, opacity: 0.2 }}
+          // animate={{
+          //   x: inViewCard4 ? 0 : -30,
+          //   opacity: inViewCard4 ? 1 : 0.2,
+          // }}
+          // transition={{ duration: 1.5 }}
         >
           <SiJavascript className="services-icon" />
           <h2>Javascript</h2>
@@ -173,16 +173,16 @@ function Services() {
             SSL/TLS implementation, I enhance web infrastructure for seamless
             user experiences.
           </p>
-        </motion.div>
-        <motion.div
+        </div>
+        <div
           className="services-card"
-          ref={refCard5}
-          initial={{ x: -30, opacity: 0.2 }}
-          animate={{
-            x: inViewCard5 ? 0 : -30,
-            opacity: inViewCard5 ? 1 : 0.2,
-          }}
-          transition={{ duration: 1.5 }}
+          // ref={refCard5}
+          // initial={{ x: -30, opacity: 0.2 }}
+          // animate={{
+          //   x: inViewCard5 ? 0 : -30,
+          //   opacity: inViewCard5 ? 1 : 0.2,
+          // }}
+          // transition={{ duration: 1.5 }}
         >
           <SiPython className="services-icon" />
           <h2>Python</h2>
@@ -193,16 +193,16 @@ function Services() {
             SSL/TLS implementation, I enhance web infrastructure for seamless
             user experiences.
           </p>
-        </motion.div>
-        <motion.div
+        </div>
+        <div
           className="services-card"
-          ref={refCard6}
-          initial={{ x: -30, opacity: 0.2 }}
-          animate={{
-            x: inViewCard6 ? 0 : -30,
-            opacity: inViewCard6 ? 1 : 0.2,
-          }}
-          transition={{ duration: 1.5 }}
+          // ref={refCard6}
+          // initial={{ x: -30, opacity: 0.2 }}
+          // animate={{
+          //   x: inViewCard6 ? 0 : -30,
+          //   opacity: inViewCard6 ? 1 : 0.2,
+          // }}
+          // transition={{ duration: 1.5 }}
         >
           <SiNginx
             className="services-icon"
@@ -216,16 +216,16 @@ function Services() {
             SSL/TLS implementation, I enhance web infrastructure for seamless
             user experiences.
           </p>
-        </motion.div>
-        <motion.div
+        </div>
+        <div
           className="services-card"
-          ref={refCard7}
-          initial={{ x: -30, opacity: 0.2 }}
-          animate={{
-            x: inViewCard7 ? 0 : -30,
-            opacity: inViewCard7 ? 1 : 0.2,
-          }}
-          transition={{ duration: 1.5 }}
+          // ref={refCard7}
+          // initial={{ x: -30, opacity: 0.2 }}
+          // animate={{
+          //   x: inViewCard7 ? 0 : -30,
+          //   opacity: inViewCard7 ? 1 : 0.2,
+          // }}
+          // transition={{ duration: 1.5 }}
         >
           <SiNginx
             className="services-icon"
@@ -239,16 +239,16 @@ function Services() {
             SSL/TLS implementation, I enhance web infrastructure for seamless
             user experiences.
           </p>
-        </motion.div>
-        <motion.div
+        </div>
+        <div
           className="services-card"
-          ref={refCard8}
-          initial={{ x: -30, opacity: 0.2 }}
-          animate={{
-            x: inViewCard8 ? 0 : -30,
-            opacity: inViewCard8 ? 1 : 0.2,
-          }}
-          transition={{ duration: 1.5 }}
+          // ref={refCard8}
+          // initial={{ x: -30, opacity: 0.2 }}
+          // animate={{
+          //   x: inViewCard8 ? 0 : -30,
+          //   opacity: inViewCard8 ? 1 : 0.2,
+          // }}
+          // transition={{ duration: 1.5 }}
         >
           <SiNginx
             className="services-icon"
@@ -262,7 +262,7 @@ function Services() {
             SSL/TLS implementation, I enhance web infrastructure for seamless
             user experiences.
           </p>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -240,7 +240,6 @@ function Home() {
             software and DevOps Engineering.
           </motion.p>
         </div>
-
         <div className="skillful-tools">
           {skillTools &&
             skillTools.results?.map((skillper, index) => {
@@ -260,7 +259,6 @@ function Home() {
             </div>
           </div> */}
         </div>
-
         <br />
         <br />
         <br />

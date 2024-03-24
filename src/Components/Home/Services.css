@@ -22,11 +22,16 @@
   padding: 10px;
   display: grid;
   grid-template-rows: 25% 15% 60%;
-  /* box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
-  -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
-  -moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178); */
   background-color: rgb(241, 241, 241);
   box-sizing: border-box;
+}
+.services-card:hover {
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
+  -moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
+  transform: scale(1.1);
+  transition: transform 0.3s ease; /* Smooth transition */
+  cursor: cell;
 }
 .services-icon {
   margin: auto;

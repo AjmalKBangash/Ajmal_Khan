@@ -12,7 +12,7 @@ function Navbar() {
   const [showDropdownNavbar, setShowDropdownNavbar] = useState(false);
   const dispatch = useDispatch();
   const [favoritesLocalState, setFavouritesLocalState] = useState(
-    JSON.parse(Cookies.get("favoritePictures") || "[]")
+    JSON.parse(Cookies.get("favoritePictures") || "[]").length
   );
   const favoritesRefreshState_var = useSelector(
     (state) => state.favoritesRefreshState
@@ -221,6 +221,7 @@ function Navbar() {
             </div>
           )}
         </div>
+
         {location.pathname === "/" && (
           <NavLink
             className={` my-fav-icon-noti 
@@ -230,9 +231,12 @@ function Navbar() {
             }}
             style={{ display: "flex" }}
           >
-            <span className="my-fav-icon-notifications">
-              {favoritesLocalState && favoritesLocalState}
-            </span>
+            {favoritesLocalState >= 1 && (
+              <span className="my-fav-icon-notifications">
+                {favoritesLocalState}
+              </span>
+            )}
+
             <IoCartOutline className="my-fav-icon" />
           </NavLink>
         )}

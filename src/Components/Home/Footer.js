@@ -1,4 +1,6 @@
 import "./Footer.css";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 // REACT ICONS
 import { FaInstagram } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
@@ -6,20 +8,37 @@ import { FaDocker } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
 function Footer() {
-  function Fungotoservice(services) {
-    console.log(services);
-    window.open(`https://www.${services}.com`, "_blank");
-  }
+  const [refAbout, inViewAbout] = useInView({
+    threshold: 0.2, // Trigger animation when 20% of the element is in view
+  });
   return (
     <>
       <div className="footer">
         <div className="footer-logo">
-          <h1>AJAY</h1>
-          <div>
+          <motion.h1
+            ref={refAbout} // Use refAbout for h1
+            initial={{ y: -30, opacity: 0.2 }}
+            animate={{
+              y: inViewAbout ? 0 : -30,
+              opacity: inViewAbout ? 1 : 0.2,
+            }}
+            transition={{ duration: 1.5 }}
+          >
+            AJAY
+          </motion.h1>
+          <motion.div
+            ref={refAbout} // Use refAbout for h1
+            initial={{ y: -30, opacity: 0.2 }}
+            animate={{
+              y: inViewAbout ? 0 : -30,
+              opacity: inViewAbout ? 1 : 0.2,
+            }}
+            transition={{ duration: 1.5 }}
+          >
             Explore my portfolio to discover my journey, skills, and passion for
             Software and DevOps Engineering. Let's connect and explore
             opportunities together!
-          </div>
+          </motion.div>
         </div>
         {/* <div className="footer-services">
           <h4>Services</h4>
@@ -80,51 +99,58 @@ function Footer() {
             </ul>
           </div>
         </div> */}
-        <div className="footer-getintouch">
+        <motion.div
+          className="footer-getintouch"
+          ref={refAbout} // Use refAbout for h1
+          initial={{ y: -30, opacity: 0.2 }}
+          animate={{
+            y: inViewAbout ? 0 : -30,
+            opacity: inViewAbout ? 1 : 0.2,
+          }}
+          transition={{ duration: 1.5 }}
+        >
           <h4>Get in touch!</h4>
-          <div>
-            <ul>
-              <li>
-                <FaLinkedin
-                  onClick={() =>
-                    window.open(
-                      "https://www.linkedin.com/in/ajmal-khan-620356181/",
-                      "_blank"
-                    )
-                  }
-                  className="footer-social-icons-each"
-                />
-                <FaInstagram
-                  onClick={() =>
-                    window.open(
-                      "https://www.instagram.com/ajmalbangash/",
-                      "_blank"
-                    )
-                  }
-                  className="footer-social-icons-each"
-                />
-                <FaGithub
-                  onClick={() =>
-                    window.open("https://github.com/AjmalKBangash", "_blank")
-                  }
-                  className="footer-social-icons-each"
-                />
-                <FaDocker
-                  onClick={() =>
-                    window.open(
-                      "https://hub.docker.com/u/ajmalkhanbangash",
-                      "_blank"
-                    )
-                  }
-                  className="footer-social-icons-each"
-                />
-              </li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
-        </div>
+          <ul>
+            <li>
+              <FaLinkedin
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/in/ajmal-khan-620356181/",
+                    "_blank"
+                  )
+                }
+                className="footer-social-icons-each"
+              />
+              <FaInstagram
+                onClick={() =>
+                  window.open(
+                    "https://www.instagram.com/ajmalbangash/",
+                    "_blank"
+                  )
+                }
+                className="footer-social-icons-each"
+              />
+              <FaGithub
+                onClick={() =>
+                  window.open("https://github.com/AjmalKBangash", "_blank")
+                }
+                className="footer-social-icons-each"
+              />
+              <FaDocker
+                onClick={() =>
+                  window.open(
+                    "https://hub.docker.com/u/ajmalkhanbangash",
+                    "_blank"
+                  )
+                }
+                className="footer-social-icons-each"
+              />
+            </li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </motion.div>
       </div>
     </>
   );

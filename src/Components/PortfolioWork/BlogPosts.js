@@ -1,12 +1,11 @@
 import { useLocation } from "react-router-dom";
-import theconcept from "./theconcept";
-import careercounselling from "./careercounselling";
+import Decouplingarchitecture from "./Decouplingarchitecture";
+import Careercounselling from "./Careercounselling";
 function BlogPosts() {
   const location = useLocation();
   const data = location.state;
   function keepFirstTwoWords(sentence) {
     const words = sentence.split(" ");
-
     // Ensure there are at least two words
     if (words.length < 2) {
       return sentence.toLowerCase(); // Return the original sentence if it has less than two words
@@ -20,13 +19,14 @@ function BlogPosts() {
   let Component;
   if (location.state) {
     Component = keepFirstTwoWords(data);
+    Component = Component.charAt(0).toUpperCase() + Component.slice(1);
   }
   //   let Component = keepFirstTwoWords(data);
-  if (Component === "theconcept") {
-    let Com = theconcept;
+  if (Component === "Decouplingarchitecture") {
+    let Com = Decouplingarchitecture;
     return <Com />;
-  } else if (Component === "careercounselling") {
-    let Com = careercounselling;
+  } else if (Component === "Careercounselling") {
+    let Com = Careercounselling;
     return <Com />;
   }
 }

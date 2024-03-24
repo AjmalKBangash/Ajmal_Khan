@@ -63,7 +63,7 @@
   left: -12%;
   top: 2%;
   font-size: 25px;
-  color: red;
+  color: #ff4500;
   cursor: pointer;
 }
 .snapshots-fav h1 {
@@ -361,6 +361,12 @@
     font-size: 35px;
     padding: 20px;
   }
+  .view-img-icon {
+    font-size: 32px;
+  }
+  .fav-img-icon {
+    font-size: 32px;
+  }
 }
 @media screen and (max-width: 830px) {
   .slidingCarousel {
@@ -393,6 +399,12 @@
     height: 150px;
     margin: 8px;
   }
+  .view-img-icon {
+    font-size: 30px;
+  }
+  .fav-img-icon {
+    font-size: 30px;
+  }
 }
 @media screen and (max-width: 670px) {
   .gallary {
@@ -402,6 +414,12 @@
   .gallary-inside {
     height: 110px;
     margin: 7px;
+  }
+  .view-img-icon {
+    font-size: 28px;
+  }
+  .fav-img-icon {
+    font-size: 28px;
   }
 }
 @media screen and (max-width: 455px) {

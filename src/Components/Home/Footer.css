@@ -8,10 +8,10 @@
   margin: 5% 0 0 0;
   border-top: 1px solid black;
   color: rgb(39, 39, 39);
-  height: 22vh;
+  min-height: 22vh;
 }
 .footer-logo {
-  margin: 0 30%;
+  margin: 0 35% 0 2%;
   /* color: rgb(22, 22, 22); */
   color: rgb(53, 53, 53);
   font-size: 15px;
@@ -47,9 +47,27 @@
   border-radius: 8px;
   padding: 5px;
   margin-right: 10px;
+  margin-top: 5px;
 }
 .footer-social-icons-each:hover {
   color: #ff4500;
   border: 1px solid #ff4500;
   cursor: pointer;
+}
+@media screen and (max-width: 800px) {
+  .footer-logo {
+    margin: 0 20% 0 2%;
+    font-size: 14px;
+  }
+  .footer-social-icons-each {
+    font-size: 14px;
+    padding: 3px;
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .footer-logo {
+    margin: 0 10% 0 2%;
+    font-size: 13px;
+  }
 }

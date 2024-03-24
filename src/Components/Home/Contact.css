@@ -75,6 +75,7 @@ textarea {
     height: 3vh;
     width: 50vw;
     font-size: 14px;
+    min-height: 25px;
   }
 }
 @media screen and (max-width: 520px) {
