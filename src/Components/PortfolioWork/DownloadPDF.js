@@ -1,8 +1,12 @@
 import axios from "axios";
 import "../Home/Home.css";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function DownloadPDF() {
+  const [refPro, inViewPro] = useInView({
+    threshold: 0.3, // Trigger animation when 30% of the element is in view
+  });
   const downloadPDF = () => {
     axios({
       url: "portfolio/ajmal-cv.pdf/",
@@ -31,8 +35,9 @@ function DownloadPDF() {
     <motion.span
       className="two-btns-on-back-img"
       onClick={downloadPDF}
+      ref={refPro}
       initial={{ x: -150, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
+      animate={{ x: inViewPro ? 0 : -150, opacity: inViewPro ? 1 : 0 }}
       exit={{ x: -150, opacity: 0 }}
       transition={{ duration: 2 }}
     >

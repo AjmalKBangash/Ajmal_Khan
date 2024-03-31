@@ -1,0 +1,102 @@
+.blog-background {
+  background-color: #f5f5f5;
+}
+.blog {
+  text-align: center;
+  margin: 30px 0;
+  text-align: left;
+  background-color: #e0e0e0;
+  /* background-color: #eeeeee; */
+  padding: 50px;
+  border-radius: 30px;
+}
+.blog-img-decoup {
+  height: 360px;
+  margin: 10px 0;
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+}
+.blog h1 {
+  font-family: "Black Ops One", system-ui;
+  font-style: normal;
+  color: #ff4500;
+  font-size: 33px;
+}
+.blog h3 {
+  font-size: 20px;
+}
+.blog h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.blog p {
+  font-size: larger;
+}
+.contacting-me-div {
+  font-weight: 700;
+  font-size: 17px;
+}
+.career-coun-word {
+  color: rgba(0, 128, 0, 0.705);
+}
+.contact-me-in-blog {
+  color: #ff4500;
+}
+.contact-me-in-blog:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.external-link {
+  color: #ff0000;
+}
+.external-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+/* @media screen and (max-width: 700px) {
+  .blog {
+    padding: 40px;
+  }
+  .blog-img {
+    height: 220px;
+  }
+  .blog h1 {
+    font-size: 22px;
+  }
+  .blog h3 {
+    font-size: 16px;
+  }
+  .blog h4 {
+    font-size: 16px;
+  }
+  .blog p {
+    font-size: 15px;
+  }
+  .contacting-me-div {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .blog {
+    padding: 20px;
+  }
+  .blog-img {
+    height: 200px;
+  }
+  .blog h1 {
+    font-size: 19px;
+  }
+  .blog h3 {
+    font-size: 15px;
+  }
+  .blog h4 {
+    font-size: 15px;
+  }
+  .blog p {
+    font-size: 13px;
+  }
+  .contacting-me-div {
+    font-size: 12px;
+  }
+} */

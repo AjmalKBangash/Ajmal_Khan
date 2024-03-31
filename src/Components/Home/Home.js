@@ -34,6 +34,9 @@ function Home() {
     // triggerOnce: true, // Animation triggers only once
     threshold: 0.2, // Trigger animation when 20% of the element is in view
   });
+  const [refPro, inViewPro] = useInView({
+    threshold: 0.3, // Trigger animation when 30% of the element is in view
+  });
   //////////////////////////////////  THIS IS WHERE WHEN SCROLLING Y AXIS SECTIONOFFSETS WILL UPATE ACCORDING TO GIVEN IDS (SECTIONS)
   useEffect(() => {
     const handleScroll = () => {
@@ -96,10 +99,11 @@ function Home() {
           <div className="background-img-div">
             <AnimatePresence>
               <motion.div
+                ref={refPro}
                 initial={{ y: -100, opacity: 0 }}
                 animate={{
-                  y: 0,
-                  opacity: 1,
+                  y: inViewPro ? 0 : -100,
+                  opacity: inViewPro ? 1 : 0,
                 }}
                 exit={{ y: -100, opacity: 0 }}
                 transition={{ duration: 2.5 }}
@@ -158,8 +162,9 @@ function Home() {
                     .getElementById("contact-section")
                     .scrollIntoView({ behavior: "smooth" })
                 }
+                ref={refPro}
                 initial={{ x: 150, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                animate={{ x: inViewPro ? 0 : 150, opacity: inViewPro ? 1 : 0 }}
                 exit={{ x: 150, opacity: 0 }}
                 transition={{ duration: 2 }}
               >
@@ -177,7 +182,7 @@ function Home() {
         <div className="about" id="about-section">
           <motion.h1
             className=""
-            ref={refAbout} // Use refAbout for h1
+            ref={refAbout}
             initial={{ y: -30, opacity: 0.2 }}
             animate={{
               y: inViewAbout ? 0 : -30,
@@ -188,7 +193,7 @@ function Home() {
             ABOUT
           </motion.h1>
           <motion.h3
-            ref={refAbout} // Use refAbout for h3
+            ref={refAbout}
             initial={{ y: -30, opacity: 0.2 }}
             animate={{
               y: inViewAbout ? 0 : -30,
@@ -201,7 +206,7 @@ function Home() {
 
           <br />
           <motion.p
-            ref={refAbout} // Use refAbout for h3
+            ref={refAbout}
             initial={{ y: -30, opacity: 0.2 }}
             animate={{
               y: inViewAbout ? 0 : -30,

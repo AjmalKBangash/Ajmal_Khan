@@ -22,7 +22,7 @@ function Footer() {
               y: inViewAbout ? 0 : -30,
               opacity: inViewAbout ? 1 : 0.2,
             }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 0.5 }}
           >
             AJAY
           </motion.h1>
@@ -33,7 +33,7 @@ function Footer() {
               y: inViewAbout ? 0 : -30,
               opacity: inViewAbout ? 1 : 0.2,
             }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 0.5 }}
           >
             Explore my portfolio to discover my journey, skills, and passion for
             Software and DevOps Engineering. Let's connect and explore
@@ -107,7 +107,7 @@ function Footer() {
             y: inViewAbout ? 0 : -30,
             opacity: inViewAbout ? 1 : 0.2,
           }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 0.5 }}
         >
           <h4>Get in touch!</h4>
           <ul>
