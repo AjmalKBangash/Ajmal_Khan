@@ -1,4 +1,8 @@
 import "./Services.css";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+
+// REACT ICONS
 import {
   SiDjango,
   SiReact,
@@ -6,13 +10,9 @@ import {
   SiPython,
   SiJavascript,
 } from "react-icons/si";
-import { useInView } from "react-intersection-observer";
-import { motion } from "framer-motion";
-// import { useEffect, useRef, useState } from "react";
-// import axios from "axios";
+import { VscAzureDevops } from "react-icons/vsc";
 
 function Services() {
-  // const [services, setServices] = useState(false);
   const [refH1, inViewH1] = useInView({
     threshold: 0.2,
   });
@@ -44,22 +44,11 @@ function Services() {
   const [refCard8, inViewCard8] = useInView({
     threshold: 0.1,
   });
-  // FETCHING CARDS INFO FROM BACKEND
-  // useEffect(() => {
-  //   axios
-  //     .get("portfolio/services")
-  //     .then((res) => {
-  //       setServices(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
   return (
     <div className="services">
       <motion.h1
         className=""
-        ref={refH1} // Assign the ref to h1
+        ref={refH1}
         initial={{ y: -30, opacity: 0.2 }}
         animate={{
           y: inViewH1 ? 0 : -30,
@@ -70,7 +59,7 @@ function Services() {
         SERVICES
       </motion.h1>
       <motion.h3
-        ref={refH3} // Assign the ref to h3
+        ref={refH3}
         initial={{ y: -30, opacity: 0.2 }}
         animate={{
           y: inViewH3 ? 0 : -30,
@@ -80,51 +69,31 @@ function Services() {
       >
         My Exceptional and Premium Services
       </motion.h3>
-      {/* {services &&
-        services.results.map((service, index) => {
-          return (
-            <div className="services-top">
-            </div>
-          );
-        })} */}
       <div className="cards-top">
-        <div
-          className="services-card"
-          // ref={refCard}
-          // initial={{ x: -30, opacity: 0.2 }}
-          // animate={{
-          //   x: inViewCard ? 0 : -30,
-          //   opacity: inViewCard ? 1 : 0.2,
-          // }}
-          // transition={{ duration: 1.5 }}
-        >
-          <SiDjango
-            className="services-icon"
-            //   style={{ color: "#092E20", border: "3px solid #092E20" }}
-          />
-          <h2>Django</h2>
+        <div className="services-card">
+          <SiNginx className="services-icon" />
+          <h2>Software Engineering</h2>
           <p>
-            My proficiency and experties in django extends to implementing
-            efficient backend business logic, RESTful APIs, and database
-            management within the Django framework. With a strong foundation in
-            Django's architecture, I excel in delivering high-quality,
-            maintainable code that aligns with industry best practices
+            As a roficient skilled worker in developing complex web applications
+            using modern decoupled architecture for both frontend and backend
+            apps. Additionally I can develop backend for any type of software
+            systems. I am also experienced in deploying modern applications on
+            PVS or in shared hosting in the cloud.
           </p>
         </div>
-        <div
-          className="services-card"
-          // ref={refCard2}
-          // initial={{ x: -30, opacity: 0.2 }}
-          // animate={{
-          //   x: inViewCard2 ? 0 : -30,
-          //   opacity: inViewCard2 ? 1 : 0.2,
-          // }}
-          // transition={{ duration: 1.5 }}
-        >
-          <SiReact
-            className="services-icon"
-            //   style={{ color: "#092E20", border: "3px solid #092E20" }}
-          />
+        <div className="services-card">
+          <VscAzureDevops className="services-icon" />
+          <h2>DevOps</h2>
+          <p>
+            I am a skilled DevOps engineer adept at orchestrating seamless
+            integration between development and operations workflows. With a
+            keen eye for automation and optimization, I can streamlines
+            deployment pipelines and enhances system reliability. Leveraging
+            cloud technologies, containerization, and CI/CD practices.
+          </p>
+        </div>
+        <div className="services-card">
+          <SiReact className="services-icon" />
           <h2>React</h2>
           <p>
             I am Proficient in React, a powerful JavaScript UI library, I am
@@ -134,133 +103,70 @@ function Services() {
             experience with a keen eye for UI/UX design principles.
           </p>
         </div>
-        <div
-          className="services-card"
-          // ref={refCard3}
-          // initial={{ x: -30, opacity: 0.2 }}
-          // animate={{
-          //   x: inViewCard3 ? 0 : -30,
-          //   opacity: inViewCard3 ? 1 : 0.2,
-          // }}
-          transition={{ duration: 1.5 }}
-        >
+        <div className="services-card">
+          <SiDjango className="services-icon" />
+          <h2>Django</h2>
+          <p>
+            My proficiency and experties in django extends to implementing
+            efficient backend business logic, RESTful APIs, and database
+            management within the Django framework. With a strong foundation in
+            Django's architecture, I excel in delivering high-quality,
+            maintainable code that aligns with industry best practices
+          </p>
+        </div>
+        <div className="services-card">
           <SiNginx className="services-icon" />
           <h2>Nginx</h2>
           <p>
-            Skilled in Nginx, I excel in configuring robust web servers,
-            optimizing performance, and ensuring secure, efficient content
-            delivery. Proficient in load balancing, reverse proxy setups, and
-            SSL/TLS implementation, I enhance web infrastructure for seamless
-            user experiences.
+            Skilled professional in Nginx, I excel in configuring robust web
+            servers, optimizing performance, and ensuring secure, efficient
+            content delivery. Proficient in load balancing, reverse proxy
+            setups, and SSL/TLS implementation, I enhance web infrastructure for
+            seamless user experiences.
           </p>
         </div>
-        <div
-          className="services-card"
-          // ref={refCard4}
-          // initial={{ x: -30, opacity: 0.2 }}
-          // animate={{
-          //   x: inViewCard4 ? 0 : -30,
-          //   opacity: inViewCard4 ? 1 : 0.2,
-          // }}
-          // transition={{ duration: 1.5 }}
-        >
-          <SiJavascript className="services-icon" />
-          <h2>Javascript</h2>
-          <p>
-            Skilled in Nginx, I excel in configuring robust web servers,
-            optimizing performance, and ensuring secure, efficient content
-            delivery. Proficient in load balancing, reverse proxy setups, and
-            SSL/TLS implementation, I enhance web infrastructure for seamless
-            user experiences.
-          </p>
-        </div>
-        <div
-          className="services-card"
-          // ref={refCard5}
-          // initial={{ x: -30, opacity: 0.2 }}
-          // animate={{
-          //   x: inViewCard5 ? 0 : -30,
-          //   opacity: inViewCard5 ? 1 : 0.2,
-          // }}
-          // transition={{ duration: 1.5 }}
-        >
+        <div className="services-card">
           <SiPython className="services-icon" />
-          <h2>Python</h2>
+          <h2>Docker</h2>
           <p>
-            Skilled in Nginx, I excel in configuring robust web servers,
-            optimizing performance, and ensuring secure, efficient content
-            delivery. Proficient in load balancing, reverse proxy setups, and
-            SSL/TLS implementation, I enhance web infrastructure for seamless
-            user experiences.
+            As a Docker engineer, proficiently orchestrating containerized
+            environments with precision. With a keen eye for optimization, i can
+            expertly crafts scalable solutions, ensuring seamless deployment and
+            management. As a skilled Docker engineer, i can consistently
+            delivers robust, reliable infrastructure tailored to meet diverse
+            business needs.
           </p>
         </div>
-        <div
-          className="services-card"
-          // ref={refCard6}
-          // initial={{ x: -30, opacity: 0.2 }}
-          // animate={{
-          //   x: inViewCard6 ? 0 : -30,
-          //   opacity: inViewCard6 ? 1 : 0.2,
-          // }}
-          // transition={{ duration: 1.5 }}
-        >
-          <SiNginx
-            className="services-icon"
-            //   style={{ color: "#092E20", border: "3px solid #092E20" }}
-          />
-          <h2>Nginx</h2>
+        <div className="services-card">
+          <SiNginx className="services-icon" />
+          <h2>Kubernetes</h2>
           <p>
-            Skilled in Nginx, I excel in configuring robust web servers,
-            optimizing performance, and ensuring secure, efficient content
-            delivery. Proficient in load balancing, reverse proxy setups, and
-            SSL/TLS implementation, I enhance web infrastructure for seamless
-            user experiences.
+            My Kubernetes skillset excels proficiently orchestrating
+            containerized applications with precision. Navigates complex
+            infrastructures, ensuring seamless deployment and scalability. My
+            expertise lies in crafting resilient systems, optimize resource
+            utilization and enhance performance. Ajmal Khan is the adept
+            architect you need to streamline your Kubernetes environments.
           </p>
         </div>
-        <div
-          className="services-card"
-          // ref={refCard7}
-          // initial={{ x: -30, opacity: 0.2 }}
-          // animate={{
-          //   x: inViewCard7 ? 0 : -30,
-          //   opacity: inViewCard7 ? 1 : 0.2,
-          // }}
-          // transition={{ duration: 1.5 }}
-        >
-          <SiNginx
-            className="services-icon"
-            //   style={{ color: "#092E20", border: "3px solid #092E20" }}
-          />
-          <h2>Nginx</h2>
+        <div className="services-card">
+          <SiNginx className="services-icon" />
+          <h2>AWS</h2>
           <p>
-            Skilled in Nginx, I excel in configuring robust web servers,
-            optimizing performance, and ensuring secure, efficient content
-            delivery. Proficient in load balancing, reverse proxy setups, and
-            SSL/TLS implementation, I enhance web infrastructure for seamless
-            user experiences.
+            My competency excels in AWS EC2 provisioning, configuration, and
+            optimization for scalable web application deployment. With strong
+            DevOps skills, I can automate CI/CD pipelines, implements
+            infrastructure as code (IaC), and ensures robust monitoring and
+            logging setups for seamless operations.
           </p>
         </div>
-        <div
-          className="services-card"
-          // ref={refCard8}
-          // initial={{ x: -30, opacity: 0.2 }}
-          // animate={{
-          //   x: inViewCard8 ? 0 : -30,
-          //   opacity: inViewCard8 ? 1 : 0.2,
-          // }}
-          // transition={{ duration: 1.5 }}
-        >
-          <SiNginx
-            className="services-icon"
-            //   style={{ color: "#092E20", border: "3px solid #092E20" }}
-          />
-          <h2>Nginx</h2>
+        <div className="services-card">
+          <SiNginx className="services-icon" />
           <p>
-            Skilled in Nginx, I excel in configuring robust web servers,
-            optimizing performance, and ensuring secure, efficient content
-            delivery. Proficient in load balancing, reverse proxy setups, and
-            SSL/TLS implementation, I enhance web infrastructure for seamless
-            user experiences.
+            <h2>DevSecOps and Cloud Computing</h2>
+            <br />I am actively expanding my expertise in DevSecOps and Cloud
+            Computing, broadening my knowledge with various vendors such as
+            Azure and GCP.
           </p>
         </div>
       </div>

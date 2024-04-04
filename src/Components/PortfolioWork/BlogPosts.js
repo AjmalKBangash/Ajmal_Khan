@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import Decouplingarchitecture from "./Decouplingarchitecture";
 import Careercounselling from "./Careercounselling";
+import Proxyservers from "./Proxyservers";
 function BlogPosts() {
   const location = useLocation();
   const data = location.state;
@@ -21,12 +22,14 @@ function BlogPosts() {
     Component = keepFirstTwoWords(data);
     Component = Component.charAt(0).toUpperCase() + Component.slice(1);
   }
-  //   let Component = keepFirstTwoWords(data);
   if (Component === "Decouplingarchitecture") {
     let Com = Decouplingarchitecture;
     return <Com />;
   } else if (Component === "Careercounselling") {
     let Com = Careercounselling;
+    return <Com />;
+  } else if (Component === "Proxyservers") {
+    let Com = Proxyservers;
     return <Com />;
   }
 }

@@ -47,6 +47,13 @@ function Contact() {
     // If there are errors, set them in state
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
+      const timerId = setTimeout(() => {
+        // Your function to execute after three seconds
+        resetForm();
+      }, 5000);
+
+      // Cleanup function to clear the timeout when component unmounts
+      return () => clearTimeout(timerId);
     } else {
       setStateForContact({
         first_name: firstName,

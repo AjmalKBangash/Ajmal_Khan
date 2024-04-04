@@ -9,7 +9,7 @@ function DownloadPDF() {
   });
   const downloadPDF = () => {
     axios({
-      url: "portfolio/ajmal-cv.pdf/",
+      url: "portfolio/ajmal-khan-cv.pdf/",
       method: "GET",
       responseType: "blob", // important
     })

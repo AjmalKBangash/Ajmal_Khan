@@ -21,9 +21,10 @@
   border-radius: 6px;
   padding: 10px;
   display: grid;
-  grid-template-rows: 25% 15% 60%;
+  grid-template-rows: 22% 13% 65%;
   background-color: rgb(241, 241, 241);
   box-sizing: border-box;
+  overflow: hidden;
 }
 .services-card:hover {
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.178);
@@ -36,7 +37,7 @@
 .services-icon {
   margin: auto;
   color: #ff4500;
-  font-size: 30px;
+  font-size: 28px;
   border: 2px solid #ff4500;
   border-radius: 10px;
   padding: 5px;
@@ -44,18 +45,104 @@
 .services-card p {
   font-size: 15px;
 }
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1080px) {
   .cards-top {
     grid-template-columns: 50% 50%;
     margin: 15px auto;
   }
+  .services-card {
+    height: 280px;
+    width: 280px;
+    margin: 15px auto;
+    border-radius: 6px;
+    padding: 8px;
+  }
+  .services-icon {
+    font-size: 25px;
+    padding: 5px;
+  }
+  .services-card p {
+    font-size: 14px;
+  }
 }
 @media screen and (max-width: 700px) {
-  .cards-top {
+  /* .cards-top {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 15px auto;
+  } */
+  .services-card {
+    height: 260px;
+    width: 260px;
+    margin: 14px auto;
+    padding: 8px;
+  }
+  .services-card h2 {
+    font-size: 17px;
+  }
+  .services-icon {
+    font-size: 22px;
+    padding: 5px;
+  }
+  .services-card p {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 630px) {
+  .services-card {
+    height: 220px;
+    width: 220px;
+    margin: 10px auto;
+    padding: 5px;
+  }
+  .services-card h2 {
+    font-size: 16px;
+  }
+  .services-icon {
+    font-size: 18px;
+    padding: 5px;
+  }
+  .services-card p {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .services-card {
+    height: 200px;
+    width: 200px;
+    margin: 10px auto;
+    padding: 4px;
+  }
+  .services-card h2 {
+    font-size: 15px;
+  }
+  .services-icon {
+    font-size: 16px;
+    padding: 4px;
+  }
+  .services-card p {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .services-card {
+    height: 210px;
+    width: 150px;
+    margin: 10px auto;
+    padding: 4px;
+    grid-template-rows: 14% 10% 77%;
+  }
+  .services-card h2 {
+    font-size: 13px;
+  }
+  .services-icon {
+    font-size: 14px;
+    padding: 3px;
+  }
+  .services-card p {
+    font-size: 9px;
   }
 }

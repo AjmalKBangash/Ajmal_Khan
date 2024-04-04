@@ -1,4 +1,5 @@
 import "./Snapshots.css";
+import "./Home.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
@@ -130,7 +131,7 @@ function Snapshots() {
     <div className="snapshots">
       <motion.h1
         className=""
-        ref={refAbout} // Use refAbout for h1
+        ref={refAbout}
         initial={{ y: -30, opacity: 0.2 }}
         animate={{
           y: inViewAbout ? 0 : -30,
@@ -141,7 +142,7 @@ function Snapshots() {
         PROJECTS
       </motion.h1>
       <motion.h3
-        ref={refAbout} // Use refAbout for h3
+        ref={refAbout}
         initial={{ y: -30, opacity: 0.2 }}
         animate={{
           y: inViewAbout ? 0 : -30,
@@ -149,7 +150,7 @@ function Snapshots() {
         }}
         transition={{ duration: 1.5 }}
       >
-        Few Snapshots from my Project{" "}
+        Few Snapshots from my Projects
       </motion.h3>
       <div className="gallary">
         {projectImages &&
@@ -216,7 +217,6 @@ function Snapshots() {
           <FaChevronRight />
         </span>
       </div>
-      {/* ..//////////////// */}
     </div>
   );
 }

@@ -217,22 +217,22 @@
   .blog-card {
     grid-template-rows: 56% 6% 9% 20% 9%;
     height: 250px;
-    width: 160px;
+    width: 158px;
   }
   .blog-card-img {
     height: 140px;
-    width: 160px;
+    width: 158px;
   }
   .blog-card-date {
-    padding: 2px 3px;
+    padding: 2px 4px;
     font-size: 11px;
   }
   .blog-card-title {
-    padding: 2px 3px;
-    font-size: 11px;
+    padding: 2px 4px;
+    font-size: 10px;
   }
   .blog-card-descrip {
-    padding: 2px 3px;
+    padding: 2px 4px;
     height: 38px;
     font-size: 10px;
   }
@@ -250,11 +250,11 @@
   .blog-card {
     grid-template-rows: 56% 6% 9% 20% 9%;
     height: 250px;
-    width: 155px;
+    width: 148px;
   }
   .blog-card-img {
     height: 140px;
-    width: 155px;
+    width: 148px;
   }
   .blog-card-date {
     padding: 2px 3px;
@@ -262,7 +262,7 @@
   }
   .blog-card-title {
     padding: 2px 3px;
-    font-size: 11px;
+    font-size: 10px;
   }
   .blog-card-descrip {
     padding: 2px 3px;

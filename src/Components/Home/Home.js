@@ -85,6 +85,8 @@ function Home() {
       .get("portfolio/skill-tools/")
       .then((res) => {
         setSkillTools(res.data);
+        console.log("///////////////////////////////////////////");
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -152,9 +154,7 @@ function Home() {
               </motion.div>
             </AnimatePresence>
             <div>
-              {/* <span className="two-btns-on-back-img" onClick={downloadCV}> */}
               <DownloadPDF />
-              {/* </span> */}
               <motion.span
                 className="two-btns-on-back-img"
                 onClick={() =>
@@ -178,83 +178,55 @@ function Home() {
         <br />
         <br />
         <br />
-        <br />
-        <div className="about" id="about-section">
-          <motion.h1
-            className=""
-            ref={refAbout}
-            initial={{ y: -30, opacity: 0.2 }}
-            animate={{
-              y: inViewAbout ? 0 : -30,
-              opacity: inViewAbout ? 1 : 0.2,
-            }}
-            transition={{ duration: 1.5 }}
-          >
-            ABOUT
-          </motion.h1>
-          <motion.h3
-            ref={refAbout}
-            initial={{ y: -30, opacity: 0.2 }}
-            animate={{
-              y: inViewAbout ? 0 : -30,
-              opacity: inViewAbout ? 1 : 0.2,
-            }}
-            transition={{ duration: 1.5 }}
-          >
-            Introduction to my Development Experience and Skills
-          </motion.h3>
+        <motion.div
+          className="sections-backround"
+          ref={refAbout}
+          initial={{ y: -58, opacity: 0.2 }}
+          animate={{
+            y: inViewAbout ? 0 : -58,
+            opacity: inViewAbout ? 1 : 0.2,
+          }}
+          transition={{ duration: 1.2 }}
+        >
+          <div className="about" id="about-section">
+            <h1>ABOUT</h1>
+            <h3>Introduction to my Development Experience and Skills</h3>
 
-          <br />
-          <motion.p
-            ref={refAbout}
-            initial={{ y: -30, opacity: 0.2 }}
-            animate={{
-              y: inViewAbout ? 0 : -30,
-              opacity: inViewAbout ? 1 : 0.2,
-            }}
-            transition={{ duration: 1.5 }}
-          >
-            Welcome to my portfolio! I am a skilled developer with expertise in
-            developing robust backend business logics and REST APIs using Python
-            with Django. My passion extends to creating seamless user
-            interfaces, where I leverage JavaScript with React as my framework
-            of choice. I have hands-on experience with Nginx, employing it for
-            reverse proxy, load balancing, and efficiently proxying requests.
-            {/* </p> */}
-            {/* <p> */}
-            In the realm of containerization, I possess proficiency in Docker,
-            ensuring that applications run consistently across various
-            environments. Continuously striving for excellence, I am actively
-            enhancing my skills in cloud computing, with a focus on AWS,GCD and
-            Azure and delving into the world of DevOps Engineering its tools and
-            technologies.
-          </motion.p>
-          <br />
-          <motion.p
-            ref={refAbout} // Use refAbout for h3
-            initial={{ y: -30, opacity: 0.2 }}
-            animate={{
-              y: inViewAbout ? 0 : -30,
-              opacity: inViewAbout ? 1 : 0.2,
-            }}
-            transition={{ duration: 1.5 }}
-          >
-            Explore my portfolio to discover the projects that showcase my
-            commitment to delivering innovative solutions and my journey towards
-            mastering modern technologies in the ever-evolving landscape of
-            software and DevOps Engineering.
-          </motion.p>
-        </div>
-        <div className="skillful-tools">
-          {skillTools &&
-            skillTools.results?.map((skillper, index) => {
-              return (
-                <SkillsTool
-                  data={{ skill: skillper.skill, per: skillper.per }}
-                />
-              );
-            })}
-          {/* <div>
+            <br />
+            <p>
+              Welcome to my portfolio! I am a skilled developer with expertise
+              in developing robust backend business logics and REST APIs using
+              Python with Django. My passion extends to creating seamless user
+              interfaces, where I leverage JavaScript with React as my framework
+              of choice. I have hands-on experience with Nginx, employing it for
+              reverse proxy, load balancing, and efficiently proxying requests.
+              {/* </p> */}
+              {/* <p> */}
+              In the realm of containerization, I possess proficiency in Docker,
+              ensuring that applications run consistently across various
+              environments. Continuously striving for excellence, I am actively
+              enhancing my skills in cloud computing, with a focus on AWS,GCD
+              and Azure and delving into the world of DevSecOps Engineering its
+              tools and technologies.
+            </p>
+            <br />
+            <p>
+              Explore my portfolio to discover the projects that showcase my
+              commitment to delivering innovative solutions and my journey
+              towards mastering modern technologies in the ever-evolving
+              landscape of software and DevOps Engineering.
+            </p>
+          </div>
+          <div className="skillful-tools">
+            {skillTools &&
+              skillTools.results?.map((skillper, index) => {
+                return (
+                  <SkillsTool
+                    data={{ skill: skillper.skill, per: skillper.per }}
+                  />
+                );
+              })}
+            {/* <div>
             <div className="skillful-tools-name-per">
               <span>React</span>
               <span>80%</span>
@@ -263,11 +235,12 @@ function Home() {
               <div className="skillful-tools-orange"></div>
             </div>
           </div> */}
-        </div>
+          </div>
+        </motion.div>
         <br />
         <br />
         <br />
-        <div id="services-section">
+        <div className="sections-backround" id="services-section">
           <Services />
         </div>
         <br />
@@ -279,19 +252,27 @@ function Home() {
         <br />
         <br />
         <br />
-        <div id="testemonials-section">
+        <div
+          className="sections-backround"
+          id="testemonials-section"
+          style={{ padding: "25px 0px" }}
+        >
           <Testemonials />
         </div>
         <br />
         <br />
         <br />
-        <div id="blogs-section">
+        <div className="sections-backround" id="blogs-section">
           <Blogs />
         </div>
         <br />
         <br />
         <br />
-        <div id="contact-section">
+        <div
+          className="sections-backround"
+          id="contact-section"
+          style={{ padding: "25px 0px" }}
+        >
           <Contact />
         </div>
         <br />

@@ -2,7 +2,6 @@ import "./Decouplingarchitecture.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Home/Navbar";
 import Footer from "../Home/Footer";
-import CodeSnippet from "./CodeSnippet";
 import CodeBlock from "./CodeBlock";
 function Decouplingarchitecture() {
   const navigate = useNavigate();
