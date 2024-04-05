@@ -219,7 +219,6 @@
 .view-img-icon:hover {
   color: #ff4500;
 }
-
 .fav-img-icon {
   display: none;
   position: absolute;
@@ -237,6 +236,21 @@
 .fav-img-icon:hover {
   color: #ff4500;
 }
+.img-des {
+  display: none;
+  position: absolute;
+  bottom: 0%; /* Set initial bottom position outside the viewport */
+  left: 50%;
+  transform: translateX(-50%);
+  /* transform: translateY(-50%); */
+  font-size: 20px;
+  color: white;
+}
+.img-des02 {
+  display: inline;
+  animation: arriveFromBottom 0.5s ease-in-out forwards;
+}
+
 @keyframes arriveFromRight {
   0% {
     right: 0%;
@@ -245,13 +259,20 @@
     right: 28%;
   }
 }
-
 @keyframes arriveFromLeft {
   0% {
     left: 0%;
   }
   100% {
     left: 28%;
+  }
+}
+@keyframes arriveFromBottom {
+  0% {
+    bottom: 0%;
+  }
+  100% {
+    bottom: 15%;
   }
 }
 /* //////////////////// */
@@ -351,6 +372,7 @@
   padding: 30px 0 30px 0;
   margin: 0 auto;
 }
+
 @media screen and (max-width: 955px) {
   .slidingCarousel {
     font-size: 25px;
@@ -367,6 +389,9 @@
   .fav-img-icon {
     font-size: 32px;
   }
+  .img-des {
+    font-size: 18px;
+  }
 }
 @media screen and (max-width: 830px) {
   .slidingCarousel {
@@ -377,6 +402,9 @@
   .closeCarousel {
     font-size: 30px;
     padding: 20px;
+  }
+  .img-des {
+    font-size: 16px;
   }
 }
 /* RESPONSIVENESS FOR PROJECTS SNAPS NOT FOR SAVED SNAPS  */
@@ -405,6 +433,9 @@
   .fav-img-icon {
     font-size: 30px;
   }
+  .img-des {
+    font-size: 13px;
+  }
 }
 @media screen and (max-width: 670px) {
   .gallary {
@@ -421,6 +452,9 @@
   .fav-img-icon {
     font-size: 28px;
   }
+  .img-des {
+    font-size: 12px;
+  }
 }
 @media screen and (max-width: 455px) {
   .gallary {
@@ -430,5 +464,8 @@
   .gallary-inside {
     height: 120px;
     margin: 8px;
+  }
+  .img-des {
+    font-size: 12px;
   }
 }

@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import Decouplingarchitecture from "./Decouplingarchitecture";
 import Careercounselling from "./Careercounselling";
 import Proxyservers from "./Proxyservers";
+import Virtualizationandcontainerization from "./Virtualizationandcontainerization";
 function BlogPosts() {
   const location = useLocation();
   const data = location.state;
@@ -13,7 +14,7 @@ function BlogPosts() {
     }
 
     // Keep the first two words and discard the rest
-    const newSentence = words.slice(0, 2).join("");
+    const newSentence = words.slice(0, 3).join("");
 
     return newSentence.toLowerCase();
   }
@@ -30,6 +31,9 @@ function BlogPosts() {
     return <Com />;
   } else if (Component === "Proxyservers") {
     let Com = Proxyservers;
+    return <Com />;
+  } else if (Component === "Virtualizationandcontainerization") {
+    let Com = Virtualizationandcontainerization;
     return <Com />;
   }
 }

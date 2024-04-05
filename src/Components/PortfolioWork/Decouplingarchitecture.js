@@ -22,12 +22,8 @@ function Decouplingarchitecture() {
               The concept of Decoupling Architecture in Web Applications and
               their Deployment
             </h3>
-            {/* <h3>
-              Counseling plays a more crucial role than attending university
-              classes or taking online courses when dealing with distractions. A
-              questions like,
-            </h3> */}
             <br />
+            <h4>What you will leran here is ...</h4>
             <p>
               In this blog, we will delve into the concept of decoupled
               architecture in web applications. Firstly, we'll explore the
@@ -422,18 +418,16 @@ urlpatterns = [
             <br />
             <br />
             <div className="contacting-me-div">
-              If you are curious and frustrated in your field, Do{" "}
+              If you are fascinated about learning these concepts, Do{" "}
               <span
                 className="contact-me-in-blog"
                 onClick={() => navigate("/")}
               >
                 contact me
               </span>{" "}
-              for a better{" "}
-              <span className="career-coun-word">
-                Career Guidance and Counselling
-              </span>{" "}
-              with full of opportunities
+              for an effortless understanding of{" "}
+              <span className="career-coun-word">Decoupled Architecture</span>{" "}
+              with full of opportunities.
             </div>
           </div>
         </div>

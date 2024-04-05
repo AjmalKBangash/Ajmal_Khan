@@ -163,7 +163,7 @@ function Careercounselling() {
               <span className="career-coun-word">
                 Career Guidance and Counselling
               </span>{" "}
-              with full of opportunities
+              with full of opportunities.
             </div>
           </div>
         </div>

@@ -236,7 +236,7 @@ function Proxyservers() {
               </span>{" "}
               for a better{" "}
               <span className="career-coun-word">Softwares Deployment</span>{" "}
-              with modern and innovative techniques
+              with modern and innovative techniques with Proxy Servers.
             </div>
           </div>
         </div>

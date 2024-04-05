@@ -187,6 +187,13 @@ function Snapshots() {
                 >
                   {isFavorite ? <MdFavorite /> : <MdFavoriteBorder />}
                 </span>
+                <span
+                  className={`img-des ${
+                    hoveredIndex === index ? "img-des02" : ""
+                  }`}
+                >
+                  {img.description}
+                </span>
               </div>
             );
           })}
@@ -204,7 +211,6 @@ function Snapshots() {
           onClick={closeCarouselFun}
           className={carousel ? "closeCarousel" : "slidingCarouselClose"}
         >
-          {/* &#x2A2F;  */}
           <MdClose />
         </span>
 
@@ -222,13 +228,3 @@ function Snapshots() {
 }
 
 export default Snapshots;
-
-// <p
-//   className={`img-description ${expanded ? "expanded" : ""}`}
-//   onClick={toggleExpand}
-// >
-//   {img.description}
-//   {!expanded && content.length > 80 && (
-//     <span className="more">More...</span>
-//   )}
-// </p>;

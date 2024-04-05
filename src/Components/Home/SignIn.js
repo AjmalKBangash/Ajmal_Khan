@@ -81,7 +81,21 @@ const SignIn = () => {
             width: "fit-content",
           }}
         >
-          <img height={"40px"} src="Media/Med-logo.png" alt="logo-img"></img>
+          {/* <img height={"40px"} src="Media/Med-logo.png" alt="logo-img"></img> */}
+          <div
+            className="logo"
+            onClick={() => {
+              navigate("/");
+              if (document.getElementById("home-section")) {
+                document
+                  .getElementById("home-section")
+                  .scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            style={{ color: "#00284b", fontSize: "20px" }}
+          >
+            BUSINESS LOGO
+          </div>
         </div>
         {/* <div
           className="sign-up-div"
