@@ -62,8 +62,6 @@ function Testemonials() {
       setOnlyOneTestemonialCard(1);
       settestemonialCardsWidth(500);
       setTestemonialOriginalCardWidth(480);
-      // settestemonialCardsWidth(550);
-      // setTestemonialOriginalCardWidth(255);
     } else if (viewportWidth <= 560 && viewportWidth > 450) {
       settestemonialCardsWidth(400);
       setTestemonialOriginalCardWidth(380);
@@ -88,7 +86,7 @@ function Testemonials() {
 
   useEffect(() => {
     axios
-      .get("portfolio/project-images/")
+      .get("portfolio/testimonials/")
       .then((res) => {
         setProjectImages(res.data);
       })
@@ -109,13 +107,13 @@ function Testemonials() {
         //////////////////////////////////////
         setSliding(true);
       }
-      const interval = setInterval(animateLeft, 3000); // Auto-slide every 3 seconds
+      const interval = setInterval(animateLeft, 6000); // Auto-slide every 3 seconds
       return () => clearInterval(interval);
     } else {
       if (position === -1) {
         setSliding(false);
       }
-      const interval = setInterval(animateRight, 3000); // Auto-slide every 3 seconds
+      const interval = setInterval(animateRight, 6000); // Auto-slide every 3 seconds
       return () => clearInterval(interval);
     }
   }, [position, projectImages.results]);
@@ -161,7 +159,7 @@ function Testemonials() {
           }}
         >
           {projectImages &&
-            projectImages.results.map((img, index) => {
+            projectImages.results.map((testimonial, index) => {
               return (
                 <div
                   key={index}
@@ -171,17 +169,15 @@ function Testemonials() {
                   }}
                 >
                   <img
-                    src="images/Ajay.png"
+                    src={testimonial.testemonial_photo}
                     className="testemonial-card-profile"
                   ></img>
                   <div className="testemonial-card-namedescrip">
-                    <div className="testemonial-card-name">AJMAL KHAN</div>
+                    <div className="testemonial-card-name">
+                      {testimonial.testemonial_name}{" "}
+                    </div>
                     <div className="testemonial-card-descrip">
-                      Explore my portfolio to discover the projects that
-                      showcase my commitment to delivering innovative solutions
-                      and my journey towards mastering cutting-edge technologies
-                      in the ever-evolving landscape of software and DevOps
-                      Engineering.
+                      {testimonial.testemonial_description}
                     </div>
                   </div>
                 </div>

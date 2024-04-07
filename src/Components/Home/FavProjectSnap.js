@@ -138,8 +138,12 @@ function FavProjectSnap() {
       <div className="snapshots-fav">
         <h1>MT FAVOURITES</h1>
         <h4 style={{ margin: "0px 8px" }}>
-          Feel free to contact for any saved projects
+          Please don't hesitate to get in touch!
         </h4>
+        {/* <h4>
+          Please feel free to reach out for any previously saved projects or if
+          you need assistance with any of your projects.
+        </h4> */}
         <div className="gallary-fav">
           {favoritesLocalState && favoritesLocalState.length > 0 ? (
             favoritesLocalState.map((img, index) => {
