@@ -85,8 +85,6 @@ function Home() {
       .get("portfolio/skill-tools/")
       .then((res) => {
         setSkillTools(res.data);
-        console.log("///////////////////////////////////////////");
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
