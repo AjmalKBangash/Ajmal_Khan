@@ -224,15 +224,15 @@ function Home() {
                   />
                 );
               })}
-            {/* <div>
-            <div className="skillful-tools-name-per">
-              <span>React</span>
-              <span>80%</span>
+            <div>
+              <div className="skillful-tools-name-per">
+                <span>React</span>
+                <span>80%</span>
+              </div>
+              <div className="skillful-tools-grey">
+                <div className="skillful-tools-orange"></div>
+              </div>
             </div>
-            <div className="skillful-tools-grey">
-              <div className="skillful-tools-orange"></div>
-            </div>
-          </div> */}
           </div>
         </motion.div>
         <br />
