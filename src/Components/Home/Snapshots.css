@@ -39,6 +39,10 @@
 .my-fav-top02 {
   display: block;
 }
+.my-fav-top3 {
+  height: 100vh;
+  width: 100vw;
+}
 .snapshots-fav {
   text-align: center;
   margin: 20px 0;

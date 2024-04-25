@@ -104,6 +104,14 @@ h3 {
   font-style: normal;
   color: #ff4500;
 }
+.three-engineers {
+  font-family: "Black Ops One", system-ui;
+  font-style: normal;
+  color: #ff4500;
+  /* text-decoration: underline; */
+  width: fit-content;
+  margin: 60px auto 20px 20px;
+}
 .skillful-tools {
   display: grid;
   grid-template-columns: 50% 50%;

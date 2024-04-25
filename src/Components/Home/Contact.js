@@ -97,9 +97,8 @@ function Contact() {
         // Add your logic here
         set_req_sub_succ(false);
       };
-
       // Set a timer for 3 seconds
-      const timerId = setTimeout(myFunction, 5000);
+      const timerId = setTimeout(myFunction, 6000);
 
       // Cleanup function to clear the timer if the component unmounts
       return () => clearTimeout(timerId);
@@ -239,7 +238,9 @@ function Contact() {
           <button type="submit">CONTACT ME!</button>
         </div>
         {req_sub_succ && (
-          <p className="form_sub_succ">Form submitted successfully! </p>
+          <p className="form_sub_succ">
+            You have Contacted Ajmal Khan successfully
+          </p>
         )}
       </form>
       {/* </div> */}

@@ -25,6 +25,8 @@ import Footer from "./Footer";
 import axios from "axios";
 function Home() {
   const [skillTools, setSkillTools] = useState(false);
+  const [skillToolsDevOps, setSkillToolsDevOps] = useState(false);
+  const [skillToolsCloud, setSkillToolsCloud] = useState(false);
   const dispatch = useDispatch();
   const [ref, inView] = useInView();
   // const [refProfile, inViewProfile] = useInView({
@@ -80,11 +82,34 @@ function Home() {
       dispatch(showNav(true));
     }
   }, [inView]);
+  // FOR SOFTWARE ENGINEERING
   useEffect(() => {
     axios
       .get("portfolio/skill-tools/")
       .then((res) => {
         setSkillTools(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  // FOR DevOps ENGINEERING
+  useEffect(() => {
+    axios
+      .get("portfolio/skill-tools-devops/")
+      .then((res) => {
+        setSkillToolsDevOps(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  // FOR CLOUD COMPUTING
+  useEffect(() => {
+    axios
+      .get("portfolio/skill-tools-cloud/")
+      .then((res) => {
+        setSkillToolsCloud(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -189,7 +214,6 @@ function Home() {
           <div className="about" id="about-section">
             <h1>ABOUT</h1>
             <h3>Introduction to my Development Experience and Skills</h3>
-
             <br />
             <p>
               Welcome to my portfolio! I am a skilled developer with expertise
@@ -215,6 +239,7 @@ function Home() {
               landscape of software and DevOps Engineering.
             </p>
           </div>
+          <h2 className="three-engineers">Software Engineering</h2>
           <div className="skillful-tools">
             {skillTools &&
               skillTools.results?.map((skillper, index) => {
@@ -224,7 +249,7 @@ function Home() {
                   />
                 );
               })}
-            <div>
+            {/* <div>
               <div className="skillful-tools-name-per">
                 <span>React</span>
                 <span>80%</span>
@@ -232,7 +257,47 @@ function Home() {
               <div className="skillful-tools-grey">
                 <div className="skillful-tools-orange"></div>
               </div>
-            </div>
+            </div> */}
+          </div>
+          <h2 className="three-engineers">DevOps Engineering</h2>
+          <div className="skillful-tools">
+            {skillToolsDevOps &&
+              skillToolsDevOps.results?.map((skillper, index) => {
+                return (
+                  <SkillsTool
+                    data={{ skill: skillper.skill, per: skillper.per }}
+                  />
+                );
+              })}
+            {/* <div>
+              <div className="skillful-tools-name-per">
+                <span>React</span>
+                <span>80%</span>
+              </div>
+              <div className="skillful-tools-grey">
+                <div className="skillful-tools-orange"></div>
+              </div>
+            </div> */}
+          </div>
+          <h2 className="three-engineers">Cloud Computing</h2>
+          <div className="skillful-tools">
+            {skillToolsCloud &&
+              skillToolsCloud.results?.map((skillper, index) => {
+                return (
+                  <SkillsTool
+                    data={{ skill: skillper.skill, per: skillper.per }}
+                  />
+                );
+              })}
+            {/* <div>
+              <div className="skillful-tools-name-per">
+                <span>React</span>
+                <span>80%</span>
+              </div>
+              <div className="skillful-tools-grey">
+                <div className="skillful-tools-orange"></div>
+              </div>
+            </div> */}
           </div>
         </motion.div>
         <br />

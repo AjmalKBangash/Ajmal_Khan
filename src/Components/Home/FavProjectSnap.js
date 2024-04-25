@@ -21,6 +21,7 @@ function FavProjectSnap() {
   let [carousel, setCarousel] = useState(false);
   let [imgSrc, setImgSrc] = useState("");
   let [imgID, setImgID] = useState();
+  const [wideView, setWideView] = useState(false);
   const dispatch = useDispatch();
   const showFavourites_var = useSelector((state) => state.showFavourites);
   const favoritesRefreshState_var = useSelector(
@@ -43,6 +44,7 @@ function FavProjectSnap() {
   }
   function closeCarouselFun() {
     setCarousel(!carousel);
+    setWideView(false);
   }
 
   function preFunCarousel() {
@@ -163,6 +165,7 @@ function FavProjectSnap() {
                     }`}
                     onClick={() => {
                       ViewImage({ image: img, img_no: index });
+                      setWideView(true);
                     }}
                   >
                     <MdOpenWith />
