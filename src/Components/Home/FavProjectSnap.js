@@ -1,5 +1,4 @@
 import "./Snapshots.css";
-import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
@@ -13,10 +12,7 @@ import { MdClose } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
 
 function FavProjectSnap() {
-  const [projectImages, setProjectImages] = useState(false);
-  const initialContent = "Your long text goes here...";
-  const [expanded, setExpanded] = useState(false);
-  const [content, setContent] = useState(initialContent);
+  // const [expanded, setExpanded] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   let [carousel, setCarousel] = useState(false);
   let [imgSrc, setImgSrc] = useState("");
@@ -48,16 +44,18 @@ function FavProjectSnap() {
   }
 
   function preFunCarousel() {
+    console.log("clickedddddddddddddddddd pre");
     //   EXTRACTING FAV SNAPS FROM COOKIES
     const favorites = JSON.parse(Cookies.get("favoritePictures") || "[]");
     const isFirstSlide = imgID === 0;
     if (isFirstSlide) {
       // setImgID(8);
       setImgID(favorites.length - 1);
+      console.log("clickedddddddddddddddddd ----- pre");
     } else {
       setImgID(imgID - 1);
+      console.log("clickedddddddddddddddddd +++++ pre");
     }
-    setImgSrc(favorites[imgID]);
   }
   function nxtFunCarousel() {
     const favorites = JSON.parse(Cookies.get("favoritePictures") || "[]");
@@ -69,10 +67,14 @@ function FavProjectSnap() {
     }
     setImgSrc(favorites[imgID]);
   }
-
-  const toggleExpand = () => {
-    setExpanded(!expanded);
-  };
+  // THIS USEEFFECT IS FOR PREFUNCAROUSEL AND NXTFUNCAROUSEL
+  useEffect(() => {
+    const favorites = JSON.parse(Cookies.get("favoritePictures") || "[]");
+    setImgSrc(favorites[imgID]);
+  }, [imgID]);
+  // const toggleExpand = () => {
+  //   setExpanded(!expanded);
+  // };
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -114,19 +116,9 @@ function FavProjectSnap() {
         .then(() => controls.set({ display: "none" }));
     }
   }, [showFavourites_var, controls]);
-  useEffect(() => {
-    axios
-      .get("portfolio/project-images/")
-      .then((res) => {
-        setProjectImages(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   return (
     <motion.div
-      className="my-fav-top"
+      className={`my-fav-top ${wideView ? "my-fav-top3" : ""}`}
       initial={{ x: "100%", display: "none" }} // Initial position off-screen to the right and hidden
       animate={controls} // Use the controls for animation
       transition={{ duration: 0.3 }} // Adjust duration as needed
@@ -203,6 +195,7 @@ function FavProjectSnap() {
           <img
             className={carousel ? "" : "slidingCarouselClose"}
             src={imgSrc}
+            alt="saved favourites project"
           />
           <span
             onClick={nxtFunCarousel}

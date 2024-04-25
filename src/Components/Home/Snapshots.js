@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { favoritesRefreshState, showFavourites } from "../../Store/store";
+import { favoritesRefreshState } from "../../Store/store";
 import { useInView } from "react-intersection-observer";
 // RAECT ICONS
 import { MdOpenWith } from "react-icons/md";
@@ -17,7 +17,6 @@ function Snapshots() {
   const [projectImages, setProjectImages] = useState(false);
   const initialContent = "Your long text goes here...";
   const [expanded, setExpanded] = useState(false);
-  const [content, setContent] = useState(initialContent);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   let [carousel, setCarousel] = useState(false);
   let [imgSrc, setImgSrc] = useState("");
@@ -42,12 +41,10 @@ function Snapshots() {
   function preFunCarousel() {
     const isFirstSlide = imgID === 0;
     if (isFirstSlide) {
-      // setImgID(8);
       setImgID(projectImages && projectImages.results.length - 1);
     } else {
       setImgID(imgID - 1);
     }
-    setImgSrc(projectImages && projectImages.results[imgID].image);
   }
   function nxtFunCarousel() {
     const isLastSlide =
@@ -57,12 +54,11 @@ function Snapshots() {
     } else {
       setImgID(imgID + 1);
     }
-    setImgSrc(projectImages && projectImages.results[imgID].image);
   }
-
-  const toggleExpand = () => {
-    setExpanded(!expanded);
-  };
+  // THIS USEEFFECT IS FOR PREFUNCAROUSEL AND NXTFUNCAROUSEL
+  useEffect(() => {
+    setImgSrc(projectImages && projectImages.results[imgID]?.image);
+  }, [imgID]);
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);

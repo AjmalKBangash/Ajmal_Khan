@@ -1,4 +1,3 @@
-import { Android } from "@mui/icons-material";
 import "./Testemonials.css";
 import axios from "axios";
 import { useState, useRef, useEffect } from "react";

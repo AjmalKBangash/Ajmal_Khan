@@ -3,13 +3,7 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
 // REACT ICONS
-import {
-  SiDjango,
-  SiReact,
-  SiNginx,
-  SiPython,
-  SiJavascript,
-} from "react-icons/si";
+import { SiDjango, SiReact, SiNginx, SiPython } from "react-icons/si";
 import { VscAzureDevops } from "react-icons/vsc";
 
 function Services() {
@@ -20,30 +14,30 @@ function Services() {
   const [refH3, inViewH3] = useInView({
     threshold: 0.2,
   });
-  const [refCard, inViewCard] = useInView({
-    threshold: 0.1,
-  });
-  const [refCard2, inViewCard2] = useInView({
-    threshold: 0.1,
-  });
-  const [refCard3, inViewCard3] = useInView({
-    threshold: 0.1,
-  });
-  const [refCard4, inViewCard4] = useInView({
-    threshold: 0.1,
-  });
-  const [refCard5, inViewCard5] = useInView({
-    threshold: 0.1,
-  });
-  const [refCard6, inViewCard6] = useInView({
-    threshold: 0.1,
-  });
-  const [refCard7, inViewCard7] = useInView({
-    threshold: 0.1,
-  });
-  const [refCard8, inViewCard8] = useInView({
-    threshold: 0.1,
-  });
+  // const [refCard, inViewCard] = useInView({
+  //   threshold: 0.1,
+  // });
+  // const [refCard2, inViewCard2] = useInView({
+  //   threshold: 0.1,
+  // });
+  // const [refCard3, inViewCard3] = useInView({
+  //   threshold: 0.1,
+  // });
+  // const [refCard4, inViewCard4] = useInView({
+  //   threshold: 0.1,
+  // });
+  // const [refCard5, inViewCard5] = useInView({
+  //   threshold: 0.1,
+  // });
+  // const [refCard6, inViewCard6] = useInView({
+  //   threshold: 0.1,
+  // });
+  // const [refCard7, inViewCard7] = useInView({
+  //   threshold: 0.1,
+  // });
+  // const [refCard8, inViewCard8] = useInView({
+  //   threshold: 0.1,
+  // });
   return (
     <div className="services">
       <motion.h1

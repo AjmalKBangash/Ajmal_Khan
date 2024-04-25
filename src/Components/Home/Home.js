@@ -6,7 +6,7 @@ import Testemonials from "./Testemonials";
 import FavProjectSnap from "./FavProjectSnap";
 import DownloadPDF from "../PortfolioWork/DownloadPDF";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { showNav, activeNavLink } from "../../Store/store";
 import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "framer-motion";

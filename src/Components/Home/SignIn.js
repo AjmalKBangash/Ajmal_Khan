@@ -7,7 +7,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 // REACT ICONS
 import { RiLockPasswordFill } from "react-icons/ri";
-import { IoPersonCircleSharp } from "react-icons/io5";
 import { MdMarkEmailRead } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -38,7 +37,6 @@ const SignIn = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
