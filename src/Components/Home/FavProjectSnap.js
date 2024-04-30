@@ -174,7 +174,7 @@ function FavProjectSnap() {
               );
             })
           ) : (
-            <div style={{ marginTop: "10px" }}>No saved Projects!</div>
+            <div style={{ marginTop: "10px" }}>No saved Project-Snapshots!</div>
           )}
         </div>
         <div className={carousel ? "carousel open" : ""}>

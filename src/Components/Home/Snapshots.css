@@ -446,7 +446,7 @@
     font-size: 30px;
   }
   .img-des {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 @media screen and (max-width: 670px) {
@@ -465,7 +465,7 @@
     font-size: 28px;
   }
   .img-des {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 @media screen and (max-width: 455px) {
@@ -478,6 +478,6 @@
     margin: 8px;
   }
   .img-des {
-    font-size: 12px;
+    font-size: 8px;
   }
 }

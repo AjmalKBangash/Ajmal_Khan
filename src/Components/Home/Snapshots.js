@@ -16,37 +16,37 @@ import { MdClose } from "react-icons/md";
 /////////////////////////////////////////////////////////////////////////////////////////////
 let projectImages = [
   {
-    img_no: "0",
+    img_no: 0,
     image: "/ProjectImages/0.png",
     description: "AYO Web",
   },
   {
-    img_no: "1",
+    img_no: 1,
     image: "/ProjectImages/1.png",
     description: "AYO Web",
   },
   {
-    img_no: "2",
+    img_no: 2,
     image: "/ProjectImages/2.png",
     description: "Admin HMS",
   },
   {
-    img_no: "3",
+    img_no: 3,
     image: "/ProjectImages/3.png",
     description: "Admin HMS",
   },
   {
-    img_no: "4",
+    img_no: 4,
     image: "/ProjectImages/4.png",
     description: "Dr Dashboard HMS",
   },
   {
-    img_no: "5",
+    img_no: 5,
     image: "/ProjectImages/5.png",
     description: "Dr Profile HMS",
   },
   {
-    img_no: "6",
+    img_no: 6,
     image: "/ProjectImages/6.png",
     description: "Dr Prescription HMS",
   },
@@ -56,67 +56,67 @@ let projectImages = [
     description: "Receptionist HMS",
   },
   {
-    img_no: "8",
+    img_no: 8,
     image: "/ProjectImages/8.png",
     description: "E-commerce",
   },
   {
-    img_no: "9",
+    img_no: 9,
     image: "/ProjectImages/9.png",
     description: "E-commerce",
   },
   {
-    img_no: "10",
+    img_no: 10,
     image: "/ProjectImages/10.png",
     description: "E-commerce",
   },
   {
-    img_no: "11",
+    img_no: 11,
     image: "/ProjectImages/11.png",
     description: "E-commerce",
   },
   {
-    img_no: "12",
+    img_no: 12,
     image: "/ProjectImages/12.png",
     description: "Hube-Rasool Web",
   },
   {
-    img_no: "13",
+    img_no: 13,
     image: "/ProjectImages/13.png",
     description: "Hube-Rasool Web",
   },
   {
-    img_no: "14",
+    img_no: 14,
     image: "/ProjectImages/14.png",
     description: "Hube-Rasool Web",
   },
   {
-    img_no: "15",
-    image: "/ProjectImages/15-Data-Structures.png",
+    img_no: 15,
+    image: "/ProjectImages/15.png",
     description: "Data Structures",
   },
   {
-    img_no: "16",
-    image: "/ProjectImages/16-REST-APIs.png",
+    img_no: 16,
+    image: "/ProjectImages/16.png",
     description: "REST APIs",
   },
   {
-    img_no: "17",
-    image: "/ProjectImages/17-Throttling.png",
+    img_no: 17,
+    image: "/ProjectImages/17.png",
     description: "Throttling (Security)",
   },
   {
-    img_no: "18",
-    image: "/ProjectImages/18-Bash-Scripting.png",
+    img_no: 18,
+    image: "/ProjectImages/18.png",
     description: "Bash Scripting",
   },
   {
-    img_no: "19",
-    image: "/ProjectImages/19-Nginx.png",
+    img_no: 19,
+    image: "/ProjectImages/19.png",
     description: "Nginx (Web Server)",
   },
   {
-    img_no: "20",
+    img_no: 20,
     image: "/ProjectImages/20.png",
     description: "AWS (Configuring Server)",
   },
@@ -124,8 +124,6 @@ let projectImages = [
 
 function Snapshots() {
   // const [projectImages, setProjectImages] = useState(false);
-  const initialContent = "Your long text goes here...";
-  const [expanded, setExpanded] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   let [carousel, setCarousel] = useState(false);
   let [imgSrc, setImgSrc] = useState("");
@@ -191,7 +189,7 @@ function Snapshots() {
 
       // Update the cookie with the new favorites array
       Cookies.set("favoritePictures", JSON.stringify(favoritesArray), {
-        expires: 7,
+        expires: 21,
       }); // Expires in 7 days
       dispatch(favoritesRefreshState(favoritesRefreshState_var + 1));
       alert("Picture added to favorites!");

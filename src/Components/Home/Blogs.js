@@ -90,7 +90,7 @@ function Blogs() {
       </motion.h3>
       <div className="blogs">
         {blogposts &&
-          blogposts.results.map((blog, index) => {
+          blogposts.map((blog, index) => {
             return (
               <div key={index} className="blog-card">
                 <img

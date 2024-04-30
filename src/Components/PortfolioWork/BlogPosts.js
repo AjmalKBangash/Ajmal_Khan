@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Decouplingarchitecture from "./Decouplingarchitecture";
 import Careercounselling from "./Careercounselling";
@@ -6,6 +7,12 @@ import Virtualizationandcontainerization from "./Virtualizationandcontainerizati
 function BlogPosts() {
   const location = useLocation();
   const data = location.state;
+
+  useEffect(() => {
+    // Scroll to the top of the page when the component mounts
+    window.scrollTo(0, 0);
+  }, [location.state]); // Scroll to top whenever location state changes
+
   function keepFirstTwoWords(sentence) {
     const words = sentence.split(" ");
     // Ensure there are at least two words

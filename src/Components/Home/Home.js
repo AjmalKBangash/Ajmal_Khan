@@ -24,13 +24,6 @@ import Contact from "./Contact";
 import Footer from "./Footer";
 // import axios from "axios";
 
-///////////////////////////////////////////////////////////////////////////////
-// class SkillTools(models.Model):
-//     skill_date = models.DateField()
-//     skill = models.CharField( max_length=50)
-//     per = models.CharField( max_length=50)
-//     def __str__(self):
-//         return self.skill
 let skillTools = [
   {
     skill_date: "2024-03-10",
@@ -66,11 +59,6 @@ let skillTools = [
     skill_date: "2024-03-16",
     skill: "Data Structures",
     per: "77",
-  },
-  {
-    skill_date: "2024-03-17",
-    skill: "Problem Solving",
-    per: "79",
   },
 ];
 
