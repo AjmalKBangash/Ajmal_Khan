@@ -46,7 +46,6 @@ const SignIn = () => {
     // Handle form submission logic here
     setSpinner(true);
     setSignInData(data);
-    // reset();
   };
   useEffect(() => {
     if (signInData) {

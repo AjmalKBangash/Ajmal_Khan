@@ -1,10 +1,43 @@
 import "./Testemonials.css";
-import axios from "axios";
+// import axios from "axios";
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 // REACT ICONS
 import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
+
+let projectImages = [
+  {
+    testemonial_name: "Safir Kashmiri",
+    testemonial_photo: "Testemonials/Safir-test.jpg",
+    testemonial_description:
+      "Ajmal assisted with deploying my project, which I developed. The deployed project follows a decoupled architecture, utilizing Nginx for reverse proxying which enables both frontend and backend on the same server with same domain. His services are highly efficient and to the point.",
+  },
+  {
+    testemonial_name: "Amir Leo",
+    testemonial_photo: "Testemonials/amir.jpeg",
+    testemonial_description:
+      "He possesses advanced skills in backend development and crafting REST APIs. He has developed 100s of APIs for my projects and i strongly recommend him for any REST APIs-related tasks.",
+  },
+  {
+    testemonial_name: "Dr Kamil",
+    testemonial_photo: "Testemonials/kamil-test.jpeg",
+    testemonial_description:
+      "For our Hospital Management System, you'll witness the complete transformation from a paper-based system to a digital, advanced platform. This transition ensures efficiency and time-saving measures. I highly recommend these developers for their exceptional work.",
+  },
+  {
+    testemonial_name: "Theodore",
+    testemonial_photo: "Testemonials/rehman-test.jpeg",
+    testemonial_description:
+      "He is highly regarded as an expert in AWS services for deploying applications via EC2 AWS instances. His approach of containerizing applications before deployment is both comprehensive and informative, showcasing his expertise and proficiency in the field.",
+  },
+  {
+    testemonial_name: "Moiz Khan",
+    testemonial_photo: "Testemonials/haris-test.jpeg",
+    testemonial_description:
+      '"He has created a captivating website for my business, and I am thoroughly pleased with his work. I eagerly anticipate working with him again in the future."',
+  },
+];
 
 function Testemonials() {
   const [testemonialCardsWidth, settestemonialCardsWidth] = useState(1100);
@@ -70,7 +103,7 @@ function Testemonials() {
     }
   }, [viewportWidth]);
   ///////////////////////////
-  const [projectImages, setProjectImages] = useState(false);
+  // const [projectImages, setProjectImages] = useState(false);
   const [position, setPosition] = useState(0);
   const [sliding, setSliding] = useState(false);
 
@@ -83,25 +116,24 @@ function Testemonials() {
     setPosition(position - 1);
   }
 
-  useEffect(() => {
-    axios
-      .get("portfolio/testimonials/")
-      .then((res) => {
-        setProjectImages(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("portfolio/testimonials/")
+  //     .then((res) => {
+  //       setProjectImages(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
   useEffect(() => {
     if (
-      position > -(projectImages.results?.length - onlyOneTestemonialCard) &&
+      position > -(projectImages?.length - onlyOneTestemonialCard) &&
       !sliding
     ) {
       /////////////////////////////
       if (
-        position ===
-        -(projectImages.results?.length - (onlyOneTestemonialCard + 1))
+        position === -(projectImages?.length - (onlyOneTestemonialCard + 1))
       ) {
         //////////////////////////////////////
         setSliding(true);
@@ -115,7 +147,7 @@ function Testemonials() {
       const interval = setInterval(animateRight, 6000); // Auto-slide every 3 seconds
       return () => clearInterval(interval);
     }
-  }, [position, projectImages.results]);
+  }, [position, projectImages]);
   return (
     <div className="snapshots">
       <motion.h1
@@ -158,7 +190,7 @@ function Testemonials() {
           }}
         >
           {projectImages &&
-            projectImages.results.map((testimonial, index) => {
+            projectImages.map((testimonial, index) => {
               return (
                 <div
                   key={index}
@@ -173,7 +205,7 @@ function Testemonials() {
                   ></img>
                   <div className="testemonial-card-namedescrip">
                     <div className="testemonial-card-name">
-                      {testimonial.testemonial_name}{" "}
+                      {testimonial.testemonial_name}
                     </div>
                     <div className="testemonial-card-descrip">
                       {testimonial.testemonial_description}
@@ -187,8 +219,7 @@ function Testemonials() {
           className="testemonial-btn"
           onClick={animateLeft}
           disabled={
-            position ===
-            -(projectImages.results?.length - onlyOneTestemonialCard)
+            position === -(projectImages?.length - onlyOneTestemonialCard)
           }
           ref={refBtn}
           initial={{ x: -30, opacity: 0.2 }}

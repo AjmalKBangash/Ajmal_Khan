@@ -5,7 +5,7 @@ import Services from "./Services";
 import Testemonials from "./Testemonials";
 import FavProjectSnap from "./FavProjectSnap";
 import DownloadPDF from "../PortfolioWork/DownloadPDF";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { showNav, activeNavLink } from "../../Store/store";
 import { useInView } from "react-intersection-observer";
@@ -22,11 +22,187 @@ import Snapshots from "./Snapshots";
 import Blogs from "./Blogs";
 import Contact from "./Contact";
 import Footer from "./Footer";
-import axios from "axios";
+// import axios from "axios";
+
+///////////////////////////////////////////////////////////////////////////////
+// class SkillTools(models.Model):
+//     skill_date = models.DateField()
+//     skill = models.CharField( max_length=50)
+//     per = models.CharField( max_length=50)
+//     def __str__(self):
+//         return self.skill
+let skillTools = [
+  {
+    skill_date: "2024-03-10",
+    skill: "Javascript",
+    per: "82",
+  },
+  {
+    skill_date: "2024-03-11",
+    skill: "Python",
+    per: "84",
+  },
+  {
+    skill_date: "2024-03-12",
+    skill: "React",
+    per: "82",
+  },
+  {
+    skill_date: "2024-03-13",
+    skill: "Django",
+    per: "84",
+  },
+  {
+    skill_date: "2024-03-14",
+    skill: "PostgreSQL",
+    per: "67",
+  },
+  {
+    skill_date: "2024-03-15",
+    skill: "MySQL",
+    per: "67",
+  },
+  {
+    skill_date: "2024-03-16",
+    skill: "Data Structures",
+    per: "77",
+  },
+  {
+    skill_date: "2024-03-17",
+    skill: "Problem Solving",
+    per: "79",
+  },
+];
+
+let skillToolsDevOps = [
+  {
+    skill_date: "2024-03-10",
+    skill: "Docker",
+    per: 73,
+  },
+  {
+    skill_date: "2024-03-11",
+    skill: "Kubernetes",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-12",
+    skill: "Bash Scripting",
+    per: 43,
+  },
+  {
+    skill_date: "2024-03-13",
+    skill: "Python Automation",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-14",
+    skill: "Python Selenium",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-15",
+    skill: "Jira with Python",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-16",
+    skill: "Vagrant",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-17",
+    skill: "Ansible",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-18",
+    skill: "Terraform",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-19",
+    skill: "Puppet",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-20",
+    skill: "Git_Github",
+    per: 80,
+  },
+  {
+    skill_date: "2024-03-21",
+    skill: "Jenkins and Maven",
+    per: 10,
+  },
+];
+let skillToolsCloud = [
+  {
+    skill_date: "2024-03-10",
+    skill: "AWS",
+    per: 40,
+  },
+  {
+    skill_date: "2024-03-11",
+    skill: "GCD",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-12",
+    skill: "Azure",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-13",
+    skill: "AWS EC2",
+    per: 80,
+  },
+  {
+    skill_date: "2024-03-14",
+    skill: "AWS Lambda",
+    per: 10,
+  },
+  {
+    skill_date: "2024-03-15",
+    skill: "AWS ECS",
+    per: 67,
+  },
+  {
+    skill_date: "2024-03-16",
+    skill: "AWS S3 ",
+    per: 77,
+  },
+  {
+    skill_date: "2024-03-17",
+    skill: "AWS EBS",
+    per: 79,
+  },
+  {
+    skill_date: "2024-03-17",
+    skill: "AWS RDS",
+    per: 79,
+  },
+  {
+    skill_date: "2024-03-17",
+    skill: "AWS VPC",
+    per: 79,
+  },
+  {
+    skill_date: "2024-03-17",
+    skill: "AWS CodePipeline",
+    per: 79,
+  },
+  {
+    skill_date: "2024-03-17",
+    skill: "AWS EKS",
+    per: 79,
+  },
+];
+
 function Home() {
-  const [skillTools, setSkillTools] = useState(false);
-  const [skillToolsDevOps, setSkillToolsDevOps] = useState(false);
-  const [skillToolsCloud, setSkillToolsCloud] = useState(false);
+  // const [skillTools, setSkillTools] = useState(false);
+  // const [skillToolsDevOps, setSkillToolsDevOps] = useState(false);
+  // const [skillToolsCloud, setSkillToolsCloud] = useState(false);
   const dispatch = useDispatch();
   const [ref, inView] = useInView();
   // const [refProfile, inViewProfile] = useInView({
@@ -83,38 +259,38 @@ function Home() {
     }
   }, [inView]);
   // FOR SOFTWARE ENGINEERING
-  useEffect(() => {
-    axios
-      .get("portfolio/skill-tools/")
-      .then((res) => {
-        setSkillTools(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("portfolio/skill-tools/")
+  //     .then((res) => {
+  //       setSkillTools(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
   // FOR DevOps ENGINEERING
-  useEffect(() => {
-    axios
-      .get("portfolio/skill-tools-devops/")
-      .then((res) => {
-        setSkillToolsDevOps(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("portfolio/skill-tools-devops/")
+  //     .then((res) => {
+  //       setSkillToolsDevOps(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
   // FOR CLOUD COMPUTING
-  useEffect(() => {
-    axios
-      .get("portfolio/skill-tools-cloud/")
-      .then((res) => {
-        setSkillToolsCloud(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("portfolio/skill-tools-cloud/")
+  //     .then((res) => {
+  //       setSkillToolsCloud(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
   return (
     <>
       <div id="home-section"></div>
@@ -242,7 +418,7 @@ function Home() {
           <h2 className="three-engineers">Software Engineering</h2>
           <div className="skillful-tools">
             {skillTools &&
-              skillTools.results?.map((skillper, index) => {
+              skillTools?.map((skillper, index) => {
                 return (
                   <SkillsTool
                     data={{ skill: skillper.skill, per: skillper.per }}
@@ -262,7 +438,7 @@ function Home() {
           <h2 className="three-engineers">DevOps Engineering</h2>
           <div className="skillful-tools">
             {skillToolsDevOps &&
-              skillToolsDevOps.results?.map((skillper, index) => {
+              skillToolsDevOps?.map((skillper, index) => {
                 return (
                   <SkillsTool
                     data={{ skill: skillper.skill, per: skillper.per }}
@@ -282,7 +458,7 @@ function Home() {
           <h2 className="three-engineers">Cloud Computing</h2>
           <div className="skillful-tools">
             {skillToolsCloud &&
-              skillToolsCloud.results?.map((skillper, index) => {
+              skillToolsCloud?.map((skillper, index) => {
                 return (
                   <SkillsTool
                     data={{ skill: skillper.skill, per: skillper.per }}

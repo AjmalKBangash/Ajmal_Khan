@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 import "../Home/Home.css";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -8,27 +8,45 @@ function DownloadPDF() {
     threshold: 0.3, // Trigger animation when 30% of the element is in view
   });
   const downloadPDF = () => {
-    axios({
-      url: "portfolio/ajmal-khan-cv.pdf/",
-      method: "GET",
-      responseType: "blob", // important
-    })
-      .then((response) => {
-        // Create a blob URL for the response
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        // Create a temporary link element
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", "AJMAL-KHAN-CV.pdf");
-        // Trigger the download
-        document.body.appendChild(link);
-        link.click();
-        // Cleanup
-        link.parentNode.removeChild(link);
-      })
-      .catch((error) => {
-        console.error("Error downloading PDF:", error);
-      });
+    downloadPDF02();
+    // axios({
+    //   url: "portfolio/ajmal-khan-cv.pdf/",
+    //   method: "GET",
+    //   responseType: "blob", // important
+    // })
+    //   .then((response) => {
+    //     // Create a blob URL for the response
+    //     const url = window.URL.createObjectURL(new Blob([response.data]));
+    //     // Create a temporary link element
+    //     const link = document.createElement("a");
+    //     link.href = url;
+    //     link.setAttribute("download", "AJMAL-KHAN-CV.pdf");
+    //     // Trigger the download
+    //     document.body.appendChild(link);
+    //     link.click();
+    //     // Cleanup
+    //     link.parentNode.removeChild(link);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error downloading PDF:", error);
+    //   });
+  };
+
+  const downloadPDF02 = () => {
+    // URL to the PDF file in the public folder
+    const pdfUrl = process.env.PUBLIC_URL + "/CV_PDF/Ajmal-Khan-CV.pdf";
+
+    // Create a temporary link element
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.setAttribute("download", "AJMAL-KHAN-CV.pdf");
+
+    // Trigger the download
+    document.body.appendChild(link);
+    link.click();
+
+    // Cleanup
+    document.body.removeChild(link);
   };
 
   return (

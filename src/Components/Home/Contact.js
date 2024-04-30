@@ -1,83 +1,59 @@
 import axios from "axios";
+// import emailjs from "@emailjs/browser";
 import "./Contact.css";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+
 function Contact() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [stateForContact, setStateForContact] = useState(false);
   const [req_sub_succ, set_req_sub_succ] = useState(false);
-  // State variables for form fields and validation
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [description, setDescription] = useState("");
-  const [formErrors, setFormErrors] = useState({});
   const [refAbout, inViewAbout] = useInView({
     threshold: 0.2, // Trigger animation when 20% of the element is in view
   });
-  // Validation functions
-  const validateName = (name) => name.length >= 4;
-  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const validatePhone = (phone) => /^[0-9]{11,14}$/.test(phone);
-  const validateDescription = (description) => description.length >= 35;
 
   // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
+    console.log(data);
+    setStateForContact(data);
+    try {
+      // const response = await emailjs.send(
+      //   "service_a1pn4gz",
+      //   "template_41ewwsp",
+      //   {
+      //     client_name: data.firstName + " " + data.lastName,
+      //     client_email: data.email,
+      //     my_email: "ak1489007@gmail.com",
+      //     client_message:
+      //       data.description + " The client phone number is: " + data.phone,
+      //   },
+      //   "nkJK3YR4Hd29amgBX"
+      // );
+      // set_req_sub_succ(true);
+      // reset();
+    } catch (error) {
+      console.log("FAILED...", error);
+    }
+  };
 
-    // Validate each field
-    const errors = {};
-    if (!validateName(firstName)) {
-      errors.firstName = "First name must be at least 4 characters";
-    }
-    if (!validateName(lastName)) {
-      errors.lastName = "Last name must be at least 4 characters";
-    }
-    if (!validateEmail(email)) {
-      errors.email = "Invalid email address";
-    }
-    if (!validatePhone(phone)) {
-      errors.phone = "Invalid phone number";
-    }
-    if (!validateDescription(description)) {
-      errors.description = "Description must be at least 35 characters";
-    }
-
-    // If there are errors, set them in state
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
+  useEffect(() => {
+    if (req_sub_succ) {
       const timerId = setTimeout(() => {
-        // Your function to execute after three seconds
-        resetForm();
-      }, 5000);
-
-      // Cleanup function to clear the timeout when component unmounts
+        set_req_sub_succ(false);
+      }, 6000);
       return () => clearTimeout(timerId);
-    } else {
-      setStateForContact({
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        phone: phone,
-        description: description,
-      });
-      // Reset form and errors after submission
-      resetForm();
     }
-  };
-
-  // Reset form and errors
-  const resetForm = () => {
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPhone("");
-    setDescription("");
-    setFormErrors({});
-  };
+  }, [req_sub_succ]);
+  // SENDING EMAIL FROM BACKEND
   useEffect(() => {
     if (stateForContact) {
+      console.log(stateForContact);
       axios
         .post("portfolio/contact-me/", stateForContact)
         .then((res) => {
@@ -90,25 +66,12 @@ function Contact() {
         });
     }
   }, [stateForContact]);
-  useEffect(() => {
-    if (req_sub_succ) {
-      // Function to be executed after 3 seconds
-      const myFunction = () => {
-        // Add your logic here
-        set_req_sub_succ(false);
-      };
-      // Set a timer for 3 seconds
-      const timerId = setTimeout(myFunction, 6000);
 
-      // Cleanup function to clear the timer if the component unmounts
-      return () => clearTimeout(timerId);
-    }
-  }, [req_sub_succ]);
   return (
     <div className="snapshots">
       <motion.h1
         className=""
-        ref={refAbout} // Use refAbout for h1
+        ref={refAbout}
         initial={{ y: -30, opacity: 0.2 }}
         animate={{
           y: inViewAbout ? 0 : -30,
@@ -119,7 +82,7 @@ function Contact() {
         CONTACT ME
       </motion.h1>
       <motion.h3
-        ref={refAbout} // Use refAbout for h3
+        ref={refAbout}
         initial={{ y: -30, opacity: 0.2 }}
         animate={{
           y: inViewAbout ? 0 : -30,
@@ -132,12 +95,7 @@ function Contact() {
       <br />
       <br />
       <div className="my-location">
-        <h3
-          style={{
-            margin: "10px auto 10px 5%",
-            width: "fit-content",
-          }}
-        >
+        <h3 style={{ margin: "10px auto 10px 5%", width: "fit-content" }}>
           My Location
         </h3>
         <div className="location">
@@ -146,94 +104,95 @@ function Contact() {
             width="90%"
             height="450"
             style={{ border: "0" }}
-            allowfullscreen=""
+            allowFullScreen=""
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
+            referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </div>
       <br />
       <br />
       <br />
-      {/* <div className="contact-me-top"> */}
-      <h3
-        style={{
-          margin: "10px auto 10px 5%",
-          width: "fit-content",
-        }}
-      >
+      <h3 style={{ margin: "10px auto 10px 5%", width: "fit-content" }}>
         Send me a message!
       </h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="first_last_name">
           <div>
             <input
               type="text"
               placeholder="First Name"
-              id="first_name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              {...register("first_name", {
+                required: "First name must be at least 4 characters",
+              })}
             />
-            {formErrors.firstName && (
-              <div className="error">{formErrors.firstName}</div>
+            {errors.firstName && (
+              <div className="error">{errors.firstName.message}</div>
             )}
           </div>
           <div>
             <input
               type="text"
               placeholder="Last Name"
-              id="last_name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              {...register("last_name", {
+                required: "Last name must be at least 4 characters",
+              })}
             />
-            {formErrors.lastName && (
-              <div className="error">{formErrors.lastName}</div>
+            {errors.lastName && (
+              <div className="error">{errors.lastName.message}</div>
             )}
           </div>
-          {/* </div> */}
-          {/* <div className="first_last_name"> */}
           <div>
             <input
               type="text"
               placeholder="Email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Invalid email address",
+                },
+              })}
             />
-            {formErrors.email && (
-              <div className="error">{formErrors.email}</div>
+            {errors.email && (
+              <div className="error">{errors.email.message}</div>
             )}
           </div>
           <div>
             <input
               type="text"
               placeholder="Phone"
-              id="phone"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              {...register("phone", {
+                required: "Phone number is required",
+                pattern: {
+                  value: /^[0-9]{11,14}$/,
+                  message: "Invalid phone number",
+                },
+              })}
             />
-            {formErrors.phone && (
-              <div className="error">{formErrors.phone}</div>
+            {errors.phone && (
+              <div className="error">{errors.phone.message}</div>
             )}
           </div>
         </div>
-        {/* <div> */}
-        {/* <div> */}
         <textarea
           placeholder="Write about problem or query!"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          {...register("description", {
+            required: "Description must be at least 35 characters",
+            minLength: {
+              value: 35,
+              message: "Description must be at least 35 characters",
+            },
+          })}
         />
-        {formErrors.description && (
+        {errors.description && (
           <div
             style={{ margin: "10px auto", width: "fit-content" }}
             className="error"
           >
-            {formErrors.description}
+            {errors.description.message}
           </div>
         )}
-        {/* </div> */}
-        {/* </div> */}
         <div className="first_last_name" style={{ justifyContent: "center" }}>
           <button type="submit">CONTACT ME!</button>
         </div>
@@ -243,7 +202,6 @@ function Contact() {
           </p>
         )}
       </form>
-      {/* </div> */}
     </div>
   );
 }

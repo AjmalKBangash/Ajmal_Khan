@@ -252,9 +252,11 @@
   bottom: 0%; /* Set initial bottom position outside the viewport */
   left: 50%;
   transform: translateX(-50%);
-  /* transform: translateY(-50%); */
-  font-size: 20px;
+  font-size: 18px;
   color: white;
+  background-color: #ff4400dc;
+  padding: 5px 10px;
+  border-radius: 20px;
 }
 .img-des02 {
   display: inline;
@@ -400,7 +402,7 @@
     font-size: 32px;
   }
   .img-des {
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 @media screen and (max-width: 830px) {
