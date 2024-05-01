@@ -30,7 +30,7 @@ function Contact() {
         "service_a1pn4gz",
         "template_41ewwsp",
         {
-          client_name: data.firstName + " " + data.lastName,
+          client_name: data.first_name + " " + data.last_name,
           client_email: data.email,
           my_email: "ak1489007@gmail.com",
           client_message:
@@ -130,8 +130,8 @@ function Contact() {
                 required: "First name must be at least 4 characters",
               })}
             />
-            {errors.firstName && (
-              <div className="error">{errors.firstName.message}</div>
+            {errors.first_name && (
+              <div className="error">{errors.first_name.message}</div>
             )}
           </div>
           <div>
@@ -142,8 +142,8 @@ function Contact() {
                 required: "Last name must be at least 4 characters",
               })}
             />
-            {errors.lastName && (
-              <div className="error">{errors.lastName.message}</div>
+            {errors.last_name && (
+              <div className="error">{errors.last_name.message}</div>
             )}
           </div>
           <div>
