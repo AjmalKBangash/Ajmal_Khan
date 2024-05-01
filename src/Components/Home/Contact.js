@@ -1,6 +1,7 @@
 import axios from "axios";
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import "./Contact.css";
+import Loading from "./Loading";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
@@ -9,10 +10,12 @@ import { useForm } from "react-hook-form";
 function Contact() {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const [stateForContact, setStateForContact] = useState(false);
+  const [spinner, setSpinner] = useState(false);
   const [req_sub_succ, set_req_sub_succ] = useState(false);
   const [refAbout, inViewAbout] = useInView({
     threshold: 0.2, // Trigger animation when 20% of the element is in view
@@ -20,25 +23,27 @@ function Contact() {
 
   // Handle form submission
   const onSubmit = async (data) => {
-    console.log(data);
+    setSpinner(true);
     setStateForContact(data);
     try {
-      // const response = await emailjs.send(
-      //   "service_a1pn4gz",
-      //   "template_41ewwsp",
-      //   {
-      //     client_name: data.firstName + " " + data.lastName,
-      //     client_email: data.email,
-      //     my_email: "ak1489007@gmail.com",
-      //     client_message:
-      //       data.description + " The client phone number is: " + data.phone,
-      //   },
-      //   "nkJK3YR4Hd29amgBX"
-      // );
-      // set_req_sub_succ(true);
-      // reset();
+      const response = await emailjs.send(
+        "service_a1pn4gz",
+        "template_41ewwsp",
+        {
+          client_name: data.firstName + " " + data.lastName,
+          client_email: data.email,
+          my_email: "ak1489007@gmail.com",
+          client_message:
+            data.description + " The client phone number is: " + data.phone,
+        },
+        "nkJK3YR4Hd29amgBX"
+      );
+      set_req_sub_succ(true);
+      reset();
+      setSpinner(false);
     } catch (error) {
       console.log("FAILED...", error);
+      setSpinner(false);
     }
   };
 
@@ -53,7 +58,6 @@ function Contact() {
   // SENDING EMAIL FROM BACKEND
   useEffect(() => {
     if (stateForContact) {
-      console.log(stateForContact);
       axios
         .post("portfolio/contact-me/", stateForContact)
         .then((res) => {
@@ -194,7 +198,9 @@ function Contact() {
           </div>
         )}
         <div className="first_last_name" style={{ justifyContent: "center" }}>
-          <button type="submit">CONTACT ME!</button>
+          <button type="submit">
+            {spinner ? <Loading data={"one"} /> : "CONTACT ME!"}
+          </button>
         </div>
         {req_sub_succ && (
           <p className="form_sub_succ">

@@ -33,22 +33,23 @@ textarea {
   font-family: Arial, sans-serif;
 }
 .first_last_name button {
-  height: 5vh;
+  height: 28px;
   width: 30vw;
   margin: 1% 0px;
-  border: 1px solid rgb(53, 53, 53);
+  border: none;
   border-radius: 50px;
   outline: none;
-  font-size: 2vh;
+  font-size: 14px;
   font-family: Arial, sans-serif;
   cursor: pointer;
-  background-color: transparent;
+  background-color: #ff4500;
+  color: white;
 }
-.first_last_name button:hover {
+/* .first_last_name button:hover {
   background-color: #ff4500;
   color: white;
   border: none;
-}
+} */
 .error {
   color: red;
   font-size: 10px;
