@@ -1,7 +1,9 @@
 import axios from "axios";
 
 // Set Axios global defaults
-axios.defaults.baseURL = "http://localhost:8000/";
+// axios.defaults.baseURL = "http://localhost:8000/";
+// axios.defaults.baseURL = "http://bk-service:8000/";
+axios.defaults.baseURL = "http://www.ajmal.com/api/";
 axios.defaults.headers.common["Authorization"] = `${
   localStorage.getItem("access_token")
     ? "Bearer   " + localStorage.getItem("access_token")

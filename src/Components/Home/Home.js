@@ -5,9 +5,10 @@ import Services from "./Services";
 import Testemonials from "./Testemonials";
 import FavProjectSnap from "./FavProjectSnap";
 import DownloadPDF from "../PortfolioWork/DownloadPDF";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { showNav, activeNavLink } from "../../Store/store";
+import axios from "axios";
 import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -62,68 +63,68 @@ let skillTools = [
   },
 ];
 
-let skillToolsDevOps = [
-  {
-    skill_date: "2024-03-10",
-    skill: "Docker",
-    per: 73,
-  },
-  {
-    skill_date: "2024-03-11",
-    skill: "Kubernetes",
-    per: 10,
-  },
-  {
-    skill_date: "2024-03-12",
-    skill: "Bash Scripting",
-    per: 43,
-  },
-  {
-    skill_date: "2024-03-13",
-    skill: "Python Automation",
-    per: 10,
-  },
-  {
-    skill_date: "2024-03-14",
-    skill: "Python Selenium",
-    per: 10,
-  },
-  {
-    skill_date: "2024-03-15",
-    skill: "Jira with Python",
-    per: 10,
-  },
-  {
-    skill_date: "2024-03-16",
-    skill: "Vagrant",
-    per: 10,
-  },
-  {
-    skill_date: "2024-03-17",
-    skill: "Ansible",
-    per: 10,
-  },
-  {
-    skill_date: "2024-03-18",
-    skill: "Terraform",
-    per: 10,
-  },
-  {
-    skill_date: "2024-03-19",
-    skill: "Puppet",
-    per: 10,
-  },
-  {
-    skill_date: "2024-03-20",
-    skill: "Git_Github",
-    per: 80,
-  },
-  {
-    skill_date: "2024-03-21",
-    skill: "Jenkins and Maven",
-    per: 10,
-  },
-];
+// let skillToolsDevOps = [
+//   {
+//     skill_date: "2024-03-10",
+//     skill: "Docker",
+//     per: 73,
+//   },
+//   {
+//     skill_date: "2024-03-11",
+//     skill: "Kubernetes",
+//     per: 10,
+//   },
+//   {
+//     skill_date: "2024-03-12",
+//     skill: "Bash Scripting",
+//     per: 43,
+//   },
+//   {
+//     skill_date: "2024-03-13",
+//     skill: "Python Automation",
+//     per: 10,
+//   },
+//   {
+//     skill_date: "2024-03-14",
+//     skill: "Python Selenium",
+//     per: 10,
+//   },
+//   {
+//     skill_date: "2024-03-15",
+//     skill: "Jira with Python",
+//     per: 10,
+//   },
+//   {
+//     skill_date: "2024-03-16",
+//     skill: "Vagrant",
+//     per: 10,
+//   },
+//   {
+//     skill_date: "2024-03-17",
+//     skill: "Ansible",
+//     per: 10,
+//   },
+//   {
+//     skill_date: "2024-03-18",
+//     skill: "Terraform",
+//     per: 10,
+//   },
+//   {
+//     skill_date: "2024-03-19",
+//     skill: "Puppet",
+//     per: 10,
+//   },
+//   {
+//     skill_date: "2024-03-20",
+//     skill: "Git_Github",
+//     per: 80,
+//   },
+//   {
+//     skill_date: "2024-03-21",
+//     skill: "Jenkins and Maven",
+//     per: 10,
+//   },
+// ];
 let skillToolsCloud = [
   {
     skill_date: "2024-03-10",
@@ -189,7 +190,7 @@ let skillToolsCloud = [
 
 function Home() {
   // const [skillTools, setSkillTools] = useState(false);
-  // const [skillToolsDevOps, setSkillToolsDevOps] = useState(false);
+  const [skillToolsDevOps, setSkillToolsDevOps] = useState(false);
   // const [skillToolsCloud, setSkillToolsCloud] = useState(false);
   const dispatch = useDispatch();
   const [ref, inView] = useInView();
@@ -258,16 +259,16 @@ function Home() {
   //     });
   // }, []);
   // FOR DevOps ENGINEERING
-  // useEffect(() => {
-  //   axios
-  //     .get("portfolio/skill-tools-devops/")
-  //     .then((res) => {
-  //       setSkillToolsDevOps(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("portfolio/skill-tools-devops/")
+      .then((res) => {
+        setSkillToolsDevOps(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   // FOR CLOUD COMPUTING
   // useEffect(() => {
   //   axios
@@ -283,7 +284,11 @@ function Home() {
     <>
       <div id="home-section"></div>
       <Navbar />
-      <div class="background-img" ref={ref}>
+      <div
+        class="background-img"
+        ref={ref}
+        // style={{ backgroundImage: "/images/back-img.png" }}
+      >
         <div className="background-img-clr">
           <div className="background-img-div">
             <AnimatePresence>
@@ -426,7 +431,7 @@ function Home() {
           <h2 className="three-engineers">DevOps Engineering</h2>
           <div className="skillful-tools">
             {skillToolsDevOps &&
-              skillToolsDevOps?.map((skillper, index) => {
+              skillToolsDevOps.results?.map((skillper, index) => {
                 return (
                   <SkillsTool
                     data={{ skill: skillper.skill, per: skillper.per }}

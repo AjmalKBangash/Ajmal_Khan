@@ -21,7 +21,9 @@ h3 {
 }
 
 .background-img {
-  background-image: url("/home/ajay/Desktop/Real_Projects/portfolio_frontend/public/images/back-img.png");
+  /* background-image: url("/home/ajay/Desktop/Real_Projects/portfolio_frontend/public/images/back-img.png"); */
+  background-image: url("/portfolio_frontend/public/images/back-img.png");
+  /* background-image: url("/images/back-img.png"); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

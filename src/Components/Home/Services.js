@@ -45,11 +45,11 @@ function Services() {
           <SiNginx className="services-icon" />
           <h2>Software Engineering</h2>
           <p>
-            As a roficient skilled worker in developing complex web applications
-            using modern decoupled architecture for both frontend and backend
-            apps. Additionally I can develop backend for any type of software
-            systems. I am also experienced in deploying modern applications on
-            PVS or in shared hosting in the cloud.
+            As a proficient skilled worker in developing complex web
+            applications using modern decoupled architecture for both frontend
+            and backend apps. Additionally I can develop backend for any type of
+            software systems. I am also experienced in deploying modern
+            applications on PVS or in shared hosting in the cloud.
           </p>
         </div>
         <div className="services-card">
