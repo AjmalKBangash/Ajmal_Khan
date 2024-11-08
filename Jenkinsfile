@@ -5,6 +5,7 @@ pipeline {
         GITHUB_TOKEN = credentials('github-jenkins-id-for-pat')
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials-id')
         DOCKER_IMAGE_NAME = 'ajmalkhanbangash/port-frontend' // Docker image name in Docker Hub
+        VERSION = '' //This will be populated from the package.json file
         // VERSION_FILE = 'VERSION'
         // DOCKER_IMAGE_TAG = '' //This will be populated from the VERSION file
     }
@@ -29,14 +30,14 @@ pipeline {
         //         }
         //     }
         // }
-        stage ('checkout version stage') {
+        stage ('checkout VERSION stage') {
             steps {
                 script {
-                    echo 'checkout version stage is started'
+                    echo 'checkout VERSION stage is started'
                     // Read version from package.json
-                    def version = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
+                    def ${VERSION} = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
                     // Print the version to confirm
-                    echo "Building version ${version}"                    
+                    echo "Building version ${VERSION}"                    
                     echo 'checkout version stage is completed'
                 }
             }
@@ -44,7 +45,7 @@ pipeline {
         stage ('printing version stage ') {
             steps {
                 script {
-                    echo "printing version === {version} and docker image name === ${DOCKER_IMAGE_NAME}"
+                    echo "printing version === ${VERSION} and docker image name === ${DOCKER_IMAGE_NAME}"
                 }
             }
         }
