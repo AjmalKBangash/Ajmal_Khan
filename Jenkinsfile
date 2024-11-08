@@ -37,7 +37,7 @@ pipeline {
                     // Read version from package.json
                     def VERSIONN = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
                     // Print the version to confirm
-                    // env.VERSION = ${VERSIONN}
+                    environment.VERSION = ${VERSIONN}
                     echo "Building version ${VERSIONN}"
                     echo 'checkout version stage is completed'
                 }
