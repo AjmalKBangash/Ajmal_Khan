@@ -1,3 +1,4 @@
+def VERSION = '' //This will be populated from the package.json file
 pipeline {
     agent any
     environment {
@@ -5,7 +6,7 @@ pipeline {
         GITHUB_TOKEN = credentials('github-jenkins-id-for-pat')
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials-id')
         DOCKER_IMAGE_NAME = 'ajmalkhanbangash/port-frontend' // Docker image name in Docker Hub
-        VERSION = '' //This will be populated from the package.json file
+        // VERSION = '' //This will be populated from the package.json file
         // VERSION_FILE = 'VERSION'
         // DOCKER_IMAGE_TAG = '' //This will be populated from the VERSION file
     }
@@ -35,10 +36,10 @@ pipeline {
                 script {
                     echo 'checkout VERSION stage is started'
                     // Read version from package.json
-                    env.VERSION = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
+                    ${VERSION} = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
                     // Print the version to confirm
                     // environment.VERSION = ${VERSIONN} // This is wrong
-                    echo "Building version ${env.VERSION}"
+                    echo "Building version ${VERSION}"
                     echo 'checkout version stage is completed'
                 }
             }
