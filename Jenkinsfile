@@ -35,10 +35,10 @@ pipeline {
                 script {
                     echo 'checkout VERSION stage is started'
                     // Read version from package.json
-                    def VERSIONN = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
+                    environment.VERSION = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
                     // Print the version to confirm
-                    environment.VERSION = ${VERSIONN}
-                    echo "Building version ${VERSIONN}"
+                    // environment.VERSION = ${VERSIONN} // This is wrong
+                    echo "Building version ${env.VERSION}"
                     echo 'checkout version stage is completed'
                 }
             }
