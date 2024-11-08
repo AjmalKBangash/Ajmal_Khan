@@ -41,6 +41,13 @@ pipeline {
                 }
             }
         }
+        stage ('printing version stage ') {
+            steps {
+                script {
+                    echo 'printing version === ${version} and docker image name === ${DOCKER_IMAGE_NAME}'
+                }
+            }
+        }
         // stage('Build Docker Image') {
         //     steps {
         //         // Build the Docker image using the Dockerfile in the repository
