@@ -1,4 +1,4 @@
-def VERSION = '' //This will be populated from the package.json file
+def VERSION_UPDATION = '' //This will be populated from the package.json file
 pipeline {
     agent any
     environment {
@@ -36,10 +36,10 @@ pipeline {
                 script {
                     echo 'checkout VERSION stage is started'
                     // Read version from package.json
-                    ${VERSION} = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
+                    VERSION_UPDATION = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
                     // Print the version to confirm
                     // environment.VERSION = ${VERSIONN} // This is wrong
-                    echo "Building version ${VERSION}"
+                    echo "Building version ${VERSION_UPDATION}"
                     echo 'checkout version stage is completed'
                 }
             }
@@ -47,7 +47,7 @@ pipeline {
         stage ('printing version stage ') {
             steps {
                 script {
-                    echo "printing version === ${VERSION} and docker image name === ${DOCKER_IMAGE_NAME}"
+                    echo "printing version === ${VERSION_UPDATION} and docker image name === ${DOCKER_IMAGE_NAME}"
                 }
             }
         }
