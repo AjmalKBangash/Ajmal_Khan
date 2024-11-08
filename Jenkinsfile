@@ -35,9 +35,9 @@ pipeline {
                 script {
                     echo 'checkout VERSION stage is started'
                     // Read version from package.json
-                    ${VERSION} = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
+                    env.VERSION = sh( script: "jq -r '.version' package.json", returnStdout: true).trim()
                     // Print the version to confirm
-                    echo "Building version ${VERSION}"                    
+                    echo "Building version ${env.VERSION}"                    
                     echo 'checkout version stage is completed'
                 }
             }
@@ -45,7 +45,7 @@ pipeline {
         stage ('printing version stage ') {
             steps {
                 script {
-                    echo "printing version === ${VERSION} and docker image name === ${DOCKER_IMAGE_NAME}"
+                    echo "printing version === ${env.VERSION} and docker image name === ${DOCKER_IMAGE_NAME}"
                 }
             }
         }
