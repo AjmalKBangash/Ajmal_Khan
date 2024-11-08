@@ -46,7 +46,7 @@ pipeline {
         stage ('printing version stage ') {
             steps {
                 script {
-                    echo "printing version === ${env.VERSION} and docker image name === ${DOCKER_IMAGE_NAME}"
+                    echo "printing version === ${VERSION} and docker image name === ${DOCKER_IMAGE_NAME}"
                 }
             }
         }
