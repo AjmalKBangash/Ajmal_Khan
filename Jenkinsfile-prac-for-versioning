@@ -6,7 +6,6 @@ pipeline {
         GITHUB_TOKEN = credentials('github-jenkins-id-for-pat')
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials-id')
         DOCKER_IMAGE_NAME = 'ajmalkhanbangash/port-frontend' // Docker image name in Docker Hub
-        // VERSION = '' //This will be populated from the package.json file
         // VERSION_FILE = 'VERSION'
         // DOCKER_IMAGE_TAG = '' //This will be populated from the VERSION file
     }
