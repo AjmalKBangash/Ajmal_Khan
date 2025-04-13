@@ -4,6 +4,7 @@ import Decouplingarchitecture from "./Decouplingarchitecture";
 import Careercounselling from "./Careercounselling";
 import Proxyservers from "./Proxyservers";
 import Virtualizationandcontainerization from "./Virtualizationandcontainerization";
+import Fullstackdevelopment from "./Fullstackdevelopment";
 function BlogPosts() {
   const location = useLocation();
   const data = location.state;
@@ -41,6 +42,9 @@ function BlogPosts() {
     return <Com />;
   } else if (Component === "Virtualizationandcontainerization") {
     let Com = Virtualizationandcontainerization;
+    return <Com />;
+  }  else if (Component === "Fullstackdevelopment") {
+    let Com = Fullstackdevelopment;
     return <Com />;
   }
 }

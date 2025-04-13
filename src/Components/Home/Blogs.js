@@ -28,12 +28,20 @@ let blogposts = [
       "We will define and use proxy servers for Software Deployment. How it helps Software Engineers getting their job done for decoupled architecture software pieces.",
   },
   {
-    blog_title: "Virtualization and Containerization",
-    blog_image: "Blog_Images/vircon02.jpeg",
+    blog_title: "Full Stack Development",
+    blog_image: "Blog_Images/full-stack-developer-profile.webp",
     blog_date: "2024-04-17",
     blog_description:
-      "Explaining the contrast between virtualization and containerization, alongside evaluating the existing Private Virtual Servers (PVS) architecture and weighing the advantages and disadvantages of transitioning to a superior architecture between these two options.",
+      // "Explaining the different approaches to the full-stack development and choosing the right pathway for yourself"
+      "Navigating Full-Stack Development: How to Pick the Best Approach for Your Projects among 10s of pathways"
   },
+  {
+    blog_title: "Virtualization and Containerization",
+    blog_image: "Blog_Images/vircon02.jpeg",
+    blog_date: "2024-07-17",
+    blog_description:
+      "Explaining the contrast between virtualization and containerization, alongside evaluating the existing Private Virtual Servers (PVS) architecture and weighing the advantages and disadvantages of transitioning to a superior architecture between these two options.",
+  }, 
 ];
 function Blogs() {
   // const [blogposts, setBlogPosts] = useState(false);
