@@ -34,12 +34,12 @@ function DownloadPDF() {
 
   const downloadPDF02 = () => {
     // URL to the PDF file in the public folder
-    const pdfUrl = process.env.PUBLIC_URL + "/CV_PDF/Ajmal-Khan-CV.pdf";
+    const pdfUrl = process.env.PUBLIC_URL + "/CV_PDF/AJMAL_KHAN_CV.pdf";
 
     // Create a temporary link element
     const link = document.createElement("a");
     link.href = pdfUrl;
-    link.setAttribute("download", "AJMAL-KHAN-CV.pdf");
+    link.setAttribute("download", "AJMAL_KHAN_CV.pdf");
 
     // Trigger the download
     document.body.appendChild(link);

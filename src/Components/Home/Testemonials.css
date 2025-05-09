@@ -13,6 +13,9 @@
   overflow: scroll;
   padding: 0%;
   transition: all 0.3s;
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
 }
 .testemonial-card {
   margin: auto 10px;

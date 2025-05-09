@@ -56,11 +56,7 @@ function Services() {
           <VscAzureDevops className="services-icon" />
           <h2>DevOps</h2>
           <p>
-            I am a skilled DevOps engineer adept at orchestrating seamless
-            integration between development and operations workflows. With a
-            keen eye for automation and optimization, I can streamlines
-            deployment pipelines and enhances system reliability. Leveraging
-            cloud technologies, containerization, and CI/CD practices.
+            With the development of a Software now comes the second step of production grade configuration management and deployment with CI/CD pipelines called DevOps. I am a skilled DevOps engineer with using Terraform for IAC, Jenkins for CI/CD, AWS for the cloud servers and Openshift for the on-premises servers deployment and pipelines. 
           </p>
         </div>
         <div className="services-card">
@@ -124,20 +120,18 @@ function Services() {
           <SiNginx className="services-icon" />
           <h2>AWS</h2>
           <p>
-            My competency excels in AWS EC2 provisioning, configuration, and
+            My competency excels in AWS provisioning, configuration, and
             optimization for scalable web application deployment. With strong
             DevOps skills, I can automate CI/CD pipelines, implements
-            infrastructure as code (IaC), and ensures robust monitoring and
+            infrastructure as code (IaC) with Terraform, and ensures robust monitoring and
             logging setups for seamless operations.
           </p>
         </div>
         <div className="services-card">
           <SiNginx className="services-icon" />
           <p>
-            <h2>DevSecOps and Cloud Computing</h2>
-            <br />I am actively expanding my expertise in DevSecOps and Cloud
-            Computing, broadening my knowledge with various vendors such as
-            Azure and GCP.
+            <h2>DevSecOps and Openshift Administration</h2>
+            <br />I am actively expanding my expertise in DevSecOps and Openshift administration, where i am preparing myself for CNCF CKS(certified kubernetes security specialist) certification and also implmenting and working as an Openshift administrator with the adoptation of new technologies and skills.
           </p>
         </div>
       </div>

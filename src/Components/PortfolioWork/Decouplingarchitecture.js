@@ -23,7 +23,7 @@ function Decouplingarchitecture() {
               their Deployment
             </h3>
             <br />
-            <h4>What you will leran here is ...</h4>
+            <h4>Here's what you'll learn about:</h4>
             <p>
               In this blog, we will delve into the concept of decoupled
               architecture in web applications. Firstly, we'll explore the

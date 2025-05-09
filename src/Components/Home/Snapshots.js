@@ -14,116 +14,117 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-// let projectImages = [
-//   {
-//     img_no: 0,
-//     image: "/ProjectImages/0.png",
-//     description: "AYO Web",
-//   },
-//   {
-//     img_no: 1,
-//     image: "/ProjectImages/1.png",
-//     description: "AYO Web",
-//   },
-//   {
-//     img_no: 2,
-//     image: "/ProjectImages/2.png",
-//     description: "Admin HMS",
-//   },
-//   {
-//     img_no: 3,
-//     image: "/ProjectImages/3.png",
-//     description: "Admin HMS",
-//   },
-//   {
-//     img_no: 4,
-//     image: "/ProjectImages/4.png",
-//     description: "Dr Dashboard HMS",
-//   },
-//   {
-//     img_no: 5,
-//     image: "/ProjectImages/5.png",
-//     description: "Dr Profile HMS",
-//   },
-//   {
-//     img_no: 6,
-//     image: "/ProjectImages/6.png",
-//     description: "Dr Prescription HMS",
-//   },
-//   {
-//     img_no: "7",
-//     image: "/ProjectImages/7.png",
-//     description: "Receptionist HMS",
-//   },
-//   {
-//     img_no: 8,
-//     image: "/ProjectImages/8.png",
-//     description: "E-commerce",
-//   },
-//   {
-//     img_no: 9,
-//     image: "/ProjectImages/9.png",
-//     description: "E-commerce",
-//   },
-//   {
-//     img_no: 10,
-//     image: "/ProjectImages/10.png",
-//     description: "E-commerce",
-//   },
-//   {
-//     img_no: 11,
-//     image: "/ProjectImages/11.png",
-//     description: "E-commerce",
-//   },
-//   {
-//     img_no: 12,
-//     image: "/ProjectImages/12.png",
-//     description: "Hube-Rasool Web",
-//   },
-//   {
-//     img_no: 13,
-//     image: "/ProjectImages/13.png",
-//     description: "Hube-Rasool Web",
-//   },
-//   {
-//     img_no: 14,
-//     image: "/ProjectImages/14.png",
-//     description: "Hube-Rasool Web",
-//   },
-//   {
-//     img_no: 15,
-//     image: "/ProjectImages/15.png",
-//     description: "Data Structures",
-//   },
-//   {
-//     img_no: 16,
-//     image: "/ProjectImages/16.png",
-//     description: "REST APIs",
-//   },
-//   {
-//     img_no: 17,
-//     image: "/ProjectImages/17.png",
-//     description: "Throttling (Security)",
-//   },
-//   {
-//     img_no: 18,
-//     image: "/ProjectImages/18.png",
-//     description: "Bash Scripting",
-//   },
-//   {
-//     img_no: 19,
-//     image: "/ProjectImages/19.png",
-//     description: "Nginx (Web Server)",
-//   },
-//   {
-//     img_no: 20,
-//     image: "/ProjectImages/20.png",
-//     description: "AWS (Configuring Server)",
-//   },
-// ];
+let projectImagess = [
+  {
+    img_no: 0,
+    image: "/ProjectImages/0.png",
+    description: "AYO Web",
+  },
+  {
+    img_no: 1,
+    image: "/ProjectImages/1.png",
+    description: "AYO Web",
+  },
+  {
+    img_no: 2,
+    image: "/ProjectImages/2.png",
+    description: "Admin HMS",
+  },
+  {
+    img_no: 3,
+    image: "/ProjectImages/3.png",
+    description: "Admin HMS",
+  },
+  {
+    img_no: 4,
+    image: "/ProjectImages/4.png",
+    description: "Dr Dashboard HMS",
+  },
+  {
+    img_no: 5,
+    image: "/ProjectImages/5.png",
+    description: "Dr Profile HMS",
+  },
+  {
+    img_no: 6,
+    image: "/ProjectImages/6.png",
+    description: "Dr Prescription HMS",
+  },
+  {
+    img_no: "7",
+    image: "/ProjectImages/7.png",
+    description: "Receptionist HMS",
+  },
+  {
+    img_no: 8,
+    image: "/ProjectImages/8.png",
+    description: "E-commerce",
+  },
+  {
+    img_no: 9,
+    image: "/ProjectImages/9.png",
+    description: "E-commerce",
+  },
+  {
+    img_no: 10,
+    image: "/ProjectImages/10.png",
+    description: "E-commerce",
+  },
+  {
+    img_no: 11,
+    image: "/ProjectImages/11.png",
+    description: "E-commerce",
+  },
+  {
+    img_no: 12,
+    image: "/ProjectImages/12.png",
+    description: "Hube-Rasool Web",
+  },
+  {
+    img_no: 13,
+    image: "/ProjectImages/13.png",
+    description: "Hube-Rasool Web",
+  },
+  {
+    img_no: 14,
+    image: "/ProjectImages/14.png",
+    description: "Hube-Rasool Web",
+  },
+  {
+    img_no: 15,
+    image: "/ProjectImages/15.png",
+    description: "Data Structures",
+  },
+  {
+    img_no: 16,
+    image: "/ProjectImages/16.png",
+    description: "REST APIs",
+  },
+  {
+    img_no: 17,
+    image: "/ProjectImages/17.png",
+    description: "Throttling (Security)",
+  },
+  {
+    img_no: 18,
+    image: "/ProjectImages/18.png",
+    description: "Scripting",
+  },
+  {
+    img_no: 19,
+    image: "/ProjectImages/19.png",
+    description: "Nginx (Web Server)",
+  },
+  {
+    img_no: 20,
+    image: "/ProjectImages/20.png",
+    description: "AWS (Configuring Server)",
+  },
+];
 
 function Snapshots() {
-  const [projectImages, setProjectImages] = useState(false);
+  // let projectImagesFromUpper = projectImagess
+  const [projectImages, setProjectImages] = useState(projectImagess);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   let [carousel, setCarousel] = useState(false);
   let [imgSrc, setImgSrc] = useState("");
@@ -197,16 +198,24 @@ function Snapshots() {
       alert("Picture already in favorites!");
     }
   };
-  useEffect(() => {
-    axios
-      .get("portfolio/project-images/")
-      .then((res) => {
-        setProjectImages(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // THIS IS FOR PROJECT IMAGES FROM BACKEND 
+  // useEffect(() => {
+  //   axios
+  //     .get("portfolio/project-images/")
+  //     .then((res) => {
+  //       setProjectImages(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
+  // THIS IS FROM UPPER PROJECT IMAGES 
+//   useEffect=(() => {
+// if (projectImages.length < 0) {
+// setProjectImages(projectImages)
+// }
+//   },[])
 
   return (
     <div className="snapshots">
@@ -235,8 +244,9 @@ function Snapshots() {
       </motion.h3>
       <div className="gallary">
         {projectImages &&
-          projectImages.results.map((img, index) => {
-            const favoritesArray = JSON.parse(
+          // projectImages.results.map((img, index) => {
+            projectImages.map((img, index) => {
+              const favoritesArray = JSON.parse(
               Cookies.get("favoritePictures") || "[]"
             );
             const isFavorite = favoritesArray.includes(img.image);
