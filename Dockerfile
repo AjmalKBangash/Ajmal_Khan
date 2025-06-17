@@ -1,74 +1,58 @@
-# # Stage: Build and Serve React App
 # FROM node:latest
 
 # # Set working directory
 # WORKDIR /portfolio_frontend
 
-# # Copy package.json and package-lock.json
+# # Copy the package.json and package-lock.json to the working directory
 # COPY package*.json ./
 
-# # Install dependencies
+# # Install the dependencies
 # RUN npm install
 
-# # Copy the rest of the app
+# # Copy the rest of the application source code
 # COPY . .
 
 # # Build the React app
 # RUN npm run build
 
-# # Install a static file server
-# RUN npm install -g serve
+# Stage 1: Build the React application
+FROM node:latest AS build
 
-# # Move into the build output directory
-# WORKDIR /portfolio_frontend/build
+# Set working directory
+WORKDIR /portfolio_frontend
 
-# # Expose port 3000
-# EXPOSE 3000
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-# # Serve the built app
-# CMD ["serve", "-s", ".", "-l", "3000"]
+# Install dependencies
+RUN npm install
 
-FROM nginx:alpine
+# Copy the rest of the application source code
+COPY . .
 
-# Create a non-root user and group
-# RUN addgroup -g 1001 nginxgroup && \-
-#     adduser -u 1001 -G nginxgroup -D -H -s /bin/false nginxuser
+# Build the React app
+RUN npm run build
 
-# Change ownership of necessary directories
-# RUN mkdir -p /var/cache/nginx/client_temp && \
-#     chown -R nginxuser:nginxgroup /var/cache/nginx/client_temp && \
-#     chown -R nginxuser:nginxgroup /etc/nginx/conf.d/default.conf && \
-#     chown -R nginxuser:nginxgroup /var/cache/nginx && \
-#     chown -R nginxuser:nginxgroup /var/run && \
-#     chown -R nginxuser:nginxgroup /var/log/nginx && \
-#     chown -R nginxuser:nginxgroup /run
+# Stage 2: Serve the React application with Nginx
+FROM nginx:latest
 
-# Copy your React app
-COPY build/ /usr/share/nginx/html
+# # Fix permissions for OpenShift (non-root user)
+# RUN chmod -R 777 /usr/share/nginx/html \
+#  && chmod -R 777 /var/cache/nginx \
+#  && chmod -R 777 /etc/nginx/conf.d
 
-# Switch to non-root user
-# USER nginxuser
-USER root
+ # Copy the built React app from the previous stage
+COPY --from=build /portfolio_frontend/build /usr/share/nginx/html
 
+# # Override default NGINX config
+# COPY nginx.conf /etc/nginx/nginx.conf
+
+# # creating dirs
+# RUN mkdir -p /tmp/nginx/client_body /tmp/nginx/proxy /tmp/nginx/fastcgi /tmp/nginx/uwsgi /tmp/nginx/scgi
+
+# Expose port 80
 EXPOSE 80
 
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
 
-
-
-
-
-
-
-
-
-
-
-# FROM nginx:alpine
-
-# # Copy your React app
-# COPY build/ /usr/share/nginx/html
-
-# EXPOSE 80
-
-# CMD ["nginx", "-g", "daemon off;"]
