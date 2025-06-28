@@ -10,6 +10,7 @@ import BlogPosts from "./Components/PortfolioWork/BlogPosts";
 
 import {
   createBrowserRouter,
+  // createHashRouter,   // ✅ use this instead of createBrowserRouter
   createRoutesFromElements,
   Route,
   RouterProvider,
