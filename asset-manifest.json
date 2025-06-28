@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Ajmal_Khan/static/css/main.8c27f987.css",
+    "main.js": "/Ajmal_Khan/static/js/main.606b640f.js",
+    "static/js/453.695a7828.chunk.js": "/Ajmal_Khan/static/js/453.695a7828.chunk.js",
+    "static/media/back-img.png": "/Ajmal_Khan/static/media/back-img.10ef7b13d22a478de304.png",
+    "index.html": "/Ajmal_Khan/index.html",
+    "main.8c27f987.css.map": "/Ajmal_Khan/static/css/main.8c27f987.css.map",
+    "main.606b640f.js.map": "/Ajmal_Khan/static/js/main.606b640f.js.map",
+    "453.695a7828.chunk.js.map": "/Ajmal_Khan/static/js/453.695a7828.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8c27f987.css",
+    "static/js/main.606b640f.js"
+  ]
+}
